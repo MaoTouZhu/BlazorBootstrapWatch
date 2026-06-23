@@ -7,7 +7,7 @@
     <!-- 拖拽把手：顶部标题栏 -->
     <div class="position-fixed shadow-lg rounded"
          style="left:@(PopupService.X.ToString("F0"))px;top:@(PopupService.Y.ToString("F0"))px;
-                z-index:9999;min-width:300px;@(dragging ? "cursor:grabbing;opacity:0.95" : "")"
+                z-index:9999;min-width:380px;@(dragging ? "cursor:grabbing;opacity:0.95" : "")"
          @onmousemove="OnMove"
          @onmouseup="OnUp"
          @onmouseleave="OnUp">
@@ -21,13 +21,28 @@
         </div>
 
         <div class="bg-white border border-top-0 rounded-bottom p-3">
-            <p class="mb-2">@PopupService.Message</p>
-            <p class="small text-muted mb-0">
-                💡 此弹窗跨页面持久 — 切换页面不会消失，除非主动关闭。
-            </p>
-            <p class="small text-muted mb-0">
-                📍 当前位置：@(PopupService.X.ToString("F0")), @(PopupService.Y.ToString("F0"))
-            </p>
+            <p class="small mb-1">@PopupService.Message</p>
+
+            <!-- 🔍 诊断日志 -->
+            <div class="border rounded bg-dark text-light p-2 font-monospace"
+                 style="max-height:200px;overflow-y:auto;font-size:10px;line-height:1.5">
+                <div class="text-warning small mb-1">🔍 诊断日志 (Diagnostic Log)</div>
+                @foreach (var entry in diagLog)
+                {
+                    <div class="@(entry.Contains("❌") ? "text-danger" : entry.Contains("松开") ? "text-success" : "text-info")">
+                        @entry
+                    </div>
+                }
+                @if (diagLog.Count == 0)
+                {
+                    <div class="text-muted">等待事件...</div>
+                }
+            </div>
+            <div class="mt-1 d-flex gap-1">
+                <button class="btn btn-sm btn-outline-secondary" style="font-size:10px" @onclick="ClearDiagLog">清空日志</button>
+                <span class="small text-muted align-self-center">@diagLog.Count 条</span>
+                <span class="small text-muted align-self-center ms-2">dragging=@dragging</span>
+            </div>
         </div>
     </div>
 }
@@ -35,6 +50,10 @@
 @code {
     private bool dragging;
     private double startClientX, startClientY, startX, startY;
+    private List<string> diagLog = new();
+    private int moveCount;
+
+    private void Log(string msg) { diagLog.Insert(0, $"[{DateTime.Now:HH:mm:ss.fff}] {msg}"); if (diagLog.Count > 200) diagLog.RemoveAt(diagLog.Count - 1); }
 
     protected override void OnInitialized()
     {
@@ -44,23 +63,36 @@
     private void StartDrag(MouseEventArgs e)
     {
         dragging = true;
+        moveCount = 0;
         startClientX = e.ClientX;
         startClientY = e.ClientY;
         startX = PopupService.X;
         startY = PopupService.Y;
+        Log($"🖱️ mousedown  client=({e.ClientX:F0},{e.ClientY:F0})  popup=({startX:F0},{startY:F0})");
     }
 
     private void OnMove(MouseEventArgs e)
     {
+        moveCount++;
+        var newX = startX + (e.ClientX - startClientX);
+        var newY = startY + (e.ClientY - startClientY);
+        if (moveCount <= 5 || moveCount % 10 == 0)
+            Log($"↔ mousemove #{moveCount}  client=({e.ClientX:F0},{e.ClientY:F0}) → ({newX:F0},{newY:F0})" + (dragging ? "" : " ⚠️dragging=false!"));
         if (!dragging) return;
-        PopupService.X = startX + (e.ClientX - startClientX);
-        PopupService.Y = startY + (e.ClientY - startClientY);
+        PopupService.X = newX;
+        PopupService.Y = newY;
         PopupService.Notify();
     }
 
-    private void OnUp() => dragging = false;
+    private void OnUp()
+    {
+        if (!dragging) { Log($"⚠️ mouseup/leave 但 dragging 已经是 false (moveCount={moveCount})"); return; }
+        Log($"✅ 松开 mouseup/leave  moveCount={moveCount}  最终位置=({PopupService.X:F0},{PopupService.Y:F0})");
+        dragging = false;
+    }
 
-    private void Close() => PopupService.Close();
+    private void Close() { Log("✕ 关闭弹窗"); PopupService.Close(); }
+    private void ClearDiagLog() => diagLog.Clear();
 
     public void Dispose() => PopupService.OnChanged -= StateHasChanged;
 }
