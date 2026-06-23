@@ -9,8 +9,7 @@
          style="left:@(PopupService.X.ToString("F0"))px;top:@(PopupService.Y.ToString("F0"))px;
                 z-index:9999;min-width:300px;@(dragging ? "cursor:grabbing;opacity:0.95" : "")"
          @onmousemove="OnMove"
-         @onmouseup="OnUp"
-         @onmouseleave="OnUp">
+         @onmouseup="OnUp">
 
         <div class="bg-primary text-white rounded-top px-3 py-2 d-flex justify-content-between align-items-center"
              @onmousedown="StartDrag" @onmousedown:stopPropagation
@@ -70,8 +69,8 @@
 
     private async void OnUp()
     {
-        if (!dragging) { await JS.InvokeVoidAsync("console.warn", $"[Popup] ⚠️ mouseup/leave 但 dragging 已经是 false (moveCount={moveCount})"); return; }
-        await JS.InvokeVoidAsync("console.log", $"[Popup] ✅ 松开 mouseup/leave  moveCount={moveCount}  最终位置=({PopupService.X:F0},{PopupService.Y:F0})");
+        if (!dragging) { await JS.InvokeVoidAsync("console.warn", $"[Popup] ⚠️ mouseup 但 dragging 已经是 false (moveCount={moveCount})"); return; }
+        await JS.InvokeVoidAsync("console.log", $"[Popup] ✅ 松开 mouseup  moveCount={moveCount}  最终位置=({PopupService.X:F0},{PopupService.Y:F0})");
         dragging = false;
     }
 
