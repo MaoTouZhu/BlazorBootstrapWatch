@@ -119,13 +119,50 @@
     <!-- ===== 自由拖动元素 ===== -->
     <div class="col-lg-6">
         <div class="border rounded p-3 bg-light">
-            <h5>多元素自由拖动 (Multi-Element Free Drag)</h5>
-            <p class="small text-muted">在面板内自由拖动多个元素，每个元素独立响应。</p>
+            <h5>多元素自由拖动 + 自适应连线 (Free Drag + Curves)</h5>
+            <p class="small text-muted">拖动标签时，它们之间的贝塞尔曲线自动跟随。</p>
             <div class="position-relative border rounded bg-white overflow-hidden"
                  style="height:350px;user-select:none"
                  @onmousemove="OnFreeDragMove"
                  @onmouseup="OnFreeDragUp"
                  @onmouseleave="OnFreeDragUp">
+
+                <!-- SVG 连线层 -->
+                <svg class="position-absolute top-0 start-0 w-100 h-100" style="pointer-events:none;z-index:5">
+                    <!-- 各标签间的贝塞尔曲线 -->
+                    @for (int i = 0; i < freeElements.Count; i++)
+                    {
+                        var a = freeElements[i];
+                        var b = freeElements[(i + 1) % freeElements.Count];
+                        var (ax, ay) = CenterOf(a);
+                        var (bx, by) = CenterOf(b);
+                        // 中点作为控制点，向法线方向偏移产生弧线
+                        var midX = (ax + bx) / 2;
+                        var midY = (ay + by) / 2;
+                        var dx = bx - ax;
+                        var dy = by - ay;
+                        var len = Math.Sqrt(dx * dx + dy * dy);
+                        if (len > 1)
+                        {
+                            var nx = -dy / len;
+                            var ny = dx / len;
+                            var bend = Math.Min(len * 0.4, 80); // 弯曲程度随距离自适应
+                            var cx = midX + nx * bend;
+                            var cy = midY + ny * bend;
+                            <path d="M@(ax.ToString("F0")),@(ay.ToString("F0")) Q@(cx.ToString("F0")),@(cy.ToString("F0")) @(bx.ToString("F0")),@(by.ToString("F0"))"
+                                  stroke="@curveColors[i]" stroke-width="2.5" fill="none"
+                                  stroke-linecap="round" opacity="0.7" />
+                        }
+                    }
+                    <!-- 标签中心小圆点 -->
+                    @foreach (var el in freeElements)
+                    {
+                        var (cx, cy) = CenterOf(el);
+                        <circle cx="@(cx.ToString("F0"))" cy="@(cy.ToString("F0"))" r="5"
+                                fill="@(draggingFreeId == el.Id ? "var(--bs-primary)" : "var(--bs-secondary)")"
+                                stroke="white" stroke-width="2" />
+                    }
+                </svg>
 
                 @foreach (var el in freeElements)
                 {
@@ -133,7 +170,7 @@
                                 @(draggingFreeId == el.Id ? "bg-primary opacity-75" : "bg-secondary")"
                          style="left:@(el.X.ToString("F0"))px;top:@(el.Y.ToString("F0"))px;
                                 cursor:@(draggingFreeId == el.Id ? "grabbing" : "grab");
-                                user-select:none;z-index:@(draggingFreeId == el.Id ? 10 : 1)"
+                                user-select:none;z-index:@(draggingFreeId == el.Id ? 10 : 6)"
                          @onmousedown="(e) => StartFreeDrag(el.Id, e)" @onmousedown:stopPropagation>
                         @el.Label
                     </div>
@@ -150,7 +187,7 @@
                 <button class="btn btn-sm btn-outline-secondary" @onclick="ResetFreeElements">↺ 复位全部</button>
             </div>
             <small class="text-muted mt-2 d-block">
-                每个元素独立监听 <code>@@onmousedown</code>，容器统一处理 <code>@@onmousemove</code> 和 <code>@@onmouseup</code>
+                SVG 二次贝塞尔曲线 (<code>Q</code>) 连接标签，控制点沿法线方向自适应偏移，曲线随标签拖动实时更新。
             </small>
         </div>
     </div>
@@ -296,6 +333,11 @@
     }
 
     // ===== 公共 =====
+    private static readonly string[] curveColors = ["#0d6efd", "#198754", "#dc3545", "#fd7e14"];
+
+    // 估算标签中心点（标签宽 ~90px，高 ~34px）
+    private static (double X, double Y) CenterOf(FreeElement el) => (el.X + 45, el.Y + 17);
+
     void IDisposable.Dispose() { }
 
     private record SortItem(int Id, string Name, string Desc);
