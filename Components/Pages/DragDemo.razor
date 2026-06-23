@@ -181,6 +181,64 @@
             </small>
         </div>
     </div>
+
+    <!-- ===== 右键菜单 ===== -->
+    <div class="col-12">
+        <div class="border rounded p-3 bg-light">
+            <h5>右键菜单 (Context Menu)</h5>
+            <p class="small text-muted">在下方元素上右键点击，弹出自定义菜单。点击空白处或按 Esc 关闭。</p>
+            <div class="row g-3">
+                @foreach (var box in contextBoxes)
+                {
+                    <div class="col-6 col-md-3">
+                        <div class="border rounded p-4 text-center bg-white position-relative"
+                             style="background:@box.Bg!important;min-height:100px;cursor:context-menu"
+                             @oncontextmenu:preventDefault
+                             @oncontextmenu="(e) => OpenContextMenu(e, box)">
+                            <span class="fw-bold @(box.DarkText ? "text-dark" : "text-white")">@box.Name</span>
+                            <small class="d-block mt-1 @(box.DarkText ? "text-secondary" : "text-white-50")">右键点击此处</small>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            @if (contextMenu.Visible)
+            {
+                <div class="position-fixed top-0 start-0 w-100 h-100" style="z-index:1050"
+                     @onclick="CloseContextMenu" @oncontextmenu:preventDefault @oncontextmenu="CloseContextMenu">
+                </div>
+                <div class="position-fixed bg-white border rounded shadow-lg py-1"
+                     style="left:@(contextMenu.X.ToString("F0"))px;top:@(contextMenu.Y.ToString("F0"))px;z-index:1051;min-width:180px"
+                     @onclick:stopPropagation>
+                    <div class="px-3 py-1">
+                        <small class="text-muted fw-bold">@contextMenu.Target</small>
+                    </div>
+                    <div class="dropdown-divider my-1"></div>
+                    <button class="dropdown-item" @onclick='() => DoContextAction("Copy")'>
+                        📋 复制 (Copy)
+                    </button>
+                    <button class="dropdown-item" @onclick='() => DoContextAction("Rename")'>
+                        ✏️ 重命名 (Rename)
+                    </button>
+                    <button class="dropdown-item" @onclick='() => DoContextAction("Details")'>
+                        🔍 查看详情 (Details)
+                    </button>
+                    <div class="dropdown-divider my-1"></div>
+                    <button class="dropdown-item text-danger" @onclick='() => DoContextAction("Delete")'>
+                        🗑 删除 (Delete)
+                    </button>
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(contextResult))
+            {
+                <div class="alert alert-info mt-3 mb-0 py-2">
+                    @contextResult
+                    <button class="btn-close float-end" @onclick='() => contextResult = ""'></button>
+                </div>
+            }
+        </div>
+    </div>
 </div>
 
 @code {
@@ -320,6 +378,35 @@
             new(3, "🏷️ 标签 C", 80, 200),
             new(4, "🏷️ 标签 D", 250, 180),
         };
+    }
+
+    // ===== 右键菜单 =====
+    private (bool Visible, double X, double Y, string Target) contextMenu;
+    private string contextResult = "";
+
+    private readonly List<(string Name, string Bg, bool DarkText)> contextBoxes = new()
+    {
+        ("📦 卡片 A", "#0d6efd", false),
+        ("📦 卡片 B", "#198754", false),
+        ("📦 卡片 C", "#ffc107", true),
+        ("📦 卡片 D", "#dc3545", false),
+    };
+
+    private void OpenContextMenu(MouseEventArgs e, (string Name, string, bool) box)
+    {
+        contextMenu = (true, e.ClientX, e.ClientY, box.Name);
+    }
+
+    private void CloseContextMenu()
+    {
+        contextMenu = default;
+    }
+
+    private void DoContextAction(string action)
+    {
+        var labels = new Dictionary<string, string> { ["Copy"] = "复制", ["Rename"] = "重命名", ["Details"] = "查看详情", ["Delete"] = "删除" };
+        contextResult = $"对「{contextMenu.Target}」执行了「{labels.GetValueOrDefault(action, action)}」操作 —— {DateTime.Now:HH:mm:ss}";
+        contextMenu = default;
     }
 
     // ===== 公共 =====
