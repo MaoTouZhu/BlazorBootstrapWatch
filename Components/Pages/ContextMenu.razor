@@ -4,25 +4,26 @@
 <PageTitle>右键菜单 (Context Menu) - Blazor 特性</PageTitle>
 
 <h2>🖱️ 右键菜单 (Context Menu)</h2>
-<p class="lead">纯 Blazor 实现：<code>@@oncontextmenu:preventDefault</code> 阻止浏览器原生菜单，自定义菜单定位在鼠标位置。</p>
+<p class="lead">按钮同时响应左键和右键：左键点击触发操作，右键弹出上下文菜单。</p>
 
 <div class="row g-4">
     <div class="col-lg-8">
         <div class="border rounded p-4 bg-light">
-            <h5>右键点击下方卡片</h5>
-            <p class="small text-muted">每张卡片有独立的右键菜单，菜单跟随鼠标位置显示。点击空白处关闭。</p>
+            <h5>左键点击 / 右键菜单</h5>
+            <p class="small text-muted">左键点击按钮直接执行默认操作，右键弹出菜单选择操作。</p>
             <div class="row g-3">
-                @foreach (var box in boxes)
+                @foreach (var btn in buttons)
                 {
                     <div class="col-6 col-md-3">
-                        <div class="border rounded p-4 text-center bg-white position-relative shadow-sm"
-                             style="background:@box.Bg!important;min-height:120px;cursor:context-menu;transition:transform 0.15s"
-                             @oncontextmenu:preventDefault
-                             @oncontextmenu="(e) => OpenMenu(e, box)">
-                            <div class="display-6 mb-2">@box.Icon</div>
-                            <span class="fw-bold @(box.DarkText ? "text-dark" : "text-white")">@box.Name</span>
-                            <small class="d-block mt-1 @(box.DarkText ? "text-secondary" : "text-white-50")">右键点击</small>
-                        </div>
+                        <button class="btn @btn.BtnClass w-100 h-100 d-flex flex-column align-items-center justify-content-center gap-2"
+                                style="min-height:130px"
+                                @onclick='() => LeftClick(btn)'
+                                @oncontextmenu:preventDefault
+                                @oncontextmenu='(e) => OpenMenu(e, btn)'>
+                            <span class="fs-2">@btn.Icon</span>
+                            <span class="fw-bold">@btn.Name</span>
+                            <small class="opacity-75">左键/右键</small>
+                        </button>
                     </div>
                 }
             </div>
@@ -40,17 +41,17 @@
                         <small class="text-muted d-block">@menu.Desc</small>
                     </div>
                     <div class="dropdown-divider my-1"></div>
-                    <button class="dropdown-item" @onclick='() => DoAction("Copy")'>
+                    <button class="dropdown-item" @onclick='() => MenuAction("Copy")'>
                         📋 复制 (Copy)
                     </button>
-                    <button class="dropdown-item" @onclick='() => DoAction("Rename")'>
+                    <button class="dropdown-item" @onclick='() => MenuAction("Rename")'>
                         ✏️ 重命名 (Rename)
                     </button>
-                    <button class="dropdown-item" @onclick='() => DoAction("Details")'>
+                    <button class="dropdown-item" @onclick='() => MenuAction("Details")'>
                         🔍 查看详情 (Details)
                     </button>
                     <div class="dropdown-divider my-1"></div>
-                    <button class="dropdown-item text-danger" @onclick='() => DoAction("Delete")'>
+                    <button class="dropdown-item text-danger" @onclick='() => MenuAction("Delete")'>
                         🗑 删除 (Delete)
                     </button>
                 </div>
@@ -68,14 +69,30 @@
 
     <div class="col-lg-4">
         <div class="border rounded p-4 bg-light h-100">
-            <h5>实现要点</h5>
+            <h5>左键历史</h5>
+            <div class="border rounded bg-white p-2 mb-3" style="max-height:200px;overflow-y:auto">
+                @if (clickHistory.Count == 0)
+                {
+                    <p class="text-muted small mb-0">还没有左键点击...</p>
+                }
+                else
+                {
+                    @foreach (var entry in clickHistory)
+                    {
+                        <div class="small py-1 border-bottom">@entry</div>
+                    }
+                }
+            </div>
+            <button class="btn btn-sm btn-outline-secondary" @onclick='() => clickHistory.Clear()'>清空历史</button>
+
+            <h5 class="mt-4">实现要点</h5>
             <ul class="small mb-0">
-                <li class="mb-2"><code>@@oncontextmenu:preventDefault</code><br>阻止浏览器默认右键菜单</li>
-                <li class="mb-2"><code>@@oncontextmenu</code><br>捕获右键事件，获取 <code>ClientX/Y</code></li>
-                <li class="mb-2"><code>position:fixed</code><br>菜单相对视口定位，不受滚动影响</li>
-                <li class="mb-2"><strong>全屏透明遮罩</strong><br>捕获点击事件关闭菜单</li>
-                <li class="mb-2"><code>@@onclick:stopPropagation</code><br>菜单内部点击不冒泡</li>
-                <li><strong>元组状态</strong><br><code>(bool Visible, double X, double Y, string Target, string Desc)</code> 管理菜单状态</li>
+                <li class="mb-2"><code>@@onclick</code><br>左键点击触发默认操作</li>
+                <li class="mb-2"><code>@@oncontextmenu:preventDefault</code><br>阻止浏览器原生右键菜单</li>
+                <li class="mb-2"><code>@@oncontextmenu</code><br>右键弹出上下文菜单</li>
+                <li class="mb-2"><strong>同一元素</strong><br>同时绑定两个事件互不冲突</li>
+                <li class="mb-2"><strong>全屏透明遮罩</strong><br>点击空白处关闭菜单</li>
+                <li><code>@@onclick:stopPropagation</code><br>菜单内部点击不冒泡关闭</li>
             </ul>
         </div>
     </div>
@@ -84,23 +101,30 @@
 @code {
     private (bool Visible, double X, double Y, string Target, string Desc) menu;
     private string result = "";
+    private List<string> clickHistory = new();
 
-    private readonly List<(string Icon, string Name, string Bg, bool DarkText, string Desc)> boxes = new()
+    private readonly List<(string Icon, string Name, string BtnClass, string Desc)> buttons = new()
     {
-        ("📁", "文件夹", "#0d6efd", false, "包含 12 个文件"),
-        ("🖼️", "图片库", "#198754", false, "包含 47 张图片"),
-        ("📝", "文档", "#ffc107", true, "最近修改：今天"),
-        ("⚙️", "设置", "#6c757d", false, "系统配置项"),
+        ("📁", "文件夹", "btn-primary", "包含 12 个文件"),
+        ("🖼️", "图片库", "btn-success", "包含 47 张图片"),
+        ("📝", "文档", "btn-warning", "最近修改：今天"),
+        ("⚙️", "设置", "btn-secondary", "系统配置项"),
     };
 
-    private void OpenMenu(MouseEventArgs e, (string, string Name, string, bool, string Desc) box)
+    private void LeftClick((string Icon, string Name, string BtnClass, string Desc) btn)
     {
-        menu = (true, e.ClientX, e.ClientY, box.Name, box.Desc);
+        result = $"🖱️ 左键点击了「{btn.Name}」—— 默认操作：打开 —— {DateTime.Now:HH:mm:ss}";
+        clickHistory.Insert(0, $"{DateTime.Now:HH:mm:ss} | 打开「{btn.Name}」");
+    }
+
+    private void OpenMenu(MouseEventArgs e, (string, string Name, string, string Desc) btn)
+    {
+        menu = (true, e.ClientX, e.ClientY, btn.Name, btn.Desc);
     }
 
     private void CloseMenu() => menu = default;
 
-    private void DoAction(string action)
+    private void MenuAction(string action)
     {
         var labels = new Dictionary<string, string>
         {
@@ -108,6 +132,7 @@
             ["Details"] = "🔍 查看详情", ["Delete"] = "🗑 删除"
         };
         result = $"对「{menu.Target}」执行了「{labels.GetValueOrDefault(action, action)}」操作 —— {DateTime.Now:HH:mm:ss}";
+        clickHistory.Insert(0, $"{DateTime.Now:HH:mm:ss} | {labels.GetValueOrDefault(action, action)}「{menu.Target}」");
         menu = default;
     }
 }
