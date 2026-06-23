@@ -1,0 +1,12 @@
+<div class="card text-bg-@Color h-100">
+    <div class="card-body">
+        <h5 class="card-title">@Title</h5>
+        <p class="card-text">@Content</p>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string Title { get; set; } = "";
+    [Parameter] public string Content { get; set; } = "";
+    [Parameter] public string Color { get; set; } = "primary";
+}

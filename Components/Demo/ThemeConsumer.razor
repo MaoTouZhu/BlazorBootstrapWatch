@@ -1,0 +1,10 @@
+<div class="border rounded p-3 @(Theme == "dark" ? "text-bg-dark" : "bg-white")">
+    <strong>级联值消费者</strong>
+    <p class="mb-0">当前主题：<span class="badge @(Theme == "dark" ? "bg-light text-dark" : "bg-dark")">@Theme</span></p>
+    <small class="text-muted">通过 [CascadingParameter] 接收主题值</small>
+</div>
+
+@code {
+    [CascadingParameter(Name = "Theme")]
+    public string Theme { get; set; } = "light";
+}

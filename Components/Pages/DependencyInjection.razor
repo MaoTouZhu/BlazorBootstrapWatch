@@ -1,0 +1,116 @@
+@page "/di"
+@rendermode InteractiveServer
+@inject CounterService SingletonService
+@inject CounterService ScopedService
+@inject CounterService TransientService
+
+<PageTitle>依赖注入 (Dependency Injection) - Blazor 特性</PageTitle>
+
+<h2>💉 依赖注入 (Dependency Injection)</h2>
+<p class="lead">Blazor 内置 DI 容器，支持三种生命周期：Singleton、Scoped、Transient。</p>
+
+<div class="alert alert-info mb-4">
+    <strong>@@inject CounterService XXXService</strong> — 在组件顶部用 <code>@@inject</code> 指令注入服务。
+    三种生命周期通过 <code>Program.cs</code> 中的注册方式区分。
+</div>
+
+<h5>生命周期对比 (Lifetime Comparison)</h5>
+<div class="row g-4 mb-4">
+    <div class="col-md-4">
+        <div class="card border-primary h-100">
+            <div class="card-header bg-primary text-white">
+                <strong>🔵 Singleton</strong>
+                <br><small>整个应用生命周期内共享一个实例</small>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled mb-0">
+                    <li>实例 ID：<code>#@SingletonService.InstanceId</code></li>
+                    <li>计数：<strong>@SingletonService.Count</strong></li>
+                    <li>创建于：@SingletonService.CreatedAt.ToString("HH:mm:ss.fff")</li>
+                </ul>
+                <button class="btn btn-sm btn-outline-primary mt-2 w-100" @onclick="() => SingletonService.Increment()">+1</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card border-success h-100">
+            <div class="card-header bg-success text-white">
+                <strong>🟢 Scoped</strong>
+                <br><small>每个 SignalR 回路内共享一个实例</small>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled mb-0">
+                    <li>实例 ID：<code>#@ScopedService.InstanceId</code></li>
+                    <li>计数：<strong>@ScopedService.Count</strong></li>
+                    <li>创建于：@ScopedService.CreatedAt.ToString("HH:mm:ss.fff")</li>
+                </ul>
+                <button class="btn btn-sm btn-outline-success mt-2 w-100" @onclick="() => ScopedService.Increment()">+1</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card border-danger h-100">
+            <div class="card-header bg-danger text-white">
+                <strong>🔴 Transient</strong>
+                <br><small>每次注入时创建全新实例</small>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled mb-0">
+                    <li>实例 ID：<code>#@TransientService.InstanceId</code></li>
+                    <li>计数：<strong>@TransientService.Count</strong></li>
+                    <li>创建于：@TransientService.CreatedAt.ToString("HH:mm:ss.fff")</li>
+                </ul>
+                <button class="btn btn-sm btn-outline-danger mt-2 w-100" @onclick="() => TransientService.Increment()">+1</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="alert alert-warning">
+    <strong>💡 观察要点：</strong>重新加载页面后，Singleton 实例 ID 不变（保持同一实例），
+    Scoped 在每次连接时创建新实例，Transient 每次注入都会变化。
+    点击 +1 按钮可验证各生命周期的状态保持行为。
+</div>
+
+<h5>生命周期行为说明</h5>
+<div class="table-responsive">
+    <table class="table table-bordered table-sm">
+        <thead class="table-dark">
+            <tr><th>生命周期</th><th>注册方式</th><th>实例化时机</th><th>释放时机</th><th>典型用途</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Singleton</strong></td>
+                <td><code>AddSingleton&lt;T&gt;()</code></td>
+                <td>首次注入时</td>
+                <td>应用关闭</td>
+                <td>缓存、配置、全局状态</td>
+            </tr>
+            <tr>
+                <td><strong>Scoped</strong></td>
+                <td><code>AddScoped&lt;T&gt;()</code></td>
+                <td>每个回路创建时</td>
+                <td>回路断开</td>
+                <td>用户会话数据、购物车</td>
+            </tr>
+            <tr>
+                <td><strong>Transient</strong></td>
+                <td><code>AddTransient&lt;T&gt;()</code></td>
+                <td>每次注入时</td>
+                <td>组件释放</td>
+                <td>轻量级无状态服务</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h5 class="mt-4">Program.cs 中的注册代码</h5>
+<div class="border rounded p-3 bg-dark text-light">
+    <pre class="mb-0"><code>builder.Services.AddSingleton&lt;CounterService&gt;();   // 整个应用共享一个实例
+builder.Services.AddScoped&lt;CounterService&gt;();      // 每个 SignalR 回路一个实例
+builder.Services.AddTransient&lt;CounterService&gt;();   // 每次注入一个新实例</code></pre>
+</div>
+
+@code {
+    // 服务已通过 @inject 注入，点击 +1 按钮观察实例 ID 与计数变化
+}

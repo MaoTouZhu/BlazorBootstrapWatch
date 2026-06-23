@@ -1,0 +1,114 @@
+@page "/component-communication"
+@rendermode InteractiveServer
+
+<PageTitle>组件通信 (Component Communication) - Blazor 特性</PageTitle>
+
+<h2>🧩 组件通信 (Component Communication)</h2>
+<p class="lead">父子组件间传递数据：Parameter、EventCallback、级联值和 RenderFragment。</p>
+
+<!-- ===== 父→子：Parameter ===== -->
+<h5 class="mt-4">父→子：参数传递 ([Parameter])</h5>
+<div class="border rounded p-4 bg-light mb-4">
+    <div class="row g-3">
+        <div class="col-md-4">
+            <ChildCard Title="卡片 A" Content="这是从父组件传入的内容" Color="primary" />
+        </div>
+        <div class="col-md-4">
+            <ChildCard Title="卡片 B" Content="不同的参数值" Color="success" />
+        </div>
+        <div class="col-md-4">
+            <ChildCard Title="卡片 C" Content="第三个实例" Color="danger" />
+        </div>
+    </div>
+    <small class="text-muted mt-2 d-block">
+        <code>[Parameter] public string Title &#123; get; set; &#125;</code> — 父组件通过属性传递数据
+    </small>
+</div>
+
+<!-- ===== 子→父：EventCallback ===== -->
+<h5>子→父：事件回调 (EventCallback&lt;T&gt;)</h5>
+<div class="border rounded p-4 bg-light mb-4">
+    <div class="row g-3 align-items-center">
+        <div class="col-md-6">
+            <CounterChild CurrentCount="parentCount" OnCountChanged="HandleCountChanged" />
+        </div>
+        <div class="col-md-6">
+            <div class="alert alert-info mb-0">
+                <strong>父组件接收到的值：</strong>
+                <span class="fs-4 ms-2">@parentCount</span>
+                <hr class="my-2">
+                <small class="text-muted mb-0 d-block">子组件通过 <code>EventCallback&lt;int&gt; OnCountChanged</code> 通知父组件</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== CascadingValue ===== -->
+<h5>级联值 (CascadingValue)</h5>
+<div class="border rounded p-4 bg-light mb-4">
+    <p>级联值允许祖先组件向所有后代组件传递数据，无需逐层传递。</p>
+    <div class="d-flex gap-3 mb-3">
+        <button class="btn btn-sm btn-outline-primary" @onclick='() => theme = theme == "light" ? "dark" : "light"'>
+            切换主题：@theme
+        </button>
+    </div>
+    <CascadingValue Value="theme" Name="Theme">
+        <div class="row g-3">
+            <div class="col-md-6">
+                <ThemeConsumer />
+            </div>
+            <div class="col-md-6">
+                <ThemeConsumer />
+            </div>
+        </div>
+    </CascadingValue>
+    <small class="text-muted mt-2 d-block">
+        祖先用 <code>&lt;CascadingValue Value="theme"&gt;</code> 包裹，后代用 <code>[CascadingParameter]</code> 接收
+    </small>
+</div>
+
+<!-- ===== RenderFragment ===== -->
+<h5>渲染片段 (RenderFragment / ChildContent)</h5>
+<div class="border rounded p-4 bg-light mb-4">
+    <p>RenderFragment 允许父组件将 UI 片段注入子组件。</p>
+    <div class="row g-3">
+        <div class="col-md-6">
+            <PanelBox Title="使用 ChildContent">
+                <ChildContent>
+                    <p class="text-success mb-0">✅ 这段 HTML 来自父组件，通过 <code>ChildContent</code> 传入！</p>
+                    <button class="btn btn-sm btn-success mt-2" @onclick="() => childContentClicked = !childContentClicked">
+                        点击交互（父组件事件）
+                    </button>
+                    @if (childContentClicked)
+                    {
+                        <span class="badge bg-success ms-2">点击了！</span>
+                    }
+                </ChildContent>
+            </PanelBox>
+        </div>
+        <div class="col-md-6">
+            <PanelBox Title="使用具名 RenderFragment">
+                <Header>
+                    <span class="badge bg-warning text-dark">⚡ 自定义头部</span>
+                </Header>
+                <Body>
+                    <p class="mb-0">主体内容也可通过具名 RenderFragment 传入。</p>
+                </Body>
+            </PanelBox>
+        </div>
+    </div>
+    <small class="text-muted mt-2 d-block">
+        <code>[Parameter] public RenderFragment? ChildContent &#123; get; set; &#125;</code> — 默认子内容
+    </small>
+</div>
+
+@code {
+    private int parentCount;
+    private string theme = "light";
+    private bool childContentClicked;
+
+    private void HandleCountChanged(int newCount)
+    {
+        parentCount = newCount;
+    }
+}

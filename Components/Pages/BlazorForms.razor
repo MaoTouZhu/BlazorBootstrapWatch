@@ -1,0 +1,174 @@
+@page "/blazor-forms"
+@rendermode InteractiveServer
+
+<PageTitle>Blazor 表单 (Blazor Forms) - Blazor 特性</PageTitle>
+
+<h2>📋 Blazor 表单 (Blazor Forms)</h2>
+<p class="lead">EditForm、内置输入组件、数据注解验证与自定义验证逻辑。</p>
+
+<div class="row g-4">
+    <div class="col-lg-7">
+        <div class="border rounded p-4 bg-light">
+            <h5>注册表单 (EditForm + DataAnnotationsValidator)</h5>
+            <EditForm Model="model" OnValidSubmit="HandleValidSubmit" OnInvalidSubmit="HandleInvalidSubmit" FormName="reg-form">
+                <DataAnnotationsValidator />
+                <ValidationSummary class="text-danger mb-3" />
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">用户名 <span class="text-danger">*</span></label>
+                        <InputText class="form-control" @bind-Value="model.Username" placeholder="3-20 位字母数字" />
+                        <ValidationMessage For="() => model.Username" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">邮箱 <span class="text-danger">*</span></label>
+                        <InputText class="form-control" @bind-Value="model.Email" placeholder="name@example.com" />
+                        <ValidationMessage For="() => model.Email" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">密码 <span class="text-danger">*</span></label>
+                        <InputText type="password" class="form-control" @bind-Value="model.Password" placeholder="至少 6 位" />
+                        <ValidationMessage For="() => model.Password" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">确认密码 <span class="text-danger">*</span></label>
+                        <InputText type="password" class="form-control" @bind-Value="model.ConfirmPassword" />
+                        <ValidationMessage For="() => model.ConfirmPassword" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">出生日期</label>
+                        <InputDate class="form-control" @bind-Value="model.BirthDate" />
+                        <ValidationMessage For="() => model.BirthDate" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">角色</label>
+                        <InputSelect class="form-select" @bind-Value="model.Role">
+                            <option value="">-- 请选择 --</option>
+                            <option value="Developer">开发者 (Developer)</option>
+                            <option value="Designer">设计师 (Designer)</option>
+                            <option value="Manager">经理 (Manager)</option>
+                        </InputSelect>
+                        <ValidationMessage For="() => model.Role" />
+                    </div>
+                    <div class="col-12">
+                        <div class="form-check">
+                            <InputCheckbox class="form-check-input" @bind-Value="model.AgreeTerms" />
+                            <label class="form-check-label">我同意服务条款 <span class="text-danger">*</span></label>
+                        </div>
+                        <ValidationMessage For="() => model.AgreeTerms" />
+                    </div>
+                </div>
+
+                <div class="mt-3">
+                    <button type="submit" class="btn btn-primary me-2">注册 (Submit)</button>
+                    <button type="button" class="btn btn-outline-secondary" @onclick="ResetForm">重置 (Reset)</button>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+
+    <div class="col-lg-5">
+        <div class="border rounded p-4 bg-light h-100">
+            <h5>提交结果</h5>
+            @if (submittedData != null)
+            {
+                <div class="alert alert-success">
+                    <h6>✅ 表单验证通过！</h6>
+                    <ul class="mb-0 small">
+                        <li>用户名：@submittedData.Username</li>
+                        <li>邮箱：@submittedData.Email</li>
+                        <li>生日：@submittedData.BirthDate?.ToString("yyyy-MM-dd")</li>
+                        <li>角色：@submittedData.Role</li>
+                    </ul>
+                </div>
+            }
+            @if (invalidAttempts > 0)
+            {
+                <div class="alert alert-warning">
+                    ⚠️ 验证失败 <strong>@invalidAttempts</strong> 次 — 请检查表单中的错误提示。
+                </div>
+            }
+            @if (submittedData == null && invalidAttempts == 0)
+            {
+                <div class="text-muted">
+                    <p>此表单展示了：</p>
+                    <ul>
+                        <li><code>EditForm</code> + <code>DataAnnotationsValidator</code></li>
+                        <li><code>InputText</code> / <code>InputDate</code> / <code>InputSelect</code> / <code>InputCheckbox</code></li>
+                        <li><code>ValidationSummary</code> 汇总错误</li>
+                        <li><code>ValidationMessage</code> 单字段错误</li>
+                        <li><code>OnValidSubmit</code> vs <code>OnInvalidSubmit</code></li>
+                        <li>数据注解：<code>[Required]</code>, <code>[StringLength]</code>, <code>[EmailAddress]</code></li>
+                        <li>自定义验证：<code>[CustomValidation]</code> 密码匹配检查</li>
+                    </ul>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private RegisterModel model = new();
+    private RegisterModel? submittedData;
+    private int invalidAttempts;
+
+    private void HandleValidSubmit()
+    {
+        submittedData = new RegisterModel
+        {
+            Username = model.Username,
+            Email = model.Email,
+            BirthDate = model.BirthDate,
+            Role = model.Role,
+        };
+        invalidAttempts = 0;
+    }
+
+    private void HandleInvalidSubmit()
+    {
+        invalidAttempts++;
+    }
+
+    private void ResetForm()
+    {
+        model = new RegisterModel();
+        submittedData = null;
+        invalidAttempts = 0;
+    }
+
+    private class RegisterModel
+    {
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "用户名必填")]
+        [System.ComponentModel.DataAnnotations.StringLength(20, MinimumLength = 3, ErrorMessage = "用户名需要 3-20 个字符")]
+        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z0-9_]+$", ErrorMessage = "只允许字母、数字和下划线")]
+        public string Username { get; set; } = "";
+
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "邮箱必填")]
+        [System.ComponentModel.DataAnnotations.EmailAddress(ErrorMessage = "请输入合法的邮箱格式")]
+        public string Email { get; set; } = "";
+
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "密码必填")]
+        [System.ComponentModel.DataAnnotations.MinLength(6, ErrorMessage = "密码至少需要 6 个字符")]
+        public string Password { get; set; } = "";
+
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "请确认密码")]
+        [System.ComponentModel.DataAnnotations.CustomValidation(typeof(RegisterModel), nameof(ValidatePasswordsMatch))]
+        public string ConfirmPassword { get; set; } = "";
+
+        public DateTime? BirthDate { get; set; }
+
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "请选择角色")]
+        public string Role { get; set; } = "";
+
+        [System.ComponentModel.DataAnnotations.Range(typeof(bool), "true", "true", ErrorMessage = "必须同意条款")]
+        public bool AgreeTerms { get; set; }
+
+        public static System.ComponentModel.DataAnnotations.ValidationResult? ValidatePasswordsMatch(string confirmPassword, System.ComponentModel.DataAnnotations.ValidationContext context)
+        {
+            var instance = (RegisterModel)context.ObjectInstance;
+            if (instance.Password != confirmPassword)
+                return new System.ComponentModel.DataAnnotations.ValidationResult("两次输入的密码不一致");
+            return System.ComponentModel.DataAnnotations.ValidationResult.Success;
+        }
+    }
+}

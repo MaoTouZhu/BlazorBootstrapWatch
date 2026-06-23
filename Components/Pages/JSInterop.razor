@@ -1,0 +1,195 @@
+@page "/js-interop"
+@rendermode InteractiveServer
+@inject IJSRuntime JS
+
+<PageTitle>JS 互操作 (JS Interop) - Blazor 特性</PageTitle>
+
+<h2>🔧 JS 互操作 (JavaScript Interop)</h2>
+<p class="lead">从 C# 调用 JavaScript，包括模块导入、ElementReference、localStorage 和浏览器 API。</p>
+
+<div class="alert alert-info">
+    <code>@@inject IJSRuntime JS</code> — IJSRuntime 是 Blazor 内置服务，用于调用 JavaScript 函数。
+</div>
+
+<div class="row g-4">
+    <!-- 调用 JS 函数 -->
+    <div class="col-lg-6">
+        <div class="border rounded p-4 bg-light h-100">
+            <h5>基础调用 (InvokeAsync / InvokeVoidAsync)</h5>
+            <p class="small text-muted">调用全局 JS 函数，支持返回值和 void。</p>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+                <button class="btn btn-warning" @onclick="ShowAlert">📢 JS alert</button>
+                <button class="btn btn-info text-white" @onclick="GetBrowserInfo">🌐 浏览器信息</button>
+                <button class="btn btn-secondary" @onclick="GetWindowSize">📐 窗口尺寸</button>
+            </div>
+            @if (!string.IsNullOrEmpty(jsResult))
+            {
+                <div class="alert alert-light border mb-0">
+                    <pre class="mb-0 small"><code>@jsResult</code></pre>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- JS 模块导入 -->
+    <div class="col-lg-6">
+        <div class="border rounded p-4 bg-light h-100">
+            <h5>JS 模块 (IJSObjectReference / 模块隔离)</h5>
+            <p class="small text-muted">导入 ES 模块，避免污染全局作用域。本页使用 <code>blazor-demo.js</code> 模块。</p>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+                <button class="btn btn-primary" @onclick="ModuleAlert">📢 模块 Alert</button>
+                <button class="btn btn-success" @onclick="SaveToStorage">💾 保存到 localStorage</button>
+                <button class="btn btn-info text-white" @onclick="ReadFromStorage">📖 读取 localStorage</button>
+                <button class="btn btn-outline-danger" @onclick="ClearStorage">🗑 清除</button>
+            </div>
+            @if (!string.IsNullOrEmpty(moduleResult))
+            {
+                <div class="alert alert-light border mb-0">
+                    <pre class="mb-0 small"><code>@moduleResult</code></pre>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- ElementReference -->
+    <div class="col-lg-6">
+        <div class="border rounded p-4 bg-light h-100">
+            <h5>元素引用 (ElementReference + FocusAsync)</h5>
+            <p class="small text-muted">Blazor 内置 <code>FocusAsync()</code> 扩展方法，无需 JS。</p>
+            <div class="mb-3">
+                <input class="form-control mb-2" @ref="focusInput" type="text" placeholder="点击下方按钮聚焦此输入框..." />
+                <div class="d-flex gap-2">
+                    <button class="btn btn-primary btn-sm" @onclick="FocusInput">🎯 聚焦输入框 (C# native)</button>
+                    <button class="btn btn-outline-secondary btn-sm" @onclick="FocusViaJS">📢 聚焦（通过 JS 模块）</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 剪贴板 API -->
+    <div class="col-lg-6">
+        <div class="border rounded p-4 bg-light h-100">
+            <h5>浏览器 API (Clipboard / localStorage)</h5>
+            <p class="small text-muted">通过 JS 互操作访问 Web API。</p>
+            <div class="input-group mb-3">
+                <input class="form-control" @bind="clipboardText" placeholder="要复制的内容..." />
+                <button class="btn btn-outline-primary" @onclick="CopyText">📋 复制到剪贴板</button>
+            </div>
+            @if (!string.IsNullOrEmpty(clipboardResult))
+            {
+                <div class="alert alert-success mb-0 py-2">@clipboardResult</div>
+            }
+        </div>
+    </div>
+</div>
+
+<h5 class="mt-4">JS 互操作要点</h5>
+<div class="table-responsive">
+    <table class="table table-bordered table-sm">
+        <thead class="table-dark">
+            <tr><th>方法</th><th>说明</th><th>示例</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>InvokeAsync&lt;T&gt;</code></td>
+                <td>调用 JS 函数并获取返回值</td>
+                <td><code>var result = await JS.InvokeAsync&lt;string&gt;("func", arg);</code></td>
+            </tr>
+            <tr>
+                <td><code>InvokeVoidAsync</code></td>
+                <td>调用无返回值的 JS 函数</td>
+                <td><code>await JS.InvokeVoidAsync("alert", "msg");</code></td>
+            </tr>
+            <tr>
+                <td><code>IJSObjectReference</code></td>
+                <td>JS 模块引用，隔离作用域</td>
+                <td><code>var module = await JS.InvokeAsync&lt;IJSObjectReference&gt;("import", "./js/demo.js");</code></td>
+            </tr>
+            <tr>
+                <td><code>FocusAsync()</code></td>
+                <td>Blazor 内置（无需 JS）</td>
+                <td><code>await element.FocusAsync();</code></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@code {
+    private ElementReference focusInput;
+    private IJSObjectReference? jsModule;
+    private string jsResult = "";
+    private string moduleResult = "";
+    private string clipboardText = "Hello from Blazor!";
+    private string clipboardResult = "";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            jsModule = await JS.InvokeAsync<IJSObjectReference>("import", "./js/blazor-demo.js");
+            StateHasChanged();
+        }
+    }
+
+    private async void ShowAlert() => await JS.InvokeVoidAsync("alert", "Hello from Blazor! 👋 这是通过 IJSRuntime 调用的 JS alert。");
+
+    private async void GetBrowserInfo()
+    {
+        jsResult = await JS.InvokeAsync<string>("eval", "JSON.stringify({userAgent:navigator.userAgent,language:navigator.language,platform:navigator.platform,cookiesEnabled:navigator.cookieEnabled,onLine:navigator.onLine})");
+        StateHasChanged();
+    }
+
+    private async void GetWindowSize()
+    {
+        jsResult = await JS.InvokeAsync<string>("eval", "JSON.stringify({width:window.innerWidth,height:window.innerHeight})");
+        StateHasChanged();
+    }
+
+    private async void ModuleAlert()
+    {
+        if (jsModule != null)
+            await jsModule.InvokeVoidAsync("showAlert", "来自 JS 模块的问候！🎉");
+    }
+
+    private async void SaveToStorage()
+    {
+        if (jsModule != null)
+            moduleResult = await jsModule.InvokeAsync<string>("setLocalStorage", "blazor-demo-key", $"保存于 {DateTime.Now:HH:mm:ss}");
+        StateHasChanged();
+    }
+
+    private async void ReadFromStorage()
+    {
+        if (jsModule != null)
+            moduleResult = await jsModule.InvokeAsync<string>("getLocalStorage", "blazor-demo-key");
+        StateHasChanged();
+    }
+
+    private async void ClearStorage()
+    {
+        if (jsModule != null)
+            moduleResult = await jsModule.InvokeAsync<string>("removeLocalStorage", "blazor-demo-key");
+        StateHasChanged();
+    }
+
+    private async void FocusInput() => await focusInput.FocusAsync();
+
+    private async void FocusViaJS()
+    {
+        if (jsModule != null)
+            await jsModule.InvokeVoidAsync("focusElement", focusInput);
+    }
+
+    private async void CopyText()
+    {
+        if (jsModule != null)
+            clipboardResult = await jsModule.InvokeAsync<string>("copyToClipboard", clipboardText);
+        StateHasChanged();
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (jsModule != null)
+            await jsModule.DisposeAsync();
+    }
+}

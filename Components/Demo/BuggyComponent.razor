@@ -1,0 +1,14 @@
+<div class="border rounded p-3 bg-danger bg-opacity-10">
+    <strong>⚠️ 这是一个会抛出异常的 Buggy 组件</strong>
+    <p class="small mb-0">异常信息：@throwMessage</p>
+</div>
+
+@code {
+    private string throwMessage = "故意抛出的异常 (Intentional Exception)";
+
+    protected override void OnInitialized()
+    {
+        // 故意抛出异常以演示 ErrorBoundary
+        throw new InvalidOperationException("这是一个故意抛出的异常，用于演示 ErrorBoundary 的错误捕获能力！");
+    }
+}

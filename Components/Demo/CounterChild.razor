@@ -1,0 +1,23 @@
+<div class="border rounded p-3 bg-white text-center">
+    <h6 class="mb-2">子组件 (Child Component)</h6>
+    <p class="display-4 mb-2">@CurrentCount</p>
+    <div class="d-flex gap-2 justify-content-center">
+        <button class="btn btn-sm btn-primary" @onclick="Increment">+1</button>
+        <button class="btn btn-sm btn-outline-danger" @onclick="Reset">重置</button>
+    </div>
+</div>
+
+@code {
+    [Parameter] public int CurrentCount { get; set; }
+    [Parameter] public EventCallback<int> OnCountChanged { get; set; }
+
+    private async Task Increment()
+    {
+        await OnCountChanged.InvokeAsync(CurrentCount + 1);
+    }
+
+    private async Task Reset()
+    {
+        await OnCountChanged.InvokeAsync(0);
+    }
+}

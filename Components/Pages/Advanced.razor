@@ -1,0 +1,188 @@
+@page "/advanced"
+@rendermode InteractiveServer
+
+<PageTitle>高级特性 (Advanced) - Blazor 特性</PageTitle>
+
+<h2>🚀 高级特性 (Advanced)</h2>
+<p class="lead">虚拟滚动 (Virtualize)、错误边界 (ErrorBoundary)、路由参数、生命周期方法和 @@key 指令。</p>
+
+<div class="row g-4">
+    <!-- Virtualize -->
+    <div class="col-lg-6">
+        <div class="border rounded p-4 bg-light h-100">
+            <h5>虚拟滚动 (Virtualize)</h5>
+            <p class="small text-muted">高效渲染超长列表 — 仅渲染可视区域内的项。下方渲染了 <strong>10,000</strong> 行数据。</p>
+            <div class="border rounded bg-white" style="height:280px;overflow-y:auto">
+                <Virtualize Items="hugeList" Context="item" ItemSize="35">
+                    <div class="px-3 py-1 border-bottom @(item.Index % 2 == 0 ? "bg-light" : "")">
+                        <small>
+                            <span class="text-muted">#@item.Index</span>
+                            <span class="ms-2 fw-bold">@item.Name</span>
+                            <span class="ms-2 text-secondary">@item.Email</span>
+                            <span class="ms-2 small">
+                                <span class="badge @(item.Status == "Active" ? "bg-success" : item.Status == "Away" ? "bg-warning" : "bg-secondary")">@item.Status</span>
+                            </span>
+                        </small>
+                    </div>
+                </Virtualize>
+            </div>
+            <small class="text-muted mt-2 d-block">
+                <code>&lt;Virtualize Items="hugeList" Context="item" ItemSize="35"&gt;</code> — 只渲染可见行，内存占用极小
+            </small>
+        </div>
+    </div>
+
+    <!-- Error Boundary -->
+    <div class="col-lg-6">
+        <div class="border rounded p-4 bg-light h-100">
+            <h5>错误边界 (ErrorBoundary)</h5>
+            <p class="small text-muted">捕获子组件中的未处理异常，显示备用 UI。</p>
+            <ErrorBoundary>
+                <ChildContent>
+                    <div class="mb-3">
+                        <button class="btn btn-sm btn-outline-secondary me-1" @onclick="() => showBuggy = !showBuggy">
+                            @(showBuggy ? "隐藏" : "显示") 会出错的组件
+                        </button>
+                    </div>
+                    @if (showBuggy)
+                    {
+                        <BuggyComponent />
+                    }
+                </ChildContent>
+                <ErrorContent Context="ex">
+                    <div class="alert alert-danger mb-0">
+                        <h6>❌ 组件出错了！</h6>
+                        <p class="mb-1 small">错误类型：@ex.GetType().Name</p>
+                        <p class="mb-1 small">错误信息：@ex.Message</p>
+                        <button class="btn btn-sm btn-outline-danger mt-1" @onclick="() => { showBuggy = false; errorRecovery++; }">
+                            关闭并恢复
+                        </button>
+                    </div>
+                </ErrorContent>
+            </ErrorBoundary>
+            @if (errorRecovery > 0)
+            {
+                <small class="text-success d-block mt-2">✅ 已从错误中恢复 @errorRecovery 次</small>
+            }
+            <small class="text-muted mt-2 d-block">
+                <code>&lt;ErrorBoundary&gt;</code> 捕获子组件异常，显示 <code>&lt;ErrorContent&gt;</code>
+            </small>
+        </div>
+    </div>
+
+    <!-- 生命周期 -->
+    <div class="col-lg-6">
+        <div class="border rounded p-4 bg-light h-100">
+            <h5>组件生命周期 (Lifecycle)</h5>
+            <p class="small text-muted">Blazor 组件的生命周期方法执行顺序。</p>
+            <div class="border rounded bg-white p-3 mb-3" style="max-height:200px;overflow-y:auto">
+                <div class="small font-monospace">
+                    @foreach (var entry in lifecycleLog)
+                    {
+                        <div class="text-@(entry.Contains("✅") ? "success" : "secondary")">@entry</div>
+                    }
+                    @if (lifecycleLog.Count == 0)
+                    {
+                        <div class="text-muted">等待页面加载...</div>
+                    }
+                </div>
+            </div>
+            <table class="table table-sm table-bordered small mb-0">
+                <thead class="table-dark"><tr><th>顺序</th><th>方法</th><th>触发时机</th></tr></thead>
+                <tbody>
+                    <tr><td>1</td><td><code>SetParametersAsync</code></td><td>接收参数时</td></tr>
+                    <tr><td>2</td><td><code>OnInitialized</code></td><td>组件首次初始化</td></tr>
+                    <tr><td>3</td><td><code>OnParametersSet</code></td><td>参数设置后</td></tr>
+                    <tr><td>4</td><td><code>OnAfterRender</code></td><td>每次渲染后</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- @key 指令 -->
+    <div class="col-lg-6">
+        <div class="border rounded p-4 bg-light h-100">
+            <h5>@@key 指令与路由参数</h5>
+            <p class="small text-muted">
+                <code>@@key</code> 确保元素/组件在数据变化时正确保留或重建。
+                路由参数通过 <code>@@page</code> 定义。
+            </p>
+
+            <h6 class="mt-3">@@key 示例：列表项排序</h6>
+            <div class="row g-2 mb-3">
+                @foreach (var person in keyDemoPeople)
+                {
+                    <div class="col-4" @key="person.Id">
+                        <div class="border rounded p-2 text-center bg-white">
+                            <div class="fw-bold">@person.Name</div>
+                            <small class="text-muted">ID: @person.Id</small>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="d-flex gap-2 mb-3">
+                <button class="btn btn-sm btn-outline-primary" @onclick="ShufflePeople">🔀 随机排序（@@key 保留状态）</button>
+            </div>
+
+            <h6 class="mt-3">路由参数</h6>
+            <p class="small text-muted">
+                路由参数在 <code>@@page</code> 中定义：<code>@@page "/user/&#123;UserId&#125;"</code>
+                → 通过 <code>[Parameter] public string UserId &#123; get; set; &#125;</code> 接收
+            </p>
+        </div>
+    </div>
+</div>
+
+@code {
+    private bool showBuggy;
+    private int errorRecovery;
+    private List<string> lifecycleLog = new();
+
+    private List<Person> keyDemoPeople = new()
+    {
+        new(1, "Alice"), new(2, "Bob"), new(3, "Carol"),
+    };
+
+    private List<VirtualItem> hugeList = Enumerable.Range(1, 10_000)
+        .Select(i => new VirtualItem
+        {
+            Index = i,
+            Name = $"用户 {i}",
+            Email = $"user{i}@example.com",
+            Status = i % 5 == 0 ? "Away" : "Active"
+        }).ToList();
+
+    protected override void OnInitialized()
+    {
+        lifecycleLog.Add($"[{DateTime.Now:HH:mm:ss}] ✅ OnInitialized — 组件首次初始化");
+    }
+
+    protected override void OnParametersSet()
+    {
+        if (lifecycleLog.Count > 0)
+            lifecycleLog.Add($"[{DateTime.Now:HH:mm:ss}] ✅ OnParametersSet — 参数已设置");
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        lifecycleLog.Add($"[{DateTime.Now:HH:mm:ss}] ✅ OnAfterRender(firstRender={firstRender})");
+        if (lifecycleLog.Count > 20) lifecycleLog.RemoveAt(0);
+        StateHasChanged();
+    }
+
+    private void ShufflePeople()
+    {
+        var rng = new Random();
+        keyDemoPeople = keyDemoPeople.OrderBy(_ => rng.Next()).ToList();
+    }
+
+    private record Person(int Id, string Name);
+
+    private class VirtualItem
+    {
+        public int Index { get; set; }
+        public string Name { get; set; } = "";
+        public string Email { get; set; } = "";
+        public string Status { get; set; } = "Active";
+    }
+}

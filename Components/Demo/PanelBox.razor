@@ -1,0 +1,33 @@
+<div class="border rounded">
+    <div class="card">
+        @if (Header != null)
+        {
+            <div class="card-header">
+                @Header
+            </div>
+        }
+        else
+        {
+            <div class="card-header">
+                <strong>@Title</strong>
+            </div>
+        }
+        <div class="card-body">
+            @if (Body != null)
+            {
+                @Body
+            }
+            else
+            {
+                @ChildContent
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string Title { get; set; } = "面板 (Panel)";
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public RenderFragment? Header { get; set; }
+    [Parameter] public RenderFragment? Body { get; set; }
+}

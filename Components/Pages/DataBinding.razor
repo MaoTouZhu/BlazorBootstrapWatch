@@ -1,0 +1,155 @@
+@page "/databinding"
+@rendermode InteractiveServer
+
+<PageTitle>数据绑定 (Data Binding) - Blazor 特性</PageTitle>
+
+<h2>🔗 数据绑定 (Data Binding)</h2>
+<p class="lead">Blazor 的核心：单向绑定、双向绑定、事件处理与格式化。</p>
+
+<div class="row g-4">
+    <div class="col-lg-6">
+        <div class="border rounded p-4 bg-light h-100">
+            <h5>单向绑定 (One-Way Binding)</h5>
+            <p>使用 <code>@@variable</code> 将 C# 值渲染到 HTML 中。值变化时 UI 自动更新。</p>
+            <div class="mb-3">
+                <button class="btn btn-primary me-1" @onclick='() => message = "你好，Blazor！"'>设置消息</button>
+                <button class="btn btn-outline-secondary me-1" @onclick='() => message = "Hello Blazor!"'>英文消息</button>
+                <button class="btn btn-outline-danger" @onclick='() => message = ""'>清空</button>
+            </div>
+            <div class="alert alert-info mb-0">
+                <strong>输出：</strong> <code>@@message</code> → <span class="fs-5">@message</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="border rounded p-4 bg-light h-100">
+            <h5>双向绑定 (Two-Way Binding)</h5>
+            <p>使用 <code>@@bind</code> 实现输入控件与变量的双向同步。</p>
+            <div class="mb-3">
+                <label class="form-label">你的姓名：</label>
+                <input class="form-control" type="text" @bind="userName" @bind:event="oninput" />
+            </div>
+            <div class="alert alert-success mb-0">
+                <strong>实时输出：</strong> 你好，<span class="fw-bold">@(string.IsNullOrEmpty(userName) ? "___" : userName)</span>！
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="border rounded p-4 bg-light h-100">
+            <h5>事件绑定 (Event Binding)</h5>
+            <p>使用 <code>@@onclick</code>、<code>@@onchange</code> 等绑定 DOM 事件到 C# 方法。</p>
+            <div class="row g-2 mb-3">
+                <div class="col-6">
+                    <button class="btn btn-success w-100" @onclick="IncrementCounter">👍 +1 (@counter)</button>
+                </div>
+                <div class="col-6">
+                    <button class="btn btn-danger w-100" @onclick="DecrementCounter">👎 -1</button>
+                </div>
+                <div class="col-6">
+                    <select class="form-select" @onchange="OnColorChange">
+                        <option value="">选择颜色</option>
+                        <option value="text-primary">蓝色</option>
+                        <option value="text-success">绿色</option>
+                        <option value="text-danger">红色</option>
+                    </select>
+                </div>
+                <div class="col-6 d-flex align-items-center">
+                    <span class="@selectedColor fw-bold">颜色预览文本</span>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">键盘事件 (onkeyup)：</label>
+                <input class="form-control" type="text" placeholder="在此输入..." @onkeyup="OnKeyUp" />
+            </div>
+            <small class="text-muted">最后按键：@lastKey</small>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="border rounded p-4 bg-light h-100">
+            <h5>格式化绑定 (@@bind:format)</h5>
+            <p>对数值和日期类型使用格式字符串。</p>
+            <div class="mb-3">
+                <label class="form-label">金额：</label>
+                <input class="form-control" type="number" @bind="amount" step="0.01" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">日期：</label>
+                <input class="form-control" type="date" @bind="selectedDate" @bind:format="yyyy-MM-dd" />
+            </div>
+            <div class="alert alert-secondary mb-0">
+                <p class="mb-1">格式化金额：<strong>@amount.ToString("C2")</strong></p>
+                <p class="mb-0">格式化日期：<strong>@selectedDate.ToString("yyyy年MM月dd日")</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="border rounded p-4 bg-light h-100">
+            <h5>Lambda 表达式与内联处理</h5>
+            <p>可直接在 <code>@@onclick</code> 中使用 Lambda 表达式。</p>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+                @foreach (var item in items)
+                {
+                    <button class="btn btn-sm @(item.Active ? "btn-primary" : "btn-outline-secondary")"
+                            @onclick="() => ToggleItem(item)">
+                        @item.Name
+                    </button>
+                }
+            </div>
+            <div class="alert alert-light border mb-0">
+                <strong>活跃项：</strong>
+                @string.Join(", ", items.Where(i => i.Active).Select(i => i.Name))
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="border rounded p-4 bg-light h-100">
+            <h5>禁用导航与事件传播</h5>
+            <p>使用 <code>@@on{event}:preventDefault</code> 和 <code>:stopPropagation</code>。</p>
+            <form @onsubmit:preventDefault @onsubmit="HandleSubmitDemo">
+                <div class="mb-2">
+                    <input class="form-control" @bind="formDemoValue" placeholder="输入内容后按回车..." />
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm">提交（不会刷新页面）</button>
+            </form>
+            @if (!string.IsNullOrEmpty(submittedValue))
+            {
+                <div class="alert alert-success mt-2 mb-0 py-2">✅ 已提交：@submittedValue</div>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private string message = "";
+    private string userName = "";
+    private int counter;
+    private string selectedColor = "";
+    private string lastKey = "(无)";
+    private decimal amount = 99.99m;
+    private DateTime selectedDate = DateTime.Today;
+    private string formDemoValue = "";
+    private string submittedValue = "";
+
+    private List<BindingToggleItem> items = new()
+    {
+        new("Blazor"), new("React"), new("Vue"), new("Angular"), new("Svelte")
+    };
+
+    private void IncrementCounter() => counter++;
+    private void DecrementCounter() => counter--;
+    private void OnColorChange(ChangeEventArgs e) => selectedColor = e.Value?.ToString() ?? "";
+    private void OnKeyUp(KeyboardEventArgs e) => lastKey = e.Key;
+    private void ToggleItem(BindingToggleItem item) { item.Active = !item.Active; }
+    private void HandleSubmitDemo() { submittedValue = formDemoValue; formDemoValue = ""; }
+
+    private class BindingToggleItem(string name)
+    {
+        public string Name { get; set; } = name;
+        public bool Active { get; set; }
+    }
+}
