@@ -129,36 +129,36 @@
 
                 <!-- SVG 连线层 -->
                 <svg class="position-absolute top-0 start-0 w-100 h-100" style="pointer-events:none;z-index:5">
-                    <!-- 各标签间的贝塞尔曲线 -->
                     @for (int i = 0; i < freeElements.Count; i++)
                     {
                         var a = freeElements[i];
                         var b = freeElements[(i + 1) % freeElements.Count];
                         var (ax, ay) = CenterOf(a);
                         var (bx, by) = CenterOf(b);
-                        // 中点作为控制点，向法线方向偏移产生弧线
-                        var midX = (ax + bx) / 2;
-                        var midY = (ay + by) / 2;
                         var dx = bx - ax;
                         var dy = by - ay;
                         var len = Math.Sqrt(dx * dx + dy * dy);
                         if (len > 1)
                         {
+                            // 计算 A 出口点和 B 入口点（标签边缘交点）
+                            var (axOut, ayOut) = EdgePoint(ax, ay, dx, dy, LabelHW, LabelHH);
+                            var (bxIn, byIn) = EdgePoint(bx, by, -dx, -dy, LabelHW, LabelHH);
+                            // 中点法线偏移控制点
+                            var midX = (axOut + bxIn) / 2;
+                            var midY = (ayOut + byIn) / 2;
                             var nx = -dy / len;
                             var ny = dx / len;
-                            var bend = Math.Min(len * 0.4, 80); // 弯曲程度随距离自适应
-                            var cx = midX + nx * bend;
-                            var cy = midY + ny * bend;
-                            <path d="M@(ax.ToString("F0")),@(ay.ToString("F0")) Q@(cx.ToString("F0")),@(cy.ToString("F0")) @(bx.ToString("F0")),@(by.ToString("F0"))"
+                            var bend = Math.Min(len * 0.35, 70);
+                            <path d="M@(axOut.ToString("F0")),@(ayOut.ToString("F0")) Q@((midX + nx * bend).ToString("F0")),@((midY + ny * bend).ToString("F0")) @(bxIn.ToString("F0")),@(byIn.ToString("F0"))"
                                   stroke="@curveColors[i]" stroke-width="2.5" fill="none"
                                   stroke-linecap="round" opacity="0.7" />
                         }
                     }
-                    <!-- 标签中心小圆点 -->
+                    <!-- 边缘连接点小圆点 -->
                     @foreach (var el in freeElements)
                     {
                         var (cx, cy) = CenterOf(el);
-                        <circle cx="@(cx.ToString("F0"))" cy="@(cy.ToString("F0"))" r="5"
+                        <circle cx="@(cx.ToString("F0"))" cy="@(cy.ToString("F0"))" r="4"
                                 fill="@(draggingFreeId == el.Id ? "var(--bs-primary)" : "var(--bs-secondary)")"
                                 stroke="white" stroke-width="2" />
                     }
@@ -334,9 +334,25 @@
 
     // ===== 公共 =====
     private static readonly string[] curveColors = ["#0d6efd", "#198754", "#dc3545", "#fd7e14"];
+    private const double LabelHW = 45;  // 标签半宽
+    private const double LabelHH = 17;  // 标签半高
 
-    // 估算标签中心点（标签宽 ~90px，高 ~34px）
-    private static (double X, double Y) CenterOf(FreeElement el) => (el.X + 45, el.Y + 17);
+    // 标签中心点
+    private static (double X, double Y) CenterOf(FreeElement el) => (el.X + LabelHW, el.Y + LabelHH);
+
+    // 从中心点沿方向 (dx,dy) 交于矩形边缘的点（矩形半宽 hw, 半高 hh）
+    private static (double X, double Y) EdgePoint(double cx, double cy, double dx, double dy, double hw, double hh)
+    {
+        if (Math.Abs(dx) < 0.001 && Math.Abs(dy) < 0.001) return (cx, cy);
+        // 分别计算交于左右、上下边缘所需的 t
+        double tx = double.MaxValue, ty = double.MaxValue;
+        if (dx > 0.001) tx = hw / dx;
+        else if (dx < -0.001) tx = -hw / dx;
+        if (dy > 0.001) ty = hh / dy;
+        else if (dy < -0.001) ty = -hh / dy;
+        double t = Math.Min(tx, ty);
+        return (cx + dx * t, cy + dy * t);
+    }
 
     void IDisposable.Dispose() { }
 
