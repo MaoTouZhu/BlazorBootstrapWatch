@@ -1,25 +1,15 @@
 @rendermode InteractiveServer
 @inject FloatingPopupService PopupService
+@inject IJSRuntime JS
 @implements IDisposable
+@implements IAsyncDisposable
 
 @if (PopupService.Visible)
 {
-    <!-- 拖动时覆盖全视口的透明捕获层，确保鼠标事件不丢失 -->
-    @if (dragging)
-    {
-        <div class="position-fixed top-0 start-0 w-100 h-100"
-             style="z-index:9998;cursor:grabbing"
-             @onmousemove="OnMove"
-             @onmouseup="OnUp"
-             @onmouseleave="OnUp">
-        </div>
-    }
-
-    <!-- 弹窗本体 -->
     <div class="position-fixed shadow-lg rounded"
          style="left:@(PopupService.X.ToString("F0"))px;top:@(PopupService.Y.ToString("F0"))px;
                 z-index:9999;min-width:300px;@(dragging ? "opacity:0.95" : "")"
-         @onmouseup="OnUp">
+         id="floating-popup">
 
         <div class="bg-primary text-white rounded-top px-3 py-2 d-flex justify-content-between align-items-center"
              @onmousedown="StartDrag" @onmousedown:stopPropagation
@@ -43,33 +33,49 @@
 
 @code {
     private bool dragging;
-    private double startClientX, startClientY, startX, startY;
+    private IJSObjectReference? dragModule;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
         PopupService.OnChanged += StateHasChanged;
+        dragModule = await JS.InvokeAsync<IJSObjectReference>("import", "./js/popup-drag.js");
     }
 
-    private void StartDrag(MouseEventArgs e)
+    private async void StartDrag(MouseEventArgs e)
     {
         dragging = true;
-        startClientX = e.ClientX;
-        startClientY = e.ClientY;
-        startX = PopupService.X;
-        startY = PopupService.Y;
+        StateHasChanged();
+
+        if (dragModule != null)
+        {
+            var dotNetRef = DotNetObjectReference.Create(this);
+            await dragModule.InvokeVoidAsync("beginDrag", dotNetRef,
+                PopupService.X, PopupService.Y, e.ClientX, e.ClientY);
+        }
     }
 
-    private void OnMove(MouseEventArgs e)
+    [JSInvokable]
+    public void OnDragUpdate(double newX, double newY)
     {
-        if (!dragging) return;
-        PopupService.X = startX + (e.ClientX - startClientX);
-        PopupService.Y = startY + (e.ClientY - startClientY);
+        PopupService.X = newX;
+        PopupService.Y = newY;
         PopupService.Notify();
     }
 
-    private void OnUp() => dragging = false;
+    [JSInvokable]
+    public void OnDragEnd()
+    {
+        dragging = false;
+        StateHasChanged();
+    }
 
     private void Close() => PopupService.Close();
 
     public void Dispose() => PopupService.OnChanged -= StateHasChanged;
+
+    public async ValueTask DisposeAsync()
+    {
+        if (dragModule != null)
+            await dragModule.DisposeAsync();
+    }
 }
