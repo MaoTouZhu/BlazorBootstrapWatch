@@ -1,182 +1,182 @@
 @page "/overlays"
 
-<PageTitle>Modals & Offcanvas - Bootstrap Showcase</PageTitle>
+<PageTitle>模态框与侧边栏 (Modals & Offcanvas) - Bootstrap 展示</PageTitle>
 
-<h2>🪟 Modals & Offcanvas</h2>
-<p class="lead">Modal dialogs for alerts/confirmation and offcanvas side panels.</p>
+<h2>🪟 模态框与侧边栏 (Modals & Offcanvas)</h2>
+<p class="lead">用于提示/确认的模态对话框 (Modal) 以及侧边面板 (Offcanvas)。</p>
 
-<h5 class="mt-4">Modal Examples</h5>
+<h5 class="mt-4">模态框示例 (Modal Examples)</h5>
 <div class="border rounded p-4 bg-light mb-4 d-flex flex-wrap gap-2">
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#demoModal">
-        Basic Modal
+        基础模态框
     </button>
     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticModal">
-        Static Backdrop
+        静态遮罩 (Static Backdrop)
     </button>
     <button type="button" class="btn btn-info text-white" data-bs-toggle="modal" data-bs-target="#scrollModal">
-        Scrolling Modal
+        可滚动模态框
     </button>
     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#centeredModal">
-        Vertically Centered
+        垂直居中
     </button>
     <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#smallModal">
-        Small (sm)
+        小尺寸 (sm)
     </button>
     <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#largeModal">
-        Large (lg)
+        大尺寸 (lg)
     </button>
 </div>
 
-<!-- Basic Modal -->
+<!-- 基础模态框 -->
 <div class="modal fade" id="demoModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Modal Title</h5>
+                <h5 class="modal-title">模态框标题</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <p>This is a basic Bootstrap modal dialog. Click outside or the X to close.</p>
-                <p>Modals are built with HTML, CSS, and JS.</p>
+                <p>这是一个基础 Bootstrap 模态对话框。点击外部区域或 X 按钮即可关闭。</p>
+                <p>模态框由 HTML、CSS 和 JS 构建。</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭 (Close)</button>
+                <button type="button" class="btn btn-primary">保存更改</button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Static Backdrop Modal -->
+<!-- 静态遮罩模态框 -->
 <div class="modal fade" id="staticModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Static Backdrop</h5>
+                <h5 class="modal-title">静态遮罩</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <p>🔒 This modal won't close when clicking outside. You must use the buttons.</p>
-                <p>Set <code>data-bs-backdrop="static"</code> on the modal.</p>
+                <p>🔒 点击外部区域不会关闭此模态框。必须使用按钮来关闭。</p>
+                <p>使用 <code>data-bs-backdrop="static"</code> 属性。</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">I Understand</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">我知道了</button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Scrolling Modal -->
+<!-- 可滚动模态框 -->
 <div class="modal fade" id="scrollModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header"><h5 class="modal-title">Scrolling Content</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+            <div class="modal-header"><h5 class="modal-title">可滚动内容</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
             <div class="modal-body">
                 @for (int i = 1; i <= 10; i++)
                 {
-                    <p>Line @i: This is some placeholder content to show scrolling behavior inside the modal. Long content causes the modal body to scroll.</p>
+                    <p>第 @i 行：这是一些用于展示模态框内部滚动行为的占位内容。长内容会导致模态框主体区域出现滚动条。</p>
                 }
             </div>
-            <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div>
+            <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button></div>
         </div>
     </div>
 </div>
 
-<!-- Centered Modal -->
+<!-- 垂直居中模态框 -->
 <div class="modal fade" id="centeredModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header"><h5 class="modal-title">Vertically Centered</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
-            <div class="modal-body"><p>This modal is vertically centered using <code>.modal-dialog-centered</code>.</p></div>
-            <div class="modal-footer"><button type="button" class="btn btn-success" data-bs-dismiss="modal">Got it!</button></div>
+            <div class="modal-header"><h5 class="modal-title">垂直居中</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+            <div class="modal-body"><p>此模态框使用 <code>.modal-dialog-centered</code> 实现垂直居中。</p></div>
+            <div class="modal-footer"><button type="button" class="btn btn-success" data-bs-dismiss="modal">知道了！</button></div>
         </div>
     </div>
 </div>
 
-<!-- Small Modal -->
+<!-- 小尺寸模态框 -->
 <div class="modal fade" id="smallModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
-            <div class="modal-header"><h5 class="modal-title">Small Modal</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
-            <div class="modal-body"><p>Small modal using <code>.modal-sm</code>.</p></div>
-            <div class="modal-footer"><button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">OK</button></div>
+            <div class="modal-header"><h5 class="modal-title">小尺寸模态框</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+            <div class="modal-body"><p>使用 <code>.modal-sm</code> 的小尺寸模态框。</p></div>
+            <div class="modal-footer"><button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">确定</button></div>
         </div>
     </div>
 </div>
 
-<!-- Large Modal -->
+<!-- 大尺寸模态框 -->
 <div class="modal fade" id="largeModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header"><h5 class="modal-title">Large Modal</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
-            <div class="modal-body"><p>Large modal using <code>.modal-lg</code>. Good for more complex content.</p></div>
-            <div class="modal-footer"><button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button></div>
+            <div class="modal-header"><h5 class="modal-title">大尺寸模态框</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+            <div class="modal-body"><p>使用 <code>.modal-lg</code> 的大尺寸模态框，适合更复杂的内容。</p></div>
+            <div class="modal-footer"><button type="button" class="btn btn-warning" data-bs-dismiss="modal">关闭</button></div>
         </div>
     </div>
 </div>
 
-<h5 class="mt-4">Offcanvas</h5>
+<h5 class="mt-4">侧边面板 (Offcanvas)</h5>
 <div class="border rounded p-4 bg-light mb-4 d-flex flex-wrap gap-2">
-    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasStart">Left (start)</button>
-    <button class="btn btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd">Right (end)</button>
-    <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop">Top</button>
-    <button class="btn btn-danger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom">Bottom</button>
-    <button class="btn btn-outline-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBackdrop" data-bs-backdrop="static">Static Backdrop</button>
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasStart">左侧弹出 (start)</button>
+    <button class="btn btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd">右侧弹出 (end)</button>
+    <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop">顶部弹出 (top)</button>
+    <button class="btn btn-danger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom">底部弹出 (bottom)</button>
+    <button class="btn btn-outline-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBackdrop" data-bs-backdrop="static">静态遮罩</button>
 </div>
 
-<!-- Offcanvas Start (Left) -->
+<!-- 左侧 Offcanvas -->
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasStart">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title">Left Offcanvas</h5>
+        <h5 class="offcanvas-title">左侧侧边栏</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body">
-        <p>Content for the left offcanvas panel. Slides in from the left side.</p>
+        <p>左侧侧边面板的内容。从左侧滑入。</p>
         <hr>
-        <p>Use <code>.offcanvas-start</code> for left placement.</p>
+        <p>使用 <code>.offcanvas-start</code> 实现左侧弹出。</p>
     </div>
 </div>
 
-<!-- Offcanvas End (Right) -->
+<!-- 右侧 Offcanvas -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEnd">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title">Right Offcanvas</h5>
+        <h5 class="offcanvas-title">右侧侧边栏</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body">
-        <p>Slides in from the right. Uses <code>.offcanvas-end</code>.</p>
+        <p>从右侧滑入。使用 <code>.offcanvas-end</code>。</p>
         <div class="mb-3">
-            <label class="form-label">Example form in offcanvas:</label>
-            <input class="form-control" placeholder="Type something...">
+            <label class="form-label">侧边栏中的表单示例：</label>
+            <input class="form-control" placeholder="输入内容...">
         </div>
     </div>
 </div>
 
-<!-- Offcanvas Top -->
+<!-- 顶部 Offcanvas -->
 <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" style="height:35vh">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title">Top Offcanvas</h5>
+        <h5 class="offcanvas-title">顶部侧边栏</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
-    <div class="offcanvas-body"><p>Slides down from the top. Uses <code>.offcanvas-top</code>.</p></div>
+    <div class="offcanvas-body"><p>从顶部向下滑入。使用 <code>.offcanvas-top</code>。</p></div>
 </div>
 
-<!-- Offcanvas Bottom -->
+<!-- 底部 Offcanvas -->
 <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" style="height:35vh">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title">Bottom Offcanvas</h5>
+        <h5 class="offcanvas-title">底部侧边栏</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
-    <div class="offcanvas-body"><p>Slides up from the bottom. Uses <code>.offcanvas-bottom</code>.</p></div>
+    <div class="offcanvas-body"><p>从底部向上滑入。使用 <code>.offcanvas-bottom</code>。</p></div>
 </div>
 
-<!-- Static Backdrop Offcanvas -->
+<!-- 静态遮罩 Offcanvas -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasBackdrop" data-bs-backdrop="static">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title">Static Backdrop</h5>
+        <h5 class="offcanvas-title">静态遮罩</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body">
-        <p>🔒 Cannot be dismissed by clicking outside. Must use the close button.</p>
+        <p>🔒 点击外部区域无法关闭此面板。必须使用关闭按钮。</p>
     </div>
 </div>

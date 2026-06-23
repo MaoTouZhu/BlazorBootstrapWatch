@@ -1,94 +1,94 @@
 @page "/tooltips-popovers"
 
-<PageTitle>Tooltips & Popovers - Bootstrap Showcase</PageTitle>
+<PageTitle>工具提示与弹出框 (Tooltips & Popovers) - Bootstrap 展示</PageTitle>
 
-<h2>💬 Tooltips & Popovers</h2>
-<p class="lead">Floating info overlays: tooltips for simple hints, popovers for richer content.</p>
+<h2>💬 工具提示与弹出框 (Tooltips & Popovers)</h2>
+<p class="lead">浮动信息浮层：工具提示用于简单提示，弹出框用于更丰富的内容。</p>
 
 <div class="alert alert-info">
-    ⚠️ Tooltips and popovers require JavaScript initialization. The <code>bootstrap-reinit.js</code>
-    script handles this automatically after page navigation. Hover over the elements below.
+    ⚠️ 工具提示和弹出框需要 JavaScript 初始化。<code>bootstrap-reinit.js</code>
+    脚本会在页面导航后自动处理初始化。将鼠标悬停在下方元素上查看效果。
 </div>
 
-<h5 class="mt-4">Tooltip Directions</h5>
+<h5 class="mt-4">工具提示方向 (Tooltip Directions)</h5>
 <div class="border rounded p-5 bg-light mb-4 d-flex flex-wrap justify-content-center gap-3">
-    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
-        Top
+    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="上方的工具提示">
+        上 (Top)
     </button>
-    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right">
-        Right
+    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="right" title="右侧的工具提示">
+        右 (Right)
     </button>
-    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
-        Bottom
+    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="下方的工具提示">
+        下 (Bottom)
     </button>
-    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on left">
-        Left
+    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="左侧的工具提示">
+        左 (Left)
     </button>
 </div>
 
-<h5>Tooltip on Links & Icons</h5>
+<h5>链接与图标上的工具提示 (Tooltip on Links & Icons)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <p>
-        Hover over this
-        <a href="#" data-bs-toggle="tooltip" title="Default tooltip">link with tooltip</a>
-        or this
-        <span class="badge bg-primary" data-bs-toggle="tooltip" title="Badge tooltip!">badge</span>
-        to see tooltips.
+        悬停在此
+        <a href="#" data-bs-toggle="tooltip" title="默认工具提示">带工具提示的链接</a>
+        或此
+        <span class="badge bg-primary" data-bs-toggle="tooltip" title="徽章工具提示！">徽章</span>
+        上查看工具提示。
     </p>
     <p>
-        <button type="button" class="btn btn-link" data-bs-toggle="tooltip" data-bs-title="Custom title attribute">
-            Using data-bs-title
+        <button type="button" class="btn btn-link" data-bs-toggle="tooltip" data-bs-title="自定义标题属性">
+            使用 data-bs-title
         </button>
     </p>
 </div>
 
-<h5 class="mt-4">Popover Directions</h5>
+<h5 class="mt-4">弹出框方向 (Popover Directions)</h5>
 <div class="border rounded p-5 bg-light mb-4 d-flex flex-wrap justify-content-center gap-3">
     <button type="button" class="btn btn-danger"
             data-bs-toggle="popover" data-bs-placement="top"
-            data-bs-title="Top Popover"
-            data-bs-content="This popover appears above the button.">
-        Popover Top
+            data-bs-title="上方弹出框"
+            data-bs-content="此弹出框出现在按钮上方。">
+        弹出框 上 (Top)
     </button>
     <button type="button" class="btn btn-danger"
             data-bs-toggle="popover" data-bs-placement="right"
-            data-bs-title="Right Popover"
-            data-bs-content="This popover appears to the right.">
-        Popover Right
+            data-bs-title="右侧弹出框"
+            data-bs-content="此弹出框出现在按钮右侧。">
+        弹出框 右 (Right)
     </button>
     <button type="button" class="btn btn-danger"
             data-bs-toggle="popover" data-bs-placement="bottom"
-            data-bs-title="Bottom Popover"
-            data-bs-content="This popover appears below the button.">
-        Popover Bottom
+            data-bs-title="下方弹出框"
+            data-bs-content="此弹出框出现在按钮下方。">
+        弹出框 下 (Bottom)
     </button>
     <button type="button" class="btn btn-danger"
             data-bs-toggle="popover" data-bs-placement="left"
-            data-bs-title="Left Popover"
-            data-bs-content="This popover appears to the left.">
-        Popover Left
+            data-bs-title="左侧弹出框"
+            data-bs-content="此弹出框出现在按钮左侧。">
+        弹出框 左 (Left)
     </button>
 </div>
 
-<h5>Dismissible Popover</h5>
+<h5>可关闭的弹出框 (Dismissible Popover)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <button type="button" class="btn btn-warning"
             data-bs-toggle="popover" data-bs-trigger="focus"
-            data-bs-title="Dismissible Popover"
-            data-bs-content="Click the button to show. Click elsewhere to dismiss (uses focus trigger).">
-        Click to Toggle (focus)
+            data-bs-title="可关闭的弹出框"
+            data-bs-content="点击按钮显示，点击其他地方关闭（使用 focus 触发模式）。">
+        点击切换（focus 模式）
     </button>
-    <small class="text-muted ms-2">Dismiss by clicking outside.</small>
+    <small class="text-muted ms-2">点击外部区域即可关闭。</small>
 </div>
 
-<h5>Popover with Custom HTML</h5>
+<h5>带自定义 HTML 的弹出框 (Popover with Custom HTML)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <button type="button" class="btn btn-success"
             data-bs-toggle="popover"
-            data-bs-title="<strong>HTML Content</strong>"
+            data-bs-title="<strong>HTML 内容</strong>"
             data-bs-html="true"
-            data-bs-content='<div><p>Popovers can contain <strong>HTML</strong>.</p><ul class="mb-0"><li>List item 1</li><li>List item 2</li></ul></div>'>
-        Popover with HTML
+            data-bs-content='<div><p>弹出框可以包含 <strong>HTML</strong>。</p><ul class="mb-0"><li>列表项 1</li><li>列表项 2</li></ul></div>'>
+        带 HTML 的弹出框
     </button>
-    <small class="text-muted ms-2">Requires <code>data-bs-html="true"</code>.</small>
+    <small class="text-muted ms-2">需要设置 <code>data-bs-html="true"</code>。</small>
 </div>

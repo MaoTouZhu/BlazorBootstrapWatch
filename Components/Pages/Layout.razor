@@ -1,18 +1,18 @@
 @page "/layout"
 
-<PageTitle>Layout - Bootstrap Showcase</PageTitle>
+<PageTitle>布局 (Layout) - Bootstrap 展示</PageTitle>
 
-<h2>📐 Grid System</h2>
-<p class="lead">Responsive 12-column grid with 5 breakpoints (xs, sm, md, lg, xl, xxl).</p>
+<h2>📐 栅格系统 (Grid System)</h2>
+<p class="lead">响应式 12 列栅格，支持 5 个断点 (xs, sm, md, lg, xl, xxl)。</p>
 
-<h5 class="mt-4">Equal-width Columns</h5>
+<h5 class="mt-4">等宽列 (Equal-width Columns)</h5>
 <div class="row text-center mb-3 border rounded p-2 bg-light">
-    <div class="col border rounded p-2 bg-white">1 of 3</div>
-    <div class="col border rounded p-2 bg-white">2 of 3</div>
-    <div class="col border rounded p-2 bg-white">3 of 3</div>
+    <div class="col border rounded p-2 bg-white">第 1 列 (col 1/3)</div>
+    <div class="col border rounded p-2 bg-white">第 2 列 (col 2/3)</div>
+    <div class="col border rounded p-2 bg-white">第 3 列 (col 3/3)</div>
 </div>
 
-<h5>Responsive Columns</h5>
+<h5>响应式列 (Responsive Columns)</h5>
 <div class="row text-center mb-3 border rounded p-2 bg-light">
     <div class="col-sm-6 col-lg-3 border rounded p-2 bg-white">col-sm-6 col-lg-3</div>
     <div class="col-sm-6 col-lg-3 border rounded p-2 bg-white">col-sm-6 col-lg-3</div>
@@ -20,46 +20,46 @@
     <div class="col-sm-6 col-lg-3 border rounded p-2 bg-white">col-sm-6 col-lg-3</div>
 </div>
 
-<h5>Offset Columns</h5>
+<h5>列偏移 (Offset Columns)</h5>
 <div class="row text-center mb-3 border rounded p-2 bg-light">
     <div class="col-4 offset-4 border rounded p-2 bg-white">col-4 offset-4</div>
 </div>
 
-<h5>Column Wrapping</h5>
+<h5>列换行 (Column Wrapping)</h5>
 <div class="row text-center mb-3 border rounded p-2 bg-light">
     <div class="col-9 border rounded p-2 bg-white">.col-9</div>
-    <div class="col-4 border rounded p-2 bg-white">.col-4 (wraps)</div>
-    <div class="col-6 border rounded p-2 bg-white">.col-6 (continues)</div>
+    <div class="col-4 border rounded p-2 bg-white">.col-4（换行）</div>
+    <div class="col-6 border rounded p-2 bg-white">.col-6（继续）</div>
 </div>
 
-<h5 class="mt-4">Gutters</h5>
+<h5 class="mt-4">列间距 (Gutters)</h5>
 <div class="row gx-5 text-center mb-3 border rounded p-2 bg-light">
-    <div class="col border rounded p-2 bg-white"><div class="p-2 bg-info bg-opacity-10 rounded">gx-5</div></div>
-    <div class="col border rounded p-2 bg-white"><div class="p-2 bg-info bg-opacity-10 rounded">gx-5</div></div>
+    <div class="col border rounded p-2 bg-white"><div class="p-2 bg-info bg-opacity-10 rounded">水平间距 gx-5</div></div>
+    <div class="col border rounded p-2 bg-white"><div class="p-2 bg-info bg-opacity-10 rounded">水平间距 gx-5</div></div>
 </div>
 <div class="row gy-3 text-center mb-3 border rounded p-2 bg-light">
-    <div class="col-6 border rounded p-2 bg-white"><div class="p-2 bg-warning bg-opacity-10 rounded">gy-3 row 1</div></div>
-    <div class="col-6 border rounded p-2 bg-white"><div class="p-2 bg-warning bg-opacity-10 rounded">gy-3 row 1</div></div>
-    <div class="col-6 border rounded p-2 bg-white"><div class="p-2 bg-warning bg-opacity-10 rounded">gy-3 row 2</div></div>
-    <div class="col-6 border rounded p-2 bg-white"><div class="p-2 bg-warning bg-opacity-10 rounded">gy-3 row 2</div></div>
+    <div class="col-6 border rounded p-2 bg-white"><div class="p-2 bg-warning bg-opacity-10 rounded">垂直间距 gy-3 第1行</div></div>
+    <div class="col-6 border rounded p-2 bg-white"><div class="p-2 bg-warning bg-opacity-10 rounded">垂直间距 gy-3 第1行</div></div>
+    <div class="col-6 border rounded p-2 bg-white"><div class="p-2 bg-warning bg-opacity-10 rounded">垂直间距 gy-3 第2行</div></div>
+    <div class="col-6 border rounded p-2 bg-white"><div class="p-2 bg-warning bg-opacity-10 rounded">垂直间距 gy-3 第2行</div></div>
 </div>
 
-<h5 class="mt-4">Containers</h5>
-<div class="container-sm border rounded p-3 mb-2 bg-primary bg-opacity-10 fw-bold">container-sm (100% until sm breakpoint)</div>
-<div class="container-md border rounded p-3 mb-2 bg-success bg-opacity-10 fw-bold">container-md (100% until md breakpoint)</div>
-<div class="container border rounded p-3 mb-2 bg-danger bg-opacity-10 fw-bold">container (responsive fixed-width)</div>
-<div class="container-fluid border rounded p-3 mb-2 bg-info bg-opacity-10 fw-bold">container-fluid (100% always)</div>
+<h5 class="mt-4">容器 (Containers)</h5>
+<div class="container-sm border rounded p-3 mb-2 bg-primary bg-opacity-10 fw-bold">container-sm（sm 断点前 100% 宽度）</div>
+<div class="container-md border rounded p-3 mb-2 bg-success bg-opacity-10 fw-bold">container-md（md 断点前 100% 宽度）</div>
+<div class="container border rounded p-3 mb-2 bg-danger bg-opacity-10 fw-bold">container（响应式固定宽度）</div>
+<div class="container-fluid border rounded p-3 mb-2 bg-info bg-opacity-10 fw-bold">container-fluid（始终 100% 宽度）</div>
 
-<h5 class="mt-4">Vertical Alignment</h5>
+<h5 class="mt-4">垂直对齐 (Vertical Alignment)</h5>
 <div class="row align-items-start border rounded p-2 bg-light mb-3" style="min-height:100px">
-    <div class="col border rounded p-2 bg-white">top</div>
-    <div class="col border rounded p-2 bg-white">top</div>
+    <div class="col border rounded p-2 bg-white">顶部 (top)</div>
+    <div class="col border rounded p-2 bg-white">顶部 (top)</div>
 </div>
 <div class="row align-items-center border rounded p-2 bg-light mb-3" style="min-height:100px">
-    <div class="col border rounded p-2 bg-white">center</div>
-    <div class="col border rounded p-2 bg-white">center</div>
+    <div class="col border rounded p-2 bg-white">居中 (center)</div>
+    <div class="col border rounded p-2 bg-white">居中 (center)</div>
 </div>
 <div class="row align-items-end border rounded p-2 bg-light mb-3" style="min-height:100px">
-    <div class="col border rounded p-2 bg-white">bottom</div>
-    <div class="col border rounded p-2 bg-white">bottom</div>
+    <div class="col border rounded p-2 bg-white">底部 (bottom)</div>
+    <div class="col border rounded p-2 bg-white">底部 (bottom)</div>
 </div>

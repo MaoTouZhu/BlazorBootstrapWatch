@@ -1,11 +1,11 @@
 @page "/carousel"
 
-<PageTitle>Carousel - Bootstrap Showcase</PageTitle>
+<PageTitle>轮播 (Carousel) - Bootstrap 展示</PageTitle>
 
-<h2>🎠 Carousel</h2>
-<p class="lead">Image slideshow with controls, indicators, captions, and crossfade transitions.</p>
+<h2>🎠 轮播 (Carousel)</h2>
+<p class="lead">图片幻灯片，支持控制器 (Controls)、指示器 (Indicators)、字幕 (Captions) 和淡入淡出过渡。</p>
 
-<h5 class="mt-4">Basic Carousel with Controls & Indicators</h5>
+<h5 class="mt-4">基础轮播（含控制器与指示器）(Basic with Controls & Indicators)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <div id="carouselDemo" class="carousel slide" data-bs-ride="carousel" style="max-width:800px;margin:0 auto">
         <div class="carousel-indicators">
@@ -17,12 +17,12 @@
             @for (int i = 1; i <= 3; i++)
             {
                 var bg = i switch { 1 => "#0d6efd", 2 => "#198754", 3 => "#6f42c1", _ => "#0d6efd" };
-                var label = i switch { 1 => "First slide", 2 => "Second slide", 3 => "Third slide", _ => "" };
+                var label = i switch { 1 => "第一张幻灯片", 2 => "第二张幻灯片", 3 => "第三张幻灯片", _ => "" };
                 <div class="carousel-item @(i == 1 ? "active" : "")">
                     <div class="d-flex align-items-center justify-content-center" style="height:300px;background:@bg">
                         <div class="text-center text-white">
                             <h2>@label</h2>
-                            <p>Carousel with controls and indicators.</p>
+                            <p>带控制器和指示器的轮播。</p>
                         </div>
                     </div>
                 </div>
@@ -30,30 +30,30 @@
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselDemo" data-bs-slide="prev">
             <span class="carousel-control-prev-icon"></span>
-            <span class="visually-hidden">Previous</span>
+            <span class="visually-hidden">上一张</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#carouselDemo" data-bs-slide="next">
             <span class="carousel-control-next-icon"></span>
-            <span class="visually-hidden">Next</span>
+            <span class="visually-hidden">下一张</span>
         </button>
     </div>
 </div>
 
-<h5>Carousel with Captions</h5>
+<h5>带字幕的轮播 (Carousel with Captions)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <div id="carouselCaptions" class="carousel slide" data-bs-ride="carousel" style="max-width:800px;margin:0 auto">
         <div class="carousel-inner rounded">
             @for (int i = 1; i <= 3; i++)
             {
                 var bg = i switch { 1 => "#dc3545", 2 => "#fd7e14", 3 => "#0dcaf0", _ => "#dc3545" };
-                var title = i switch { 1 => "Slide with Captions", 2 => "Auto-cycling Slides", 3 => "Pause on Hover", _ => "" };
+                var title = i switch { 1 => "带字幕的幻灯片", 2 => "自动循环播放", 3 => "悬停时暂停", _ => "" };
                 <div class="carousel-item @(i == 1 ? "active" : "")" data-bs-interval="3000">
                     <div class="d-flex align-items-center justify-content-center text-white" style="height:280px;background:@bg">
                         <h3>@title</h3>
                     </div>
                     <div class="carousel-caption d-none d-md-block">
                         <h5>@title</h5>
-                        <p>Caption text appears on medium+ screens.</p>
+                        <p>字幕文本在中等及以上屏幕上显示。</p>
                     </div>
                 </div>
             }
@@ -67,7 +67,7 @@
     </div>
 </div>
 
-<h5>Crossfade Transition</h5>
+<h5>淡入淡出过渡 (Crossfade Transition)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <div id="carouselFade" class="carousel slide carousel-fade" data-bs-ride="carousel" style="max-width:800px;margin:0 auto">
         <div class="carousel-inner rounded">
@@ -77,8 +77,8 @@
                 <div class="carousel-item @(i == 1 ? "active" : "")">
                     <div class="d-flex align-items-center justify-content-center text-white" style="height:200px;background:@bg">
                         <div class="text-center">
-                            <h4>Crossfade Slide @i</h4>
-                            <p class="mb-0">Uses <code>.carousel-fade</code> for fade instead of slide.</p>
+                            <h4>淡入淡出 幻灯片 @i</h4>
+                            <p class="mb-0">使用 <code>.carousel-fade</code> 实现淡入淡出效果。</p>
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
     </div>
 </div>
 
-<h5>Dark Variant (for light backgrounds)</h5>
+<h5>深色变体（用于浅色背景）(Dark Variant)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <div id="carouselDark" class="carousel carousel-dark slide" data-bs-ride="carousel" style="max-width:800px;margin:0 auto">
         <div class="carousel-inner rounded border">
@@ -101,7 +101,7 @@
             {
                 <div class="carousel-item @(i == 1 ? "active" : "")">
                     <div class="d-flex align-items-center justify-content-center bg-light" style="height:180px">
-                        <h4>🌅 Dark Variant Slide @i</h4>
+                        <h4>🌅 深色变体 幻灯片 @i</h4>
                     </div>
                 </div>
             }
@@ -113,5 +113,5 @@
             <span class="carousel-control-next-icon"></span>
         </button>
     </div>
-    <p class="text-muted small mt-2"><code>.carousel-dark</code> makes controls dark for light backgrounds.</p>
+    <p class="text-muted small mt-2"><code>.carousel-dark</code> 使控制器在浅色背景下显示为深色。</p>
 </div>

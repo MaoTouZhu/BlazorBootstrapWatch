@@ -1,69 +1,69 @@
 @page "/cards"
 
-<PageTitle>Cards - Bootstrap Showcase</PageTitle>
+<PageTitle>卡片 (Cards) - Bootstrap 展示</PageTitle>
 
-<h2>🃏 Cards</h2>
-<p class="lead">Flexible card components with headers, footers, images, grid layouts, and colors.</p>
+<h2>🃏 卡片 (Cards)</h2>
+<p class="lead">灵活的卡片组件：页头 (Header)、页脚 (Footer)、图片、网格布局以及各种颜色。</p>
 
-<h5 class="mt-4">Basic Card</h5>
+<h5 class="mt-4">基础卡片 (Basic Card)</h5>
 <div class="row g-4 mb-4">
     <div class="col-md-4">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Card Title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card Subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+                <h5 class="card-title">卡片标题</h5>
+                <h6 class="card-subtitle mb-2 text-muted">卡片副标题</h6>
+                <p class="card-text">一些用于构建卡片标题的示例文本。</p>
+                <a href="#" class="card-link">卡片链接</a>
+                <a href="#" class="card-link">另一个链接</a>
             </div>
         </div>
     </div>
     <div class="col-md-4">
         <div class="card">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='180'%3E%3Crect width='400' height='180' fill='%236c757d'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='20'%3EImage cap%3C/text%3E%3C/svg%3E" class="card-img-top" alt="placeholder">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='180'%3E%3Crect width='400' height='180' fill='%236c757d'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='20'%3E图片顶栏%3C/text%3E%3C/svg%3E" class="card-img-top" alt="占位图">
             <div class="card-body">
-                <h5 class="card-title">Card with Image</h5>
-                <p class="card-text">Image at top, body below.</p>
+                <h5 class="card-title">带图片的卡片</h5>
+                <p class="card-text">图片在顶部，正文在下方。</p>
             </div>
         </div>
     </div>
     <div class="col-md-4">
         <div class="card">
-            <div class="card-header">Featured</div>
+            <div class="card-header">精选 (Featured)</div>
             <div class="card-body">
-                <h5 class="card-title">Header + Footer</h5>
-                <p class="card-text">Cards can have optional headers and footers.</p>
+                <h5 class="card-title">页头 + 页脚</h5>
+                <p class="card-text">卡片可以有可选的页头和页脚区域。</p>
             </div>
-            <div class="card-footer text-muted">2 days ago</div>
+            <div class="card-footer text-muted">2 天前</div>
         </div>
     </div>
 </div>
 
-<h5>Card with Overlay Image</h5>
+<h5>图片叠加卡片 (Card with Overlay Image)</h5>
 <div class="row g-4 mb-4">
     <div class="col-md-6">
         <div class="card text-bg-dark">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='200'%3E%3Crect width='800' height='200' fill='%23333'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23999' font-size='18'%3EBackground image%3C/text%3E%3C/svg%3E" class="card-img" alt="bg" style="height:150px;object-fit:cover">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='200'%3E%3Crect width='800' height='200' fill='%23333'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23999' font-size='18'%3E背景图片%3C/text%3E%3C/svg%3E" class="card-img" alt="背景" style="height:150px;object-fit:cover">
             <div class="card-img-overlay">
-                <h5 class="card-title">Image Overlay</h5>
-                <p class="card-text">Text overlaid on the image with dark background.</p>
+                <h5 class="card-title">图片叠加</h5>
+                <p class="card-text">文本叠加在图片上，深色背景确保可读性。</p>
             </div>
         </div>
     </div>
     <div class="col-md-6">
         <div class="card text-bg-primary">
-            <div class="card-header">Quote</div>
+            <div class="card-header">引言 (Quote)</div>
             <div class="card-body">
                 <blockquote class="blockquote mb-0">
-                    <p>A well-known quote in a card with background color.</p>
-                    <footer class="blockquote-footer text-white">Famous Person</footer>
+                    <p>一段带背景色的卡片中的经典名言。</p>
+                    <footer class="blockquote-footer text-white">某位名人</footer>
                 </blockquote>
             </div>
         </div>
     </div>
 </div>
 
-<h5>Card Colors (Background + Border)</h5>
+<h5>卡片颜色（背景 + 边框）(Card Colors)</h5>
 <div class="row g-3 mb-4">
     @foreach (var c in new[]{"primary","secondary","success","danger","warning","info"})
     {
@@ -80,31 +80,31 @@
         <div class="col-6 col-md-3">
             <div class="card border-@c text-center">
                 <div class="card-body py-2">
-                    <p class="card-text text-@c fw-bold mb-0">border-@c</p>
+                    <p class="card-text text-@c fw-bold mb-0">边框 @c</p>
                 </div>
             </div>
         </div>
     }
 </div>
 
-<h5>Card Layout: Groups & Grid</h5>
+<h5>卡片布局：组与网格 (Groups & Grid)</h5>
 <div class="card-group mb-4">
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Group Card 1</h5>
-            <p class="card-text">Cards in a group share equal width and height.</p>
+            <h5 class="card-title">组卡片 1</h5>
+            <p class="card-text">组中的卡片共享相同的宽度和高度。</p>
         </div>
     </div>
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Group Card 2</h5>
-            <p class="card-text">No gap between group cards.</p>
+            <h5 class="card-title">组卡片 2</h5>
+            <p class="card-text">组卡片之间无间距。</p>
         </div>
     </div>
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Group Card 3</h5>
-            <p class="card-text">Footers align automatically.</p>
+            <h5 class="card-title">组卡片 3</h5>
+            <p class="card-text">页脚自动对齐。</p>
         </div>
     </div>
 </div>
@@ -115,25 +115,25 @@
         <div class="col">
             <div class="card h-100">
                 <div class="card-body">
-                    <h5 class="card-title">Grid Card @i</h5>
-                    <p class="card-text">Row-cols layout with equal heights using <code>h-100</code>.</p>
+                    <h5 class="card-title">网格卡片 @i</h5>
+                    <p class="card-text">使用 <code>h-100</code> 实现等高布局。</p>
                 </div>
             </div>
         </div>
     }
 </div>
 
-<h5>Horizontal Card</h5>
+<h5>水平卡片 (Horizontal Card)</h5>
 <div class="card mb-4">
     <div class="row g-0">
         <div class="col-md-4 bg-secondary d-flex align-items-center justify-content-center text-white" style="min-height:140px">
-            📷 Image
+            📷 图片区域
         </div>
         <div class="col-md-8">
             <div class="card-body">
-                <h5 class="card-title">Horizontal Card</h5>
-                <p class="card-text">Use <code>.row.g-0</code> inside a card for horizontal layout.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <h5 class="card-title">水平卡片</h5>
+                <p class="card-text">在卡片内部使用 <code>.row.g-0</code> 实现水平布局。</p>
+                <p class="card-text"><small class="text-muted">最后更新于 3 分钟前</small></p>
             </div>
         </div>
     </div>

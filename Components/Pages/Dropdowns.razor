@@ -1,118 +1,118 @@
 @page "/dropdowns"
 
-<PageTitle>Dropdowns - Bootstrap Showcase</PageTitle>
+<PageTitle>下拉菜单 (Dropdowns) - Bootstrap 展示</PageTitle>
 
-<h2>📋 Dropdowns</h2>
-<p class="lead">Dropdown menus with various directions, split buttons, sizing, headers, and forms.</p>
+<h2>📋 下拉菜单 (Dropdowns)</h2>
+<p class="lead">各种方向的下拉菜单、分裂按钮 (Split Button)、尺寸、菜单头部及表单。</p>
 
-<h5 class="mt-4">Basic Dropdowns</h5>
+<h5 class="mt-4">基础下拉菜单 (Basic Dropdowns)</h5>
 <div class="border rounded p-4 bg-light mb-4 d-flex flex-wrap gap-2">
     <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-            Dropdown
+            下拉菜单
         </button>
         <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else</a></li>
+            <li><a class="dropdown-item" href="#">操作</a></li>
+            <li><a class="dropdown-item" href="#">另一个操作</a></li>
+            <li><a class="dropdown-item" href="#">其他</a></li>
         </ul>
     </div>
 
     <div class="dropdown">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-            Link dropdown
+            链接式下拉
         </a>
         <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">操作</a></li>
+            <li><a class="dropdown-item" href="#">另一个操作</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Separated link</a></li>
+            <li><a class="dropdown-item" href="#">分隔后的链接</a></li>
         </ul>
     </div>
 </div>
 
-<h5>Split Button Dropdown</h5>
+<h5>分裂按钮下拉 (Split Button Dropdown)</h5>
 <div class="border rounded p-4 bg-light mb-4 d-flex flex-wrap gap-2">
     <div class="btn-group">
-        <button type="button" class="btn btn-primary">Action</button>
+        <button type="button" class="btn btn-primary">操作</button>
         <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"></button>
         <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">操作</a></li>
+            <li><a class="dropdown-item" href="#">另一个操作</a></li>
         </ul>
     </div>
     <div class="btn-group">
-        <button type="button" class="btn btn-danger">Danger</button>
+        <button type="button" class="btn btn-danger">危险</button>
         <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"></button>
         <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Delete</a></li>
-            <li><a class="dropdown-item" href="#">Archive</a></li>
+            <li><a class="dropdown-item" href="#">删除</a></li>
+            <li><a class="dropdown-item" href="#">归档</a></li>
         </ul>
     </div>
 </div>
 
-<h5>Dropdown Directions (dropup, dropend, dropstart)</h5>
+<h5>下拉方向（上/右/左）(Directions: dropup, dropend, dropstart)</h5>
 <div class="border rounded p-4 bg-light mb-4 d-flex flex-wrap gap-2">
     <div class="btn-group dropup">
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">Dropup</button>
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">向上弹出 (Dropup)</button>
         <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">操作</a></li>
         </ul>
     </div>
     <div class="btn-group dropend">
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">Dropend</button>
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">向右弹出 (Dropend)</button>
         <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">操作</a></li>
         </ul>
     </div>
     <div class="btn-group dropstart">
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">Dropstart</button>
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">向左弹出 (Dropstart)</button>
         <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">操作</a></li>
         </ul>
     </div>
 </div>
 
-<h5>Dropdown Sizes</h5>
+<h5>下拉菜单尺寸 (Dropdown Sizes)</h5>
 <div class="border rounded p-4 bg-light mb-4 d-flex flex-wrap gap-2 align-items-start">
     <div class="btn-group">
-        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown">Large</button>
+        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown">大号</button>
         <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">操作</a></li>
         </ul>
     </div>
     <div class="btn-group">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">Default</button>
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">默认</button>
         <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">操作</a></li>
         </ul>
     </div>
     <div class="btn-group">
-        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">Small</button>
+        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">小号</button>
         <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">操作</a></li>
         </ul>
     </div>
 </div>
 
-<h5>Rich Dropdown Menu</h5>
+<h5>丰富下拉菜单 (Rich Dropdown Menu)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-            Rich Menu
+            丰富菜单
         </button>
         <ul class="dropdown-menu p-3" style="min-width:280px">
-            <li><h6 class="dropdown-header">Dropdown Header</h6></li>
-            <li><a class="dropdown-item active" href="#">Active item</a></li>
-            <li><a class="dropdown-item disabled" href="#">Disabled item</a></li>
+            <li><h6 class="dropdown-header">下拉菜单头部</h6></li>
+            <li><a class="dropdown-item active" href="#">活跃项</a></li>
+            <li><a class="dropdown-item disabled" href="#">禁用项</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><span class="dropdown-item-text">Plain text item</span></li>
+            <li><span class="dropdown-item-text">纯文本项</span></li>
             <li><hr class="dropdown-divider"></li>
             <li>
                 <div class="px-3">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="ddCheck" checked>
-                        <label class="form-check-label" for="ddCheck">Checkbox in dropdown</label>
+                        <label class="form-check-label" for="ddCheck">菜单中的复选框</label>
                     </div>
                 </div>
             </li>
@@ -120,22 +120,22 @@
     </div>
 </div>
 
-<h5>Alignment & Dark Dropdown</h5>
+<h5>对齐方式与深色菜单 (Alignment & Dark Dropdown)</h5>
 <div class="border rounded p-4 bg-light mb-4 d-flex gap-2">
     <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">Right-aligned</button>
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">右对齐</button>
         <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">操作</a></li>
+            <li><a class="dropdown-item" href="#">另一个操作</a></li>
         </ul>
     </div>
     <div class="dropdown">
-        <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown">Dark menu</button>
+        <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown">深色菜单</button>
         <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">操作</a></li>
+            <li><a class="dropdown-item" href="#">另一个操作</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Separated</a></li>
+            <li><a class="dropdown-item" href="#">分隔项</a></li>
         </ul>
     </div>
 </div>

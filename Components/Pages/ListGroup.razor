@@ -1,29 +1,29 @@
 @page "/listgroup"
 
-<PageTitle>List Group - Bootstrap Showcase</PageTitle>
+<PageTitle>列表组 (List Group) - Bootstrap 展示</PageTitle>
 
-<h2>📃 List Group</h2>
-<p class="lead">Flexible list components: basic, links, flush, numbered, checkboxes, and contextual variants.</p>
+<h2>📃 列表组 (List Group)</h2>
+<p class="lead">灵活的列表组件：基础、链接式、无边框、编号、复选框及情景变体。</p>
 
-<h5 class="mt-4">Basic List Group</h5>
+<h5 class="mt-4">基础列表组 (Basic List Group)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <div class="row">
         <div class="col-md-6">
             <ul class="list-group mb-3">
-                <li class="list-group-item">An item</li>
-                <li class="list-group-item">A second item</li>
-                <li class="list-group-item">A third item</li>
-                <li class="list-group-item">A fourth item</li>
-                <li class="list-group-item disabled">Disabled item</li>
+                <li class="list-group-item">列表项</li>
+                <li class="list-group-item">第二项</li>
+                <li class="list-group-item">第三项</li>
+                <li class="list-group-item">第四项</li>
+                <li class="list-group-item disabled">禁用项</li>
             </ul>
         </div>
         <div class="col-md-6">
             <ul class="list-group">
-                <li class="list-group-item active">Active item (highlighted)</li>
-                <li class="list-group-item">Regular item</li>
-                <li class="list-group-item list-group-item-action">Action item (hover)</li>
+                <li class="list-group-item active">活跃项（高亮）</li>
+                <li class="list-group-item">普通项</li>
+                <li class="list-group-item list-group-item-action">可操作项（悬停效果）</li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    With badge
+                    带徽章的项
                     <span class="badge bg-primary rounded-pill">14</span>
                 </li>
             </ul>
@@ -31,94 +31,94 @@
     </div>
 </div>
 
-<h5>Link-based List Group</h5>
+<h5>链接式列表组 (Link-based List Group)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-action active">Active link item</a>
-        <a href="#" class="list-group-item list-group-item-action">Second link item</a>
-        <a href="#" class="list-group-item list-group-item-action">Third link item</a>
-        <a href="#" class="list-group-item list-group-item-action disabled">Disabled link</a>
+        <a href="#" class="list-group-item list-group-item-action active">活跃链接项</a>
+        <a href="#" class="list-group-item list-group-item-action">第二个链接项</a>
+        <a href="#" class="list-group-item list-group-item-action">第三个链接项</a>
+        <a href="#" class="list-group-item list-group-item-action disabled">禁用链接</a>
     </div>
 </div>
 
-<h5>Flush & Numbered</h5>
+<h5>无边框与编号 (Flush & Numbered)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <div class="row">
         <div class="col-md-6">
-            <p class="fw-bold">Flush (no borders)</p>
+            <p class="fw-bold">无边框（无外部边框）</p>
             <ul class="list-group list-group-flush border rounded mb-3">
-                <li class="list-group-item">Flush item 1</li>
-                <li class="list-group-item">Flush item 2</li>
-                <li class="list-group-item">Flush item 3</li>
+                <li class="list-group-item">无边框项 1</li>
+                <li class="list-group-item">无边框项 2</li>
+                <li class="list-group-item">无边框项 3</li>
             </ul>
         </div>
         <div class="col-md-6">
-            <p class="fw-bold">Numbered</p>
+            <p class="fw-bold">编号列表</p>
             <ol class="list-group list-group-numbered mb-3">
-                <li class="list-group-item">Numbered item one</li>
-                <li class="list-group-item">Numbered item two</li>
-                <li class="list-group-item">Numbered item three</li>
+                <li class="list-group-item">编号项一</li>
+                <li class="list-group-item">编号项二</li>
+                <li class="list-group-item">编号项三</li>
             </ol>
         </div>
     </div>
 </div>
 
-<h5>Contextual Variants</h5>
+<h5>情景变体 (Contextual Variants)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <ul class="list-group">
         @foreach (var c in new[]{"","primary","secondary","success","danger","warning","info","light","dark"})
         {
             <li class="list-group-item list-group-item-@c">
-                @(string.IsNullOrEmpty(c) ? "Default" : c) list group item
+                @(string.IsNullOrEmpty(c) ? "默认 (Default)" : c) 列表组项
             </li>
         }
     </ul>
 </div>
 
-<h5>With Checkboxes & Radios</h5>
+<h5>带复选框与单选框 (With Checkboxes & Radios)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <div class="list-group">
         <label class="list-group-item">
-            <input class="form-check-input me-1" type="checkbox" value=""> First checkbox
+            <input class="form-check-input me-1" type="checkbox" value=""> 第一个复选框
         </label>
         <label class="list-group-item">
-            <input class="form-check-input me-1" type="checkbox" value="" checked> Second checkbox (checked)
+            <input class="form-check-input me-1" type="checkbox" value="" checked> 第二个复选框（已勾选）
         </label>
         <label class="list-group-item">
-            <input class="form-check-input me-1" type="checkbox" value=""> Third checkbox
+            <input class="form-check-input me-1" type="checkbox" value=""> 第三个复选框
         </label>
     </div>
     <hr>
     <div class="list-group">
         <label class="list-group-item">
-            <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" checked> Radio option 1
+            <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" checked> 单选项 1
         </label>
         <label class="list-group-item">
-            <input class="form-check-input me-1" type="radio" name="listGroupRadio" value=""> Radio option 2
+            <input class="form-check-input me-1" type="radio" name="listGroupRadio" value=""> 单选项 2
         </label>
         <label class="list-group-item">
-            <input class="form-check-input me-1" type="radio" name="listGroupRadio" value=""> Radio option 3
+            <input class="form-check-input me-1" type="radio" name="listGroupRadio" value=""> 单选项 3
         </label>
     </div>
 </div>
 
-<h5>Custom Content</h5>
+<h5>自定义内容 (Custom Content)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <div class="list-group">
         <a href="#" class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">List group heading</h5>
-                <small>3 days ago</small>
+                <h5 class="mb-1">列表组标题</h5>
+                <small>3 天前</small>
             </div>
-            <p class="mb-1">Some placeholder content with a second line of text.</p>
-            <small class="text-muted">And some muted small print.</small>
+            <p class="mb-1">一些占位文本，以及第二行内容。</p>
+            <small class="text-muted">还有一些柔和的脚注文本。</small>
         </a>
         <a href="#" class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">Another heading</h5>
-                <small class="text-muted">1 day ago</small>
+                <h5 class="mb-1">另一个标题</h5>
+                <small class="text-muted">1 天前</small>
             </div>
-            <p class="mb-1">Different content for the second item.</p>
+            <p class="mb-1">第二项的另一种内容。</p>
             <small class="text-muted">Donec id elit non mi porta.</small>
         </a>
     </div>

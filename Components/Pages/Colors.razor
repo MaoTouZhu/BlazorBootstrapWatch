@@ -1,11 +1,11 @@
 @page "/colors"
 
-<PageTitle>Colors - Bootstrap Showcase</PageTitle>
+<PageTitle>颜色 (Colors) - Bootstrap 展示</PageTitle>
 
-<h2>🎨 Colors & Backgrounds</h2>
-<p class="lead">Bootstrap's color system: theme colors, text colors, backgrounds, and gradients.</p>
+<h2>🎨 颜色与背景 (Colors & Backgrounds)</h2>
+<p class="lead">Bootstrap 的颜色体系：主题色、文本颜色、背景色及渐变。</p>
 
-<h5 class="mt-4">Theme Colors</h5>
+<h5 class="mt-4">主题色 (Theme Colors)</h5>
 <div class="row g-2 mb-3">
     @foreach (var c in themeColors)
     {
@@ -16,7 +16,7 @@
     }
 </div>
 
-<h5 class="mt-4">Background Colors (with opacity)</h5>
+<h5 class="mt-4">背景色（带不透明度）(Background Colors with Opacity)</h5>
 <div class="row g-2 mb-3">
     @foreach (var c in themeColors)
     {
@@ -30,7 +30,7 @@
     }
 </div>
 
-<h5 class="mt-4">Text Colors</h5>
+<h5 class="mt-4">文本颜色 (Text Colors)</h5>
 <div class="row g-2 mb-3">
     @foreach (var c in themeColors)
     {
@@ -40,22 +40,22 @@
     }
 </div>
 <div class="border rounded p-3 bg-light mb-3">
-    <p class="text-muted">Muted text with <code>.text-muted</code></p>
-    <p class="text-black-50">Black 50% opacity text</p>
-    <p class="text-white-50 bg-dark p-2 rounded">White 50% opacity text on dark bg</p>
+    <p class="text-muted">柔和文本 <code>.text-muted</code></p>
+    <p class="text-black-50">黑色 50% 不透明度文本</p>
+    <p class="text-white-50 bg-dark p-2 rounded">白色 50% 不透明度文本（深色背景）</p>
 </div>
 
-<h5 class="mt-4">Background Gradients</h5>
+<h5 class="mt-4">背景渐变 (Background Gradients)</h5>
 <div class="row g-2 mb-3">
     @foreach (var c in themeColors.Take(6))
     {
         <div class="col-4 col-sm-2 text-center">
-            <div class="bg-@c.Key bg-gradient text-white rounded p-3">@c.Key gradient</div>
+            <div class="bg-@c.Key bg-gradient text-white rounded p-3">@c.Key 渐变</div>
         </div>
     }
 </div>
 
-<h5 class="mt-4">Borders</h5>
+<h5 class="mt-4">边框 (Borders)</h5>
 <div class="row g-2 mb-3">
     @foreach (var c in themeColors)
     {
@@ -65,23 +65,23 @@
     }
 </div>
 <div class="border rounded p-3 bg-light">
-    <span class="border rounded p-2 m-1">rounded</span>
-    <span class="border rounded-circle p-3 m-1">circle</span>
-    <span class="border rounded-pill px-3 py-1 m-1">pill</span>
-    <span class="border border-2 p-2 m-1">border-2</span>
-    <span class="border border-4 p-2 m-1">border-4</span>
+    <span class="border rounded p-2 m-1">圆角 (rounded)</span>
+    <span class="border rounded-circle p-3 m-1">圆形 (circle)</span>
+    <span class="border rounded-pill px-3 py-1 m-1">药丸形 (pill)</span>
+    <span class="border border-2 p-2 m-1">2px 边框</span>
+    <span class="border border-4 p-2 m-1">4px 边框</span>
 </div>
 
-<h5 class="mt-4">Dark Mode</h5>
+<h5 class="mt-4">深色模式 (Dark Mode)</h5>
 <div class="rounded p-4 text-bg-dark">
-    <h5>Dark theme section</h5>
-    <p>This uses <code>text-bg-dark</code> for dark background with light text.</p>
-    <span class="badge text-bg-light">Light badge on dark</span>
+    <h5>深色主题区域</h5>
+    <p>使用 <code>text-bg-dark</code> 实现深色背景配浅色文本。</p>
+    <span class="badge text-bg-light">深色背景上的浅色徽章</span>
 </div>
 
 <div class="rounded p-4 text-bg-secondary mt-3">
-    <h5>Secondary theme section</h5>
-    <p>Uses <code>text-bg-secondary</code>.</p>
+    <h5>次要主题区域</h5>
+    <p>使用 <code>text-bg-secondary</code>。</p>
 </div>
 
 @code {

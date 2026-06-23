@@ -1,128 +1,127 @@
 @page "/expandables"
 
-<PageTitle>Accordion & Collapse - Bootstrap Showcase</PageTitle>
+<PageTitle>手风琴与折叠 (Accordion & Collapse) - Bootstrap 展示</PageTitle>
 
-<h2>🪗 Accordion & Collapse</h2>
-<p class="lead">Accordion for collapsible content groups and standalone collapse toggles.</p>
+<h2>🪗 手风琴与折叠 (Accordion & Collapse)</h2>
+<p class="lead">手风琴用于可折叠内容组，独立折叠 (Collapse) 用于切换内容显隐。</p>
 
-<h5 class="mt-4">Accordion</h5>
+<h5 class="mt-4">手风琴 (Accordion)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <div class="accordion" id="accordionDemo">
         <div class="accordion-item">
             <h2 class="accordion-header">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#acc1">
-                    Accordion Item #1
+                    手风琴项 #1
                 </button>
             </h2>
             <div id="acc1" class="accordion-collapse collapse show" data-bs-parent="#accordionDemo">
                 <div class="accordion-body">
-                    <strong>This is the first item's body.</strong> It is shown by default using <code>.collapse.show</code>.
-                    The accordion uses <code>data-bs-parent</code> to close other items when one opens.
+                    <strong>这是第一项的内容。</strong> 默认展开，使用 <code>.collapse.show</code>。
+                    手风琴使用 <code>data-bs-parent</code> 确保打开一项时自动关闭其他项。
                 </div>
             </div>
         </div>
         <div class="accordion-item">
             <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#acc2">
-                    Accordion Item #2
+                    手风琴项 #2
                 </button>
             </h2>
             <div id="acc2" class="accordion-collapse collapse" data-bs-parent="#accordionDemo">
                 <div class="accordion-body">
-                    <strong>Second item.</strong> Hidden by default. Click the header to reveal.
-                    Bootstrap's accordion JavaScript handles the toggle behavior.
+                    <strong>第二项。</strong> 默认隐藏。点击标题展开。
+                    Bootstrap 的手风琴 JavaScript 负责处理切换行为。
                 </div>
             </div>
         </div>
         <div class="accordion-item">
             <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#acc3">
-                    Accordion Item #3
+                    手风琴项 #3
                 </button>
             </h2>
             <div id="acc3" class="accordion-collapse collapse" data-bs-parent="#accordionDemo">
                 <div class="accordion-body">
-                    <strong>Third item.</strong> You can put any HTML content inside accordion bodies,
-                    including forms, images, or other components.
+                    <strong>第三项。</strong> 你可以在手风琴主体中放置任何 HTML 内容，
+                    包括表单、图片或其他组件。
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<h5>Accordion Flush</h5>
+<h5>无边框手风琴 (Accordion Flush)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <div class="accordion accordion-flush" id="accordionFlush">
         <div class="accordion-item">
             <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush1">
-                    Flush Item #1
+                    无边框项 #1
                 </button>
             </h2>
             <div id="flush1" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
-                <div class="accordion-body">No borders or background — flush accordion removes the outer styling.</div>
+                <div class="accordion-body">无背景和边框 —— 使用 <code>.accordion-flush</code> 移除外层样式。</div>
             </div>
         </div>
         <div class="accordion-item">
             <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush2">
-                    Flush Item #2
+                    无边框项 #2
                 </button>
             </h2>
             <div id="flush2" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
-                <div class="accordion-body">Clean, borderless appearance using <code>.accordion-flush</code>.</div>
+                <div class="accordion-body">简洁的无边框外观，使用 <code>.accordion-flush</code>。</div>
             </div>
         </div>
     </div>
 </div>
 
-<h5 class="mt-4">Basic Collapse (standalone)</h5>
+<h5 class="mt-4">基础折叠（独立使用）(Basic Collapse)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <p>
         <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button">
-            Toggle via Link
+            通过链接切换
         </a>
         <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample">
-            Toggle via Button
+            通过按钮切换
         </button>
         <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse">
-            Toggle Both
+            同时切换两个
         </button>
     </p>
     <div class="collapse" id="collapseExample">
         <div class="card card-body">
-            This content is shown/hidden when you click the toggle buttons.
-            The collapse uses CSS transitions for smooth animation.
+            点击切换按钮可以显示/隐藏此内容。折叠使用 CSS 过渡动画实现平滑效果。
         </div>
     </div>
 </div>
 
-<h5>Multiple Targets</h5>
+<h5>多目标切换 (Multiple Targets)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <div class="row">
         <div class="col-md-6">
             <div class="collapse multi-collapse" id="multiA">
-                <div class="card card-body bg-primary bg-opacity-10 mb-2">Panel A — toggled by "Toggle Both"</div>
+                <div class="card card-body bg-primary bg-opacity-10 mb-2">面板 A —— 由"同时切换两个"按钮控制</div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="collapse multi-collapse" id="multiB">
-                <div class="card card-body bg-success bg-opacity-10 mb-2">Panel B — toggled by "Toggle Both"</div>
+                <div class="card card-body bg-success bg-opacity-10 mb-2">面板 B —— 由"同时切换两个"按钮控制</div>
             </div>
         </div>
     </div>
-    <p class="text-muted small">Use <code>data-bs-target=".multi-collapse"</code> to toggle multiple elements with the same class.</p>
+    <p class="text-muted small">使用 <code>data-bs-target=".multi-collapse"</code> 同时切换多个元素。</p>
 </div>
 
-<h5>Horizontal Collapse</h5>
+<h5>水平折叠 (Horizontal Collapse)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <button class="btn btn-info text-white mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#horizontalCollapse">
-        Toggle Width
+        切换宽度
     </button>
     <div style="min-height:100px">
         <div class="collapse collapse-horizontal" id="horizontalCollapse">
             <div class="card card-body" style="width:300px">
-                This panel collapses horizontally instead of vertically. Uses <code>.collapse-horizontal</code>.
+                此面板使用 <code>.collapse-horizontal</code> 在水平方向折叠，而非垂直方向。
             </div>
         </div>
     </div>

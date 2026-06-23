@@ -1,12 +1,12 @@
 @page "/navigation"
 @rendermode InteractiveServer
 
-<PageTitle>Navigation - Bootstrap Showcase</PageTitle>
+<PageTitle>导航 (Navigation) - Bootstrap 展示</PageTitle>
 
-<h2>🧭 Navigation</h2>
-<p class="lead">Navs, tabs, pills, navbar, breadcrumb, and pagination.</p>
+<h2>🧭 导航 (Navigation)</h2>
+<p class="lead">导航 (Navs)、选项卡 (Tabs)、胶囊导航 (Pills)、导航栏 (Navbar)、面包屑 (Breadcrumb) 和分页 (Pagination)。</p>
 
-<h5 class="mt-4">Tabs (Interactive)</h5>
+<h5 class="mt-4">选项卡（交互式）(Tabs — Interactive)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <ul class="nav nav-tabs">
         @foreach (var (tab, i) in tabs.Select((t, i) => (t, i)))
@@ -19,98 +19,98 @@
     <div class="tab-content p-3 border border-top-0 rounded-bottom bg-white">
         @switch (activeTab)
         {
-            case 0: <p class="mb-0">🏠 <strong>Home</strong> tab content — this is a Blazor-driven tab pane.</p>; break;
-            case 1: <p class="mb-0">📋 <strong>Profile</strong> tab content — tab switching is interactive via C#.</p>; break;
-            case 2: <p class="mb-0">📧 <strong>Messages</strong> tab content — uses onclick event for tab changes.</p>; break;
-            case 3: <p class="mb-0">⚙️ <strong>Settings</strong> tab content — no Bootstrap JS needed for this.</p>; break;
+            case 0: <p class="mb-0">🏠 <strong>首页 (Home)</strong> 标签内容 —— 由 Blazor 驱动的选项卡切换。</p>; break;
+            case 1: <p class="mb-0">📋 <strong>个人资料 (Profile)</strong> 标签内容 —— 通过 C# 实现交互式切换。</p>; break;
+            case 2: <p class="mb-0">📧 <strong>消息 (Messages)</strong> 标签内容 —— 使用 onclick 事件切换标签。</p>; break;
+            case 3: <p class="mb-0">⚙️ <strong>设置 (Settings)</strong> 标签内容 —— 此功能无需 Bootstrap JS。</p>; break;
         }
     </div>
 </div>
 
-<h5>Pills</h5>
+<h5>胶囊导航 (Pills)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <ul class="nav nav-pills mb-3">
-        <li class="nav-item"><a class="nav-link active" href="#">Active</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Pill Link</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Another Link</a></li>
-        <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+        <li class="nav-item"><a class="nav-link active" href="#">活跃</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">胶囊链接</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">另一个链接</a></li>
+        <li class="nav-item"><a class="nav-link disabled" href="#">已禁用</a></li>
     </ul>
     <ul class="nav nav-pills nav-fill">
-        <li class="nav-item"><a class="nav-link active" href="#">Fill Item 1</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Fill Item 2</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Fill Item 3</a></li>
+        <li class="nav-item"><a class="nav-link active" href="#">填充项 1</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">填充项 2</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">填充项 3</a></li>
     </ul>
 </div>
 
-<h5>Vertical Pills</h5>
+<h5>垂直胶囊导航 (Vertical Pills)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <div class="row">
         <div class="col-4">
             <div class="nav flex-column nav-pills">
-                <a class="nav-link active" href="#">Home</a>
-                <a class="nav-link" href="#">Profile</a>
-                <a class="nav-link" href="#">Messages</a>
-                <a class="nav-link" href="#">Settings</a>
+                <a class="nav-link active" href="#">首页</a>
+                <a class="nav-link" href="#">个人资料</a>
+                <a class="nav-link" href="#">消息</a>
+                <a class="nav-link" href="#">设置</a>
             </div>
         </div>
         <div class="col-8 d-flex align-items-center bg-white border rounded p-3">
-            <p class="mb-0 text-muted">Vertical pill content area</p>
+            <p class="mb-0 text-muted">垂直胶囊导航的内容区域</p>
         </div>
     </div>
 </div>
 
-<h5>Navbar</h5>
+<h5>导航栏 (Navbar)</h5>
 <div class="border rounded mb-4">
     <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Brand</a>
+            <a class="navbar-brand" href="#">品牌 (Brand)</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#demoNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="demoNavbar">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">首页</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">功能</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">价格</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">More</a>
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">更多</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another</a></li>
+                            <li><a class="dropdown-item" href="#">操作</a></li>
+                            <li><a class="dropdown-item" href="#">另一个操作</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Separated</a></li>
+                            <li><a class="dropdown-item" href="#">分隔项</a></li>
                         </ul>
                     </li>
                 </ul>
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search">
-                    <button class="btn btn-outline-light" type="button">Search</button>
+                    <input class="form-control me-2" type="search" placeholder="搜索">
+                    <button class="btn btn-outline-light" type="button">搜索</button>
                 </form>
             </div>
         </div>
     </nav>
 </div>
 
-<h5>Breadcrumb</h5>
+<h5>面包屑导航 (Breadcrumb)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Library</a></li>
-            <li class="breadcrumb-item active">Data</li>
+            <li class="breadcrumb-item"><a href="#">首页</a></li>
+            <li class="breadcrumb-item"><a href="#">图书馆</a></li>
+            <li class="breadcrumb-item active">数据</li>
         </ol>
     </nav>
 </div>
 
-<h5>Pagination</h5>
+<h5>分页 (Pagination)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <nav>
         <ul class="pagination mb-3">
-            <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item disabled"><a class="page-link" href="#">上一页</a></li>
             <li class="page-item active"><a class="page-link" href="#">1</a></li>
             <li class="page-item"><a class="page-link" href="#">2</a></li>
             <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            <li class="page-item"><a class="page-link" href="#">下一页</a></li>
         </ul>
     </nav>
     <nav>
@@ -126,5 +126,5 @@
 
 @code {
     private int activeTab;
-    private string[] tabs = ["Home", "Profile", "Messages", "Settings"];
+    private string[] tabs = ["🏠 首页 (Home)", "📋 个人资料 (Profile)", "📧 消息 (Messages)", "⚙️ 设置 (Settings)"];
 }

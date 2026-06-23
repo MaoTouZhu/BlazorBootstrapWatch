@@ -1,165 +1,165 @@
 @page "/forms"
 @rendermode InteractiveServer
 
-<PageTitle>Forms - Bootstrap Showcase</PageTitle>
+<PageTitle>表单 (Forms) - Bootstrap 展示</PageTitle>
 
-<h2>📝 Forms</h2>
-<p class="lead">Form controls, input types, validation, input groups, and floating labels.</p>
+<h2>📝 表单 (Forms)</h2>
+<p class="lead">表单控件、输入类型、验证、输入组 (Input Group) 和浮动标签 (Floating Label)。</p>
 
-<h5 class="mt-4">Basic Inputs</h5>
+<h5 class="mt-4">基本输入 (Basic Inputs)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <div class="mb-3">
-        <label for="email" class="form-label">Email address</label>
+        <label for="email" class="form-label">邮箱地址 (Email)</label>
         <input type="email" class="form-control" id="email" placeholder="name@example.com">
-        <div class="form-text">We'll never share your email.</div>
+        <div class="form-text">我们绝不会分享您的邮箱。</div>
     </div>
     <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Password">
+        <label for="password" class="form-label">密码 (Password)</label>
+        <input type="password" class="form-control" id="password" placeholder="请输入密码">
     </div>
 </div>
 
-<h5>Select, Textarea, Range, Datalist</h5>
+<h5>下拉选择、文本域、范围滑块、数据列表 (Select, Textarea, Range, Datalist)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <div class="mb-3">
-        <label for="country" class="form-label">Country</label>
+        <label for="country" class="form-label">国家/地区 (Country)</label>
         <select class="form-select" id="country">
-            <option selected>Choose...</option>
-            <option value="1">United States</option>
-            <option value="2">Canada</option>
-            <option value="3">United Kingdom</option>
+            <option selected>请选择...</option>
+            <option value="1">中国</option>
+            <option value="2">美国</option>
+            <option value="3">英国</option>
         </select>
     </div>
     <div class="mb-3">
-        <label for="bio" class="form-label">Bio</label>
-        <textarea class="form-control" id="bio" rows="2" placeholder="Tell us about yourself..."></textarea>
+        <label for="bio" class="form-label">个人简介 (Bio)</label>
+        <textarea class="form-control" id="bio" rows="2" placeholder="介绍一下你自己..."></textarea>
     </div>
     <div class="mb-3">
-        <label for="range" class="form-label">Satisfaction: @rangeValue%</label>
+        <label for="range" class="form-label">满意度：@rangeValue%</label>
         <input type="range" class="form-range" id="range" min="0" max="100" @bind="rangeValue">
     </div>
 </div>
 
-<h5>Checks, Radios & Switches</h5>
+<h5>复选框、单选框与开关 (Checks, Radios & Switches)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <div class="form-check">
         <input class="form-check-input" type="checkbox" value="" id="check1" checked>
-        <label class="form-check-label" for="check1">Default checkbox (checked)</label>
+        <label class="form-check-label" for="check1">默认复选框（已勾选）</label>
     </div>
     <div class="form-check">
         <input class="form-check-input" type="checkbox" value="" id="check2">
-        <label class="form-check-label" for="check2">Unchecked checkbox</label>
+        <label class="form-check-label" for="check2">未勾选的复选框</label>
     </div>
     <hr>
     <div class="form-check">
         <input class="form-check-input" type="radio" name="radioDemo" id="radio1" checked>
-        <label class="form-check-label" for="radio1">Option A</label>
+        <label class="form-check-label" for="radio1">选项 A</label>
     </div>
     <div class="form-check">
         <input class="form-check-input" type="radio" name="radioDemo" id="radio2">
-        <label class="form-check-label" for="radio2">Option B</label>
+        <label class="form-check-label" for="radio2">选项 B</label>
     </div>
     <hr>
     <div class="form-check form-switch">
         <input class="form-check-input" type="checkbox" id="switch1" checked>
-        <label class="form-check-label" for="switch1">Toggle switch (on)</label>
+        <label class="form-check-label" for="switch1">开关（开）</label>
     </div>
     <div class="form-check form-switch">
         <input class="form-check-input" type="checkbox" id="switch2">
-        <label class="form-check-label" for="switch2">Toggle switch (off)</label>
+        <label class="form-check-label" for="switch2">开关（关）</label>
     </div>
 </div>
 
-<h5>Input Groups</h5>
+<h5>输入组 (Input Groups)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <div class="input-group mb-3">
         <span class="input-group-text">@@</span>
-        <input type="text" class="form-control" placeholder="Username">
+        <input type="text" class="form-control" placeholder="用户名">
     </div>
     <div class="input-group mb-3">
-        <span class="input-group-text">$</span>
-        <input type="text" class="form-control" placeholder="Amount">
+        <span class="input-group-text">¥</span>
+        <input type="text" class="form-control" placeholder="金额">
         <span class="input-group-text">.00</span>
     </div>
     <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Search...">
-        <button class="btn btn-primary" type="button">🔍 Search</button>
+        <input type="text" class="form-control" placeholder="搜索...">
+        <button class="btn btn-primary" type="button">🔍 搜索</button>
     </div>
 </div>
 
-<h5>Floating Labels</h5>
+<h5>浮动标签 (Floating Labels)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <div class="form-floating mb-3">
         <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
-        <label for="floatingEmail">Email address</label>
+        <label for="floatingEmail">邮箱地址</label>
     </div>
     <div class="form-floating">
         <select class="form-select" id="floatingSelect">
-            <option selected>Open this menu</option>
-            <option value="1">Option One</option>
-            <option value="2">Option Two</option>
+            <option selected>展开此菜单</option>
+            <option value="1">选项一</option>
+            <option value="2">选项二</option>
         </select>
-        <label for="floatingSelect">Works with selects</label>
+        <label for="floatingSelect">下拉选择也支持浮动标签</label>
     </div>
 </div>
 
-<h5>Form Validation (Interactive)</h5>
+<h5>表单验证（交互式）(Form Validation — Interactive)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <EditForm Model="formModel" OnValidSubmit="HandleSubmit" FormName="demo-form">
         <DataAnnotationsValidator />
         <div class="mb-3">
-            <label for="name" class="form-label">Name (required)</label>
+            <label for="name" class="form-label">姓名（必填）(Name, required)</label>
             <InputText id="name" class="form-control" @bind-Value="formModel.Name" />
             <ValidationMessage For="() => formModel.Name" />
         </div>
         <div class="mb-3">
-            <label for="formEmail" class="form-label">Email (required, valid format)</label>
+            <label for="formEmail" class="form-label">邮箱（必填，需合法格式）(Email, required)</label>
             <InputText id="formEmail" class="form-control" @bind-Value="formModel.Email" />
             <ValidationMessage For="() => formModel.Email" />
         </div>
         <div class="mb-3 form-check">
             <InputCheckbox id="agree" class="form-check-input" @bind-Value="formModel.Agree" />
-            <label class="form-check-label" for="agree">I agree to the terms</label>
+            <label class="form-check-label" for="agree">我同意上述条款 (I agree)</label>
             <ValidationMessage For="() => formModel.Agree" />
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">提交 (Submit)</button>
         @if (submitted)
         {
-            <div class="alert alert-success mt-3">✅ Form submitted successfully! Welcome, @formModel.Name.</div>
+            <div class="alert alert-success mt-3">✅ 表单提交成功！欢迎你，@formModel.Name。</div>
         }
     </EditForm>
 </div>
 
-<h5>Horizontal Form</h5>
+<h5>水平表单 (Horizontal Form)</h5>
 <div class="border rounded p-4 bg-light mb-4">
     <div class="row mb-3">
-        <label for="hEmail" class="col-sm-2 col-form-label">Email</label>
+        <label for="hEmail" class="col-sm-2 col-form-label">邮箱</label>
         <div class="col-sm-10">
             <input type="email" class="form-control" id="hEmail" placeholder="Email">
         </div>
     </div>
     <div class="row mb-3">
-        <label for="hPass" class="col-sm-2 col-form-label">Password</label>
+        <label for="hPass" class="col-sm-2 col-form-label">密码</label>
         <div class="col-sm-10">
             <input type="password" class="form-control" id="hPass" placeholder="Password">
         </div>
     </div>
 </div>
 
-<h5>Disabled & Readonly</h5>
+<h5>禁用与只读 (Disabled & Readonly)</h5>
 <div class="border rounded p-4 bg-light mb-4">
-    <input class="form-control mb-3" type="text" placeholder="Disabled input" disabled>
-    <input class="form-control mb-3" type="text" value="Readonly value" readonly>
+    <input class="form-control mb-3" type="text" placeholder="禁用输入框 (Disabled)" disabled>
+    <input class="form-control mb-3" type="text" value="只读值 (Readonly)" readonly>
     <select class="form-select" disabled>
-        <option>Disabled select</option>
+        <option>禁用的下拉选择</option>
     </select>
 </div>
 
-<h5>Sizing</h5>
+<h5>尺寸 (Sizing)</h5>
 <div class="border rounded p-4 bg-light mb-4">
-    <input class="form-control form-control-lg mb-2" type="text" placeholder="Large input (.form-control-lg)">
-    <input class="form-control mb-2" type="text" placeholder="Default input">
-    <input class="form-control form-control-sm" type="text" placeholder="Small input (.form-control-sm)">
+    <input class="form-control form-control-lg mb-2" type="text" placeholder="大号输入框 (.form-control-lg)">
+    <input class="form-control mb-2" type="text" placeholder="默认输入框">
+    <input class="form-control form-control-sm" type="text" placeholder="小号输入框 (.form-control-sm)">
 </div>
 
 @code {
@@ -174,14 +174,14 @@
 
     private class FormModel
     {
-        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Name is required.")]
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "姓名不能为空。")]
         public string Name { get; set; } = "";
 
-        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Email is required.")]
-        [System.ComponentModel.DataAnnotations.EmailAddress(ErrorMessage = "Valid email required.")]
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "邮箱不能为空。")]
+        [System.ComponentModel.DataAnnotations.EmailAddress(ErrorMessage = "请输入合法的邮箱格式。")]
         public string Email { get; set; } = "";
 
-        [System.ComponentModel.DataAnnotations.Range(typeof(bool), "true", "true", ErrorMessage = "You must agree.")]
+        [System.ComponentModel.DataAnnotations.Range(typeof(bool), "true", "true", ErrorMessage = "必须同意条款。")]
         public bool Agree { get; set; }
     }
 }

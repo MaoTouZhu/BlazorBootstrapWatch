@@ -1,73 +1,73 @@
 @page "/tables"
 
-<PageTitle>Tables - Bootstrap Showcase</PageTitle>
+<PageTitle>表格 (Tables) - Bootstrap 展示</PageTitle>
 
-<h2>📊 Tables</h2>
-<p class="lead">Table variants: basic, striped, hover, bordered, borderless, responsive, colored, and small.</p>
+<h2>📊 表格 (Tables)</h2>
+<p class="lead">表格变体：基础、条纹、悬停、带边框、无边框、响应式、彩色及紧凑型。</p>
 
-<h5 class="mt-4">Basic & Striped</h5>
+<h5 class="mt-4">基础与条纹 (Basic & Striped)</h5>
 <div class="table-responsive mb-4">
     <table class="table table-striped">
         <thead class="table-dark">
-            <tr><th>#</th><th>Name</th><th>Role</th><th>Status</th></tr>
+            <tr><th>#</th><th>姓名 (Name)</th><th>角色 (Role)</th><th>状态 (Status)</th></tr>
         </thead>
         <tbody>
-            <tr><td>1</td><td>Alice Chen</td><td>Developer</td><td><span class="badge bg-success">Active</span></td></tr>
-            <tr><td>2</td><td>Bob Smith</td><td>Designer</td><td><span class="badge bg-warning">Away</span></td></tr>
-            <tr><td>3</td><td>Carol Davis</td><td>Manager</td><td><span class="badge bg-success">Active</span></td></tr>
-            <tr><td>4</td><td>Dave Wilson</td><td>QA</td><td><span class="badge bg-danger">Offline</span></td></tr>
+            <tr><td>1</td><td>张三</td><td>开发者</td><td><span class="badge bg-success">在线</span></td></tr>
+            <tr><td>2</td><td>李四</td><td>设计师</td><td><span class="badge bg-warning">离开</span></td></tr>
+            <tr><td>3</td><td>王五</td><td>经理</td><td><span class="badge bg-success">在线</span></td></tr>
+            <tr><td>4</td><td>赵六</td><td>测试</td><td><span class="badge bg-danger">离线</span></td></tr>
         </tbody>
     </table>
 </div>
 
-<h5>Hover & Bordered</h5>
+<h5>悬停与带边框 (Hover & Bordered)</h5>
 <div class="table-responsive mb-4">
     <table class="table table-hover table-bordered">
         <thead class="table-primary">
-            <tr><th>#</th><th>Product</th><th>Price</th><th>Stock</th></tr>
+            <tr><th>#</th><th>产品 (Product)</th><th>价格 (Price)</th><th>库存 (Stock)</th></tr>
         </thead>
         <tbody>
-            <tr><td>1</td><td>Widget A</td><td>$9.99</td><td>142</td></tr>
-            <tr><td>2</td><td>Gadget B</td><td>$24.99</td><td>87</td></tr>
-            <tr><td>3</td><td>Doohickey C</td><td>$14.99</td><td>0</td></tr>
+            <tr><td>1</td><td>小工具 A</td><td>¥99.99</td><td>142</td></tr>
+            <tr><td>2</td><td>小配件 B</td><td>¥249.99</td><td>87</td></tr>
+            <tr><td>3</td><td>小零件 C</td><td>¥149.99</td><td>0</td></tr>
         </tbody>
     </table>
 </div>
 
-<h5>Small & Borderless</h5>
+<h5>紧凑与无边框 (Small & Borderless)</h5>
 <div class="table-responsive mb-4">
     <table class="table table-sm table-borderless">
-        <thead><tr><th>#</th><th>Item</th><th>Qty</th></tr></thead>
+        <thead><tr><th>#</th><th>物品 (Item)</th><th>数量 (Qty)</th></tr></thead>
         <tbody>
-            <tr><td>1</td><td>Apples</td><td>5</td></tr>
-            <tr><td>2</td><td>Oranges</td><td>3</td></tr>
-            <tr><td>3</td><td>Bananas</td><td>8</td></tr>
+            <tr><td>1</td><td>苹果</td><td>5</td></tr>
+            <tr><td>2</td><td>橘子</td><td>3</td></tr>
+            <tr><td>3</td><td>香蕉</td><td>8</td></tr>
         </tbody>
     </table>
 </div>
 
-<h5>Contextual Rows</h5>
+<h5>情景行 (Contextual Rows)</h5>
 <div class="table-responsive mb-4">
     <table class="table">
-        <thead><tr><th>Class</th><th>Effect</th></tr></thead>
+        <thead><tr><th>类名 (Class)</th><th>效果 (Effect)</th></tr></thead>
         <tbody>
-            <tr class="table-active"><td>.table-active</td><td>Active row highlight</td></tr>
-            <tr class="table-primary"><td>.table-primary</td><td>Primary row highlight</td></tr>
-            <tr class="table-success"><td>.table-success</td><td>Success row highlight</td></tr>
-            <tr class="table-danger"><td>.table-danger</td><td>Danger row highlight</td></tr>
-            <tr class="table-warning"><td>.table-warning</td><td>Warning row highlight</td></tr>
-            <tr class="table-info"><td>.table-info</td><td>Info row highlight</td></tr>
+            <tr class="table-active"><td>.table-active</td><td>活跃行高亮</td></tr>
+            <tr class="table-primary"><td>.table-primary</td><td>主要行高亮</td></tr>
+            <tr class="table-success"><td>.table-success</td><td>成功行高亮</td></tr>
+            <tr class="table-danger"><td>.table-danger</td><td>危险行高亮</td></tr>
+            <tr class="table-warning"><td>.table-warning</td><td>警告行高亮</td></tr>
+            <tr class="table-info"><td>.table-info</td><td>信息行高亮</td></tr>
         </tbody>
     </table>
 </div>
 
-<h5>Responsive Table (scroll horizontally on small screens)</h5>
+<h5>响应式表格（小屏幕上水平滚动）(Responsive Table)</h5>
 <div class="table-responsive">
     <table class="table table-striped">
-        <thead><tr><th>#</th><th>Column A</th><th>Column B</th><th>Column C</th><th>Column D</th><th>Column E</th><th>Column F</th></tr></thead>
+        <thead><tr><th>#</th><th>列 A</th><th>列 B</th><th>列 C</th><th>列 D</th><th>列 E</th><th>列 F</th></tr></thead>
         <tbody>
-            <tr><td>1</td><td>Data</td><td>Data</td><td>Data</td><td>Data</td><td>Data</td><td>Data</td></tr>
-            <tr><td>2</td><td>Data</td><td>Data</td><td>Data</td><td>Data</td><td>Data</td><td>Data</td></tr>
+            <tr><td>1</td><td>数据</td><td>数据</td><td>数据</td><td>数据</td><td>数据</td><td>数据</td></tr>
+            <tr><td>2</td><td>数据</td><td>数据</td><td>数据</td><td>数据</td><td>数据</td><td>数据</td></tr>
         </tbody>
     </table>
 </div>

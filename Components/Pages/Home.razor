@@ -1,12 +1,12 @@
 @page "/"
 
-<PageTitle>Bootstrap Showcase - Home</PageTitle>
+<PageTitle>Bootstrap 展示 (Showcase) - 首页 (Home)</PageTitle>
 
 <div class="text-center py-5">
-    <h1 class="display-3 fw-bold text-primary">🎨 Bootstrap 5 Showcase</h1>
+    <h1 class="display-3 fw-bold text-primary">🎨 Bootstrap 5 组件展示 (Showcase)</h1>
     <p class="lead mt-3 text-secondary">
-        Interactive demonstrations of every Bootstrap component, organized by category.
-        Built with <span class="badge bg-dark">Blazor</span> + <span class="badge bg-primary">Bootstrap 5.3</span>
+        每个 Bootstrap 组件的交互式演示，按类别整理。
+        基于 <span class="badge bg-dark">Blazor</span> + <span class="badge bg-primary">Bootstrap 5.3</span> 构建
     </p>
 </div>
 
@@ -19,7 +19,7 @@
                     <div class="display-5 mb-2">@cat.Icon</div>
                     <h5 class="card-title">@cat.Name</h5>
                     <p class="card-text small text-muted">@cat.Desc</p>
-                    <a href="@cat.Route" class="btn btn-outline-primary btn-sm stretched-link">Explore</a>
+                    <a href="@cat.Route" class="btn btn-outline-primary btn-sm stretched-link">浏览 (Explore)</a>
                 </div>
             </div>
         </div>
@@ -30,22 +30,22 @@
     private record Category(string Icon, string Name, string Desc, string Route);
 
     private readonly Category[] categories = [
-        new("📐", "Layout", "Grid, containers, columns, gutters, breakpoints", "layout"),
-        new("🔤", "Typography", "Headings, display, lead, lists, text utilities", "typography"),
-        new("🎨", "Colors", "Theme colors, backgrounds, text colors, gradients", "colors"),
-        new("📊", "Tables", "Basic, striped, hover, bordered, responsive tables", "tables"),
-        new("📝", "Forms", "Input, select, checkbox, radio, switches, validation", "forms"),
-        new("🔘", "Buttons & Badges", "Variants, sizes, outlines, groups, badges", "buttons"),
-        new("🔔", "Alerts & Toasts", "Alert variants, dismissible, toast notifications", "alerts"),
-        new("🃏", "Cards", "Header, footer, image, grid, colors, sizing", "cards"),
-        new("🧭", "Navigation", "Navs, tabs, navbar, breadcrumb, pagination", "navigation"),
-        new("📋", "Dropdowns", "Single, split, sizing, directions, menus", "dropdowns"),
-        new("🪟", "Overlays", "Modal dialogs, offcanvas side panels", "overlays"),
-        new("🪗", "Expandables", "Accordion, collapse, horizontal collapse", "expandables"),
-        new("🎠", "Carousel", "Slides, controls, indicators, captions", "carousel"),
-        new("📃", "List Group", "Basic, links, flush, numbered, checkboxes", "listgroup"),
-        new("💬", "Tooltips & Popovers", "Tooltips, popovers, custom content", "tooltips-popovers"),
-        new("⏳", "Loading States", "Progress bars, spinners, placeholders", "loading"),
-        new("👁️", "Scrollspy", "Scroll tracking, nested nav", "scrollspy"),
+        new("📐", "布局 (Layout)", "栅格 (Grid)、容器 (Container)、列 (Column)、间距 (Gutter)、断点 (Breakpoint)", "layout"),
+        new("🔤", "排版 (Typography)", "标题 (Heading)、大标题 (Display)、导语 (Lead)、列表 (List)、文本工具类", "typography"),
+        new("🎨", "颜色 (Colors)", "主题色、背景色、文本色、渐变", "colors"),
+        new("📊", "表格 (Tables)", "基础、条纹、悬停、带边框、响应式表格", "tables"),
+        new("📝", "表单 (Forms)", "输入框、下拉选择、复选框、单选框、开关、验证", "forms"),
+        new("🔘", "按钮与徽章 (Buttons & Badges)", "变体、尺寸、轮廓、按钮组、徽章", "buttons"),
+        new("🔔", "提示与通知 (Alerts & Toasts)", "提示变体、可关闭提示、Toast 通知", "alerts"),
+        new("🃏", "卡片 (Cards)", "页头、页脚、图片、网格、颜色、尺寸", "cards"),
+        new("🧭", "导航 (Navigation)", "导航、选项卡、胶囊导航、导航栏、面包屑、分页", "navigation"),
+        new("📋", "下拉菜单 (Dropdowns)", "单项、分裂按钮、尺寸、方向、菜单项", "dropdowns"),
+        new("🪟", "浮层 (Overlays)", "模态对话框 (Modal)、侧边面板 (Offcanvas)", "overlays"),
+        new("🪗", "可展开组件 (Expandables)", "手风琴 (Accordion)、折叠 (Collapse)、水平折叠", "expandables"),
+        new("🎠", "轮播 (Carousel)", "幻灯片、控制器、指示器、字幕", "carousel"),
+        new("📃", "列表组 (List Group)", "基础、链接、无边框、编号、复选框", "listgroup"),
+        new("💬", "工具提示与弹出框 (Tooltips & Popovers)", "工具提示、弹出框、自定义内容", "tooltips-popovers"),
+        new("⏳", "加载状态 (Loading States)", "进度条 (Progress)、旋转器 (Spinner)、占位符 (Placeholder)", "loading"),
+        new("👁️", "滚动监听 (Scrollspy)", "滚动位置追踪、嵌套导航", "scrollspy"),
     ];
 }

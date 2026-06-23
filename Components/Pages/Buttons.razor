@@ -1,12 +1,12 @@
 @page "/buttons"
 @rendermode InteractiveServer
 
-<PageTitle>Buttons & Badges - Bootstrap Showcase</PageTitle>
+<PageTitle>按钮与徽章 (Buttons & Badges) - Bootstrap 展示</PageTitle>
 
-<h2>🔘 Buttons, Groups & Badges</h2>
-<p class="lead">Button variants, sizes, outlines, button groups, toolbars, and badges.</p>
+<h2>🔘 按钮、按钮组与徽章 (Buttons, Groups & Badges)</h2>
+<p class="lead">按钮变体 (Variants)、尺寸 (Sizes)、轮廓 (Outline)、按钮组 (Button Groups)、工具栏 (Toolbar) 和徽章 (Badges)。</p>
 
-<h5 class="mt-4">Button Variants</h5>
+<h5 class="mt-4">按钮变体 (Button Variants)</h5>
 <div class="border rounded p-4 bg-light mb-3">
     @foreach (var v in variants)
     {
@@ -14,7 +14,7 @@
     }
 </div>
 
-<h5>Outline Buttons</h5>
+<h5>轮廓按钮 (Outline Buttons)</h5>
 <div class="border rounded p-4 bg-light mb-3">
     @foreach (var v in variants.Take(7))
     {
@@ -22,41 +22,41 @@
     }
 </div>
 
-<h5>Button Sizes</h5>
+<h5>按钮尺寸 (Button Sizes)</h5>
 <div class="border rounded p-4 bg-light mb-3">
-    <button type="button" class="btn btn-primary btn-lg m-1">Large button</button>
-    <button type="button" class="btn btn-primary m-1">Default button</button>
-    <button type="button" class="btn btn-primary btn-sm m-1">Small button</button>
+    <button type="button" class="btn btn-primary btn-lg m-1">大号按钮 (Large)</button>
+    <button type="button" class="btn btn-primary m-1">默认按钮 (Default)</button>
+    <button type="button" class="btn btn-primary btn-sm m-1">小号按钮 (Small)</button>
 </div>
 
-<h5>Block Button & Disabled</h5>
+<h5>块级按钮与禁用 (Block Button & Disabled)</h5>
 <div class="border rounded p-4 bg-light mb-3">
     <div class="d-grid gap-2 mb-3">
-        <button class="btn btn-primary" type="button">Block-level button (d-grid)</button>
-        <button class="btn btn-outline-secondary" type="button">Another block button</button>
+        <button class="btn btn-primary" type="button">块级按钮（使用 d-grid）</button>
+        <button class="btn btn-outline-secondary" type="button">另一个块级按钮</button>
     </div>
-    <button type="button" class="btn btn-primary m-1" disabled>Disabled primary</button>
-    <a class="btn btn-secondary m-1 disabled" role="button" aria-disabled="true">Disabled link</a>
+    <button type="button" class="btn btn-primary m-1" disabled>禁用的主要按钮</button>
+    <a class="btn btn-secondary m-1 disabled" role="button" aria-disabled="true">禁用的链接按钮</a>
 </div>
 
-<h5>Interactive Button (Blazor)</h5>
+<h5>交互式按钮（Blazor）(Interactive Button)</h5>
 <div class="border rounded p-4 bg-light mb-4 text-center">
-    <button class="btn btn-lg btn-success me-2" @onclick="Increment">👍 Like (@count)</button>
-    <button class="btn btn-lg btn-danger" @onclick="Decrement">👎 Dislike</button>
-    <button class="btn btn-sm btn-outline-secondary ms-2" @onclick="Reset">Reset</button>
+    <button class="btn btn-lg btn-success me-2" @onclick="Increment">👍 赞 (@count)</button>
+    <button class="btn btn-lg btn-danger" @onclick="Decrement">👎 踩</button>
+    <button class="btn btn-sm btn-outline-secondary ms-2" @onclick="Reset">重置 (Reset)</button>
 </div>
 
-<h5>Button Groups</h5>
+<h5>按钮组 (Button Groups)</h5>
 <div class="border rounded p-4 bg-light mb-3">
     <div class="btn-group mb-3 me-2" role="group">
-        <button type="button" class="btn btn-primary">Left</button>
-        <button type="button" class="btn btn-primary">Middle</button>
-        <button type="button" class="btn btn-primary">Right</button>
+        <button type="button" class="btn btn-primary">左 (Left)</button>
+        <button type="button" class="btn btn-primary">中 (Middle)</button>
+        <button type="button" class="btn btn-primary">右 (Right)</button>
     </div>
     <div class="btn-group mb-3 me-2" role="group">
-        <button type="button" class="btn btn-outline-secondary">B</button>
-        <button type="button" class="btn btn-outline-secondary">I</button>
-        <button type="button" class="btn btn-outline-secondary">U</button>
+        <button type="button" class="btn btn-outline-secondary">粗 (B)</button>
+        <button type="button" class="btn btn-outline-secondary">斜 (I)</button>
+        <button type="button" class="btn btn-outline-secondary">下划线 (U)</button>
     </div>
 </div>
 
@@ -68,29 +68,29 @@
             <button type="button" class="btn btn-primary">3</button>
         </div>
         <div class="btn-group me-2">
-            <button type="button" class="btn btn-success">Copy</button>
-            <button type="button" class="btn btn-success">Paste</button>
+            <button type="button" class="btn btn-success">复制</button>
+            <button type="button" class="btn btn-success">粘贴</button>
         </div>
         <div class="btn-group">
             <button type="button" class="btn btn-info text-white">🔍</button>
         </div>
     </div>
-    <small class="text-muted mt-2 d-block">Button toolbar (multiple groups)</small>
+    <small class="text-muted mt-2 d-block">按钮工具栏（多个按钮组）(Button toolbar)</small>
 </div>
 
-<h5>Vertical Button Group</h5>
+<h5>垂直按钮组 (Vertical Button Group)</h5>
 <div class="border rounded p-4 bg-light mb-3">
     <div class="btn-group-vertical">
-        <button type="button" class="btn btn-primary">Top</button>
-        <button type="button" class="btn btn-primary">Middle</button>
-        <button type="button" class="btn btn-primary">Bottom</button>
+        <button type="button" class="btn btn-primary">上 (Top)</button>
+        <button type="button" class="btn btn-primary">中 (Middle)</button>
+        <button type="button" class="btn btn-primary">下 (Bottom)</button>
     </div>
 </div>
 
-<h5 class="mt-4">Badges</h5>
+<h5 class="mt-4">徽章 (Badges)</h5>
 <div class="border rounded p-4 bg-light mb-3">
-    <h1>Heading <span class="badge bg-secondary">New</span></h1>
-    <h3>Heading <span class="badge bg-secondary">3</span></h3>
+    <h1>标题后 <span class="badge bg-secondary">新 (New)</span></h1>
+    <h3>标题后 <span class="badge bg-secondary">3</span></h3>
 </div>
 <div class="border rounded p-4 bg-light mb-3">
     @foreach (var v in variants)
@@ -99,22 +99,22 @@
     }
 </div>
 <div class="border rounded p-4 bg-light mb-3">
-    <span class="badge rounded-pill bg-primary m-1">Primary pill</span>
-    <span class="badge rounded-pill bg-success m-1">Success pill</span>
-    <span class="badge rounded-pill bg-danger m-1">Danger pill</span>
-    <span class="badge rounded-pill bg-warning text-dark m-1">Warning pill</span>
+    <span class="badge rounded-pill bg-primary m-1">主要药丸形 (Primary pill)</span>
+    <span class="badge rounded-pill bg-success m-1">成功药丸形 (Success pill)</span>
+    <span class="badge rounded-pill bg-danger m-1">危险药丸形 (Danger pill)</span>
+    <span class="badge rounded-pill bg-warning text-dark m-1">警告药丸形 (Warning pill)</span>
 </div>
 <div class="border rounded p-4 bg-light mb-3">
     <button type="button" class="btn btn-primary position-relative m-2">
-        Messages
+        消息
         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            @count <span class="visually-hidden">unread messages</span>
+            @count <span class="visually-hidden">条未读消息</span>
         </span>
     </button>
     <button type="button" class="btn btn-outline-secondary position-relative m-2">
-        Alerts
+        提醒
         <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
-            <span class="visually-hidden">New alerts</span>
+            <span class="visually-hidden">新提醒</span>
         </span>
     </button>
 </div>

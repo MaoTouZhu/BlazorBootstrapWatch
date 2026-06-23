@@ -1,122 +1,122 @@
 @page "/alerts"
 @rendermode InteractiveServer
 
-<PageTitle>Alerts & Toasts - Bootstrap Showcase</PageTitle>
+<PageTitle>提示与通知 (Alerts & Toasts) - Bootstrap 展示</PageTitle>
 
-<h2>🔔 Alerts & Toasts</h2>
-<p class="lead">Alert messages with variants, dismissible alerts, and toast notifications.</p>
+<h2>🔔 提示与 Toast 通知 (Alerts & Toasts)</h2>
+<p class="lead">提示消息的各种变体、可关闭提示，以及 Toast 通知。</p>
 
-<h5 class="mt-4">Alert Variants</h5>
+<h5 class="mt-4">提示变体 (Alert Variants)</h5>
 <div class="mb-3">
     @foreach (var v in alertVariants)
     {
         <div class="alert alert-@v" role="alert">
-            <strong>@v:</strong> A simple @v alert — check it out!
+            <strong>@v：</strong> 一条简单的 @v 提示 —— 请注意查看！
         </div>
     }
 </div>
 
-<h5>Dismissible Alerts (Interactive)</h5>
+<h5>可关闭提示（交互式）(Dismissible Alerts — Interactive)</h5>
 <div class="mb-4">
     @foreach (var (v, i) in alertVariants.Select((v, i) => (v, i)))
     {
         if (!dismissed[i])
         {
             <div class="alert alert-@v alert-dismissible fade show" role="alert">
-                <strong>@v:</strong> Click the X to dismiss this alert.
-                <button type="button" class="btn-close" @onclick="() => Dismiss(i)" aria-label="Close"></button>
+                <strong>@v：</strong> 点击右侧 X 按钮可关闭此提示。
+                <button type="button" class="btn-close" @onclick="() => Dismiss(i)" aria-label="关闭 (Close)"></button>
             </div>
         }
     }
     @if (dismissed.All(d => d))
     {
         <div class="text-center py-3">
-            <p class="text-muted">All alerts dismissed!</p>
-            <button class="btn btn-outline-secondary" @onclick="ResetAlerts">🔄 Restore All</button>
+            <p class="text-muted">所有提示已关闭！(All alerts dismissed!)</p>
+            <button class="btn btn-outline-secondary" @onclick="ResetAlerts">🔄 恢复全部 (Restore All)</button>
         </div>
     }
 </div>
 
-<h5>Alert with Links & Additional Content</h5>
+<h5>包含链接与富内容的提示 (Alert with Links & Additional Content)</h5>
 <div class="alert alert-success mb-3">
-    <h4 class="alert-heading">Well done!</h4>
-    <p>You successfully read this important alert message. This example text will run a bit longer.</p>
+    <h4 class="alert-heading">干得好！(Well done!)</h4>
+    <p>你已成功阅读这条重要提示消息。这段示例文本会稍微长一些，以展示富内容的排版效果。</p>
     <hr>
-    <p class="mb-0">Whenever you need to, use <a href="#" class="alert-link">alert links</a> for actions.</p>
+    <p class="mb-0">需要时，可以使用 <a href="#" class="alert-link">提示链接 (alert link)</a> 来跳转到相关操作。</p>
 </div>
 
-<h5>Live Alert Demo (Blazor)</h5>
+<h5>实时提示演示（Blazor）(Live Alert Demo)</h5>
 <div class="border rounded p-4 bg-light mb-4">
-    <button class="btn btn-primary me-1" @onclick='() => AddAlert("primary")'>Primary</button>
-    <button class="btn btn-success me-1" @onclick='() => AddAlert("success")'>Success</button>
-    <button class="btn btn-danger me-1" @onclick='() => AddAlert("danger")'>Danger</button>
-    <button class="btn btn-warning me-1" @onclick='() => AddAlert("warning")'>Warning</button>
-    <button class="btn btn-outline-secondary" @onclick="ClearLiveAlerts">Clear All</button>
+    <button class="btn btn-primary me-1" @onclick='() => AddAlert("primary")'>主要 (Primary)</button>
+    <button class="btn btn-success me-1" @onclick='() => AddAlert("success")'>成功 (Success)</button>
+    <button class="btn btn-danger me-1" @onclick='() => AddAlert("danger")'>危险 (Danger)</button>
+    <button class="btn btn-warning me-1" @onclick='() => AddAlert("warning")'>警告 (Warning)</button>
+    <button class="btn btn-outline-secondary" @onclick="ClearLiveAlerts">清除全部 (Clear All)</button>
     <div class="mt-3">
         @foreach (var (alert, idx) in liveAlerts.Select((a, i) => (a, i)))
         {
             <div class="alert alert-@alert.Item1 alert-dismissible fade show py-2" role="alert">
-                #@(idx + 1) @alert.Item2
+                第 @(idx + 1) 条 @alert.Item2
                 <button type="button" class="btn-close" @onclick='() => RemoveLiveAlert(idx)'></button>
             </div>
         }
         @if (!liveAlerts.Any())
         {
-            <p class="text-muted mb-0">Click a button above to generate alerts.</p>
+            <p class="text-muted mb-0">点击上方按钮来生成提示消息。</p>
         }
     </div>
 </div>
 
-<h5 class="mt-4">Toasts</h5>
-<p>Bootstrap toasts require JavaScript. These toasts auto-show via the bootstrap-reinit.js helper.</p>
+<h5 class="mt-4">Toast 通知</h5>
+<p>Bootstrap Toast 需要 JavaScript 支持。这些 Toast 通过 <code>bootstrap-reinit.js</code> 辅助脚本自动显示。</p>
 <div class="border rounded p-4 bg-light mb-4">
     <div class="toast fade show mb-3" role="alert" data-bs-autohide="false">
         <div class="toast-header">
             <strong class="me-auto text-primary">🔔 Bootstrap</strong>
-            <small>just now</small>
+            <small>刚刚</small>
             <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
         </div>
-        <div class="toast-body">Hello, world! This is a toast message.</div>
+        <div class="toast-body">你好！这是一条 Toast 通知消息。</div>
     </div>
     <div class="toast fade show mb-3" role="alert" data-bs-autohide="false">
         <div class="toast-header bg-success text-white">
-            <strong class="me-auto">✅ Success</strong>
-            <small>2 sec ago</small>
+            <strong class="me-auto">✅ 成功 (Success)</strong>
+            <small>2 秒前</small>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
         </div>
-        <div class="toast-body">Operation completed successfully.</div>
+        <div class="toast-body">操作已成功完成。</div>
     </div>
     <div class="toast fade show" role="alert" data-bs-autohide="false">
         <div class="toast-header bg-danger text-white">
-            <strong class="me-auto">❌ Error</strong>
-            <small>5 sec ago</small>
+            <strong class="me-auto">❌ 错误 (Error)</strong>
+            <small>5 秒前</small>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
         </div>
-        <div class="toast-body">Something went wrong. Please try again.</div>
+        <div class="toast-body">出了点问题，请重试。</div>
     </div>
 </div>
 
-<h5>Toast Placement</h5>
+<h5>Toast 堆叠布局 (Toast Placement)</h5>
 <div class="border rounded p-4 bg-light mb-4 position-relative" style="min-height:180px">
     <div class="toast-container position-static">
         <div class="toast fade show" role="alert" data-bs-autohide="false">
             <div class="toast-header">
-                <strong class="me-auto">Stacked toasts</strong>
-                <small>now</small>
+                <strong class="me-auto">堆叠 Toast</strong>
+                <small>现在</small>
                 <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
             </div>
-            <div class="toast-body">Toast #1 in a toast container.</div>
+            <div class="toast-body">第 1 条 Toast，位于 Toast 容器中。</div>
         </div>
         <div class="toast fade show" role="alert" data-bs-autohide="false">
             <div class="toast-header">
-                <strong class="me-auto">Stacked toasts</strong>
-                <small>now</small>
+                <strong class="me-auto">堆叠 Toast</strong>
+                <small>现在</small>
                 <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
             </div>
-            <div class="toast-body">Toast #2 stacked below.</div>
+            <div class="toast-body">第 2 条 Toast，堆叠在下方。</div>
         </div>
     </div>
-    <small class="text-muted mt-2 d-block">Toasts stack vertically in a toast container.</small>
+    <small class="text-muted mt-2 d-block">Toast 在容器中垂直堆叠排列。</small>
 </div>
 
 @code {
@@ -131,7 +131,7 @@
     private void AddAlert(string variant)
     {
         alertCounter++;
-        liveAlerts.Add((variant, $"{variant} alert #{alertCounter} — generated at {DateTime.Now:HH:mm:ss}"));
+        liveAlerts.Add((variant, $"{variant} 提示 #{alertCounter} —— 生成时间：{DateTime.Now:HH:mm:ss}"));
     }
     private void RemoveLiveAlert(int i) { liveAlerts.RemoveAt(i); }
     private void ClearLiveAlerts() { liveAlerts.Clear(); alertCounter = 0; }

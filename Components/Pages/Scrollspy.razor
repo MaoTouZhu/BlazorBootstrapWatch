@@ -1,27 +1,27 @@
 @page "/scrollspy"
 
-<PageTitle>Scrollspy - Bootstrap Showcase</PageTitle>
+<PageTitle>滚动监听 (Scrollspy) - Bootstrap 展示</PageTitle>
 
-<h2>👁️ Scrollspy</h2>
-<p class="lead">Automatically update navigation based on scroll position to indicate which section is visible.</p>
+<h2>👁️ 滚动监听 (Scrollspy)</h2>
+<p class="lead">根据滚动位置自动更新导航，指示当前可见的部分。</p>
 
 <div class="alert alert-info">
-    ⚠️ Scrollspy requires the Bootstrap JavaScript bundle. It works by tracking scroll position
-    relative to anchor targets (<code>id</code> attributes) and updating the active nav link accordingly.
+    ⚠️ Scrollspy 需要 Bootstrap JavaScript 包。它通过追踪滚动位置与锚点目标
+    （<code>id</code> 属性）的对应关系，并自动更新活跃导航链接。
 </div>
 
-<h5 class="mt-4">Basic Scrollspy</h5>
+<h5 class="mt-4">基础滚动监听 (Basic Scrollspy)</h5>
 <div class="border rounded mb-4">
     <div class="row g-0">
         <div class="col-4">
             <nav id="scrollspyNav1" class="h-100 flex-column align-items-stretch pe-3 border-end p-3">
                 <nav class="nav nav-pills flex-column sticky-top" style="top:10px">
-                    <a class="nav-link" href="#ss-item1">Item 1</a>
-                    <a class="nav-link" href="#ss-item2">Item 2</a>
-                    <a class="nav-link" href="#ss-item3">Item 3</a>
+                    <a class="nav-link" href="#ss-item1">第 1 项</a>
+                    <a class="nav-link" href="#ss-item2">第 2 项</a>
+                    <a class="nav-link" href="#ss-item3">第 3 项</a>
                     <nav class="nav nav-pills flex-column ms-3">
-                        <a class="nav-link" href="#ss-item3-1">Item 3-1</a>
-                        <a class="nav-link" href="#ss-item3-2">Item 3-2</a>
+                        <a class="nav-link" href="#ss-item3-1">第 3-1 项</a>
+                        <a class="nav-link" href="#ss-item3-2">第 3-2 项</a>
                     </nav>
                 </nav>
             </nav>
@@ -30,41 +30,41 @@
             <div data-bs-spy="scroll" data-bs-target="#scrollspyNav1" data-bs-smooth-scroll="true"
                  class="p-4" style="max-height:380px;overflow-y:auto" tabindex="0">
                 <h4 id="ss-item1">@First</h4>
-                <p>This is the content for item 1. Scroll down to see the navigation update.</p>
-                <p>The active pill in the sidebar changes as you scroll through sections.</p>
-                <p>Scrollspy uses <code>data-bs-spy="scroll"</code> on the scrollable container.</p>
+                <p>这是第 1 项的内容。向下滚动可以看到导航自动更新。</p>
+                <p>滚动经过各个部分时，侧边栏中的活跃胶囊导航会相应变化。</p>
+                <p>Scrollspy 在可滚动容器上使用 <code>data-bs-spy="scroll"</code>。</p>
 
                 <h4 id="ss-item2">@Second</h4>
-                <p>Now you're viewing item 2. The sidebar navigation automatically updated.</p>
-                <p>Bootstrap's scrollspy watches the scroll position and adds <code>.active</code> class.</p>
-                <p>This is useful for documentation pages, help sections, or any long-form content.</p>
+                <p>现在你正在查看第 2 项。侧边栏导航已自动更新。</p>
+                <p>Bootstrap 的 scrollspy 会监控滚动位置并添加 <code>.active</code> 类。</p>
+                <p>这对文档页面、帮助章节或任何长篇幅内容都很有用。</p>
 
                 <h4 id="ss-item3">@Third</h4>
-                <p>Item 3 is now active. Notice the nested nav items below.</p>
-                <p>Scrollspy supports nested navigation for subsections.</p>
-                <p>Each section needs an <code>id</code> that matches the nav link's <code>href</code>.</p>
+                <p>第 3 项现在是活跃的。注意下方的嵌套导航项。</p>
+                <p>Scrollspy 支持子章节的嵌套导航。</p>
+                <p>每个部分需要一个 <code>id</code>，与导航链接的 <code>href</code> 相匹配。</p>
 
                 <h5 id="ss-item3-1">@ThirdOne</h5>
-                <p>This is a subsection of item 3. The nested nav link should be active.</p>
-                <p>Nested navigation uses <code>.ms-3</code> for indentation in the sidebar.</p>
+                <p>这是第 3 项的子章节。嵌套导航链接此时应为活跃状态。</p>
+                <p>嵌套导航在侧边栏中使用 <code>.ms-3</code> 实现缩进。</p>
 
                 <h5 id="ss-item3-2">@ThirdTwo</h5>
-                <p>Another subsection. Scrollspy correctly tracks even deeply nested sections.</p>
-                <p>End of the scrollspy demo content.</p>
+                <p>另一个子章节。Scrollspy 能正确追踪即使深层嵌套的部分。</p>
+                <p>滚动监听演示内容到此结束。</p>
             </div>
         </div>
     </div>
 </div>
 
-<h5 class="mt-4">Navbar Scrollspy</h5>
+<h5 class="mt-4">导航栏滚动监听 (Navbar Scrollspy)</h5>
 <div class="border rounded mb-4">
     <nav id="scrollspyNav2" class="navbar bg-body-tertiary px-3 mb-3 border-bottom sticky-top">
-        <a class="navbar-brand" href="#">Project Name</a>
+        <a class="navbar-brand" href="#">项目名称</a>
         <ul class="nav nav-pills">
             <li class="nav-item"><a class="nav-link" href="#nb-fat">@Fat</a></li>
             <li class="nav-item"><a class="nav-link" href="#nb-mdo">@@mdo</a></li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Dropdown</a>
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">下拉</a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#nb-one">one</a></li>
                     <li><a class="dropdown-item" href="#nb-two">two</a></li>
@@ -75,31 +75,31 @@
     <div data-bs-spy="scroll" data-bs-target="#scrollspyNav2"
          class="p-4" style="max-height:350px;overflow-y:auto" tabindex="0">
         <h4 id="nb-fat">@Fat</h4>
-        <p>Scrollspy demo with navbar-style navigation. The navbar items highlight as you scroll.</p>
-        <p>This pattern is common in single-page applications and documentation sites.</p>
-        <p>The active link updates based on which heading is currently in view.</p>
+        <p>使用导航栏式导航的 scrollspy 演示。滚动时导航项会高亮显示。</p>
+        <p>这种模式常用于单页应用和文档网站。</p>
+        <p>活跃链接会根据当前在视图中的标题进行更新。</p>
 
         <h4 id="nb-mdo">@@mdo</h4>
-        <p>This section is identified by <code>id="nb-mdo"</code>.</p>
-        <p>As you scroll into this section, the "@@mdo" nav pill becomes active.</p>
-        <p>The previous "@@fat" pill deactivates automatically.</p>
+        <p>此部分由 <code>id="nb-mdo"</code> 标识。</p>
+        <p>当你滚动到此部分时，"@@mdo" 导航胶囊会变为活跃状态。</p>
+        <p>之前的 "@@fat" 胶囊自动取消活跃状态。</p>
 
         <h4 id="nb-one">one</h4>
-        <p>This section corresponds to the dropdown menu item "one".</p>
-        <p>Dropdown items can also participate in scrollspy tracking.</p>
+        <p>此部分对应下拉菜单项 "one"。</p>
+        <p>下拉菜单项也可以参与 scrollspy 追踪。</p>
 
         <h4 id="nb-two">two</h4>
-        <p>The final section, corresponding to the dropdown item "two".</p>
-        <p>This completes the navbar scrollspy demonstration.</p>
+        <p>最后一个部分，对应下拉菜单项 "two"。</p>
+        <p>至此，导航栏 scrollspy 演示完成。</p>
     </div>
 </div>
 
 @code {
-    private const string First = "First Section";
-    private const string Second = "Second Section";
-    private const string Third = "Third Section";
-    private const string ThirdOne = "Subsection 3-1";
-    private const string ThirdTwo = "Subsection 3-2";
+    private const string First = "第一部分 (Section 1)";
+    private const string Second = "第二部分 (Section 2)";
+    private const string Third = "第三部分 (Section 3)";
+    private const string ThirdOne = "子章节 3-1 (Subsection 3-1)";
+    private const string ThirdTwo = "子章节 3-2 (Subsection 3-2)";
     private const string Fat = "@@fat";
     private const string Mdo = "@@mdo";
 }
