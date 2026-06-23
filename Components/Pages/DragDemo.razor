@@ -14,7 +14,7 @@
             <h5>可拖动窗口 (Draggable Window)</h5>
             <p class="small text-muted">在下方区域内拖动窗口，窗口不可超出边界。</p>
             <div class="position-relative border rounded bg-white overflow-hidden"
-                 style="height:350px;cursor:default"
+                 style="height:350px;cursor:default;user-select:none"
                  @onmousemove="OnContainerMouseMove"
                  @onmouseup="OnContainerMouseUp"
                  @onmouseleave="OnContainerMouseUp">
@@ -55,6 +55,7 @@
             <h5>拖拽排序 (Drag-to-Reorder List)</h5>
             <p class="small text-muted">拖拽列表项交换位置，拖拽时显示占位效果。</p>
             <div class="list-group border rounded"
+                 style="user-select:none"
                  @onmouseup="OnListMouseUp"
                  @onmouseleave="OnListMouseUp">
                 @for (int i = 0; i < sortableItems.Count; i++)
@@ -121,7 +122,7 @@
             <h5>多元素自由拖动 (Multi-Element Free Drag)</h5>
             <p class="small text-muted">在面板内自由拖动多个元素，每个元素独立响应。</p>
             <div class="position-relative border rounded bg-white overflow-hidden"
-                 style="height:350px"
+                 style="height:350px;user-select:none"
                  @onmousemove="OnFreeDragMove"
                  @onmouseup="OnFreeDragUp"
                  @onmouseleave="OnFreeDragUp">
