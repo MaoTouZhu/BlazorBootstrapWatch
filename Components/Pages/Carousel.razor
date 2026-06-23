@@ -1,0 +1,117 @@
+@page "/carousel"
+
+<PageTitle>Carousel - Bootstrap Showcase</PageTitle>
+
+<h2>🎠 Carousel</h2>
+<p class="lead">Image slideshow with controls, indicators, captions, and crossfade transitions.</p>
+
+<h5 class="mt-4">Basic Carousel with Controls & Indicators</h5>
+<div class="border rounded p-4 bg-light mb-4">
+    <div id="carouselDemo" class="carousel slide" data-bs-ride="carousel" style="max-width:800px;margin:0 auto">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselDemo" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#carouselDemo" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#carouselDemo" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner rounded">
+            @for (int i = 1; i <= 3; i++)
+            {
+                var bg = i switch { 1 => "#0d6efd", 2 => "#198754", 3 => "#6f42c1", _ => "#0d6efd" };
+                var label = i switch { 1 => "First slide", 2 => "Second slide", 3 => "Third slide", _ => "" };
+                <div class="carousel-item @(i == 1 ? "active" : "")">
+                    <div class="d-flex align-items-center justify-content-center" style="height:300px;background:@bg">
+                        <div class="text-center text-white">
+                            <h2>@label</h2>
+                            <p>Carousel with controls and indicators.</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselDemo" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselDemo" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+<h5>Carousel with Captions</h5>
+<div class="border rounded p-4 bg-light mb-4">
+    <div id="carouselCaptions" class="carousel slide" data-bs-ride="carousel" style="max-width:800px;margin:0 auto">
+        <div class="carousel-inner rounded">
+            @for (int i = 1; i <= 3; i++)
+            {
+                var bg = i switch { 1 => "#dc3545", 2 => "#fd7e14", 3 => "#0dcaf0", _ => "#dc3545" };
+                var title = i switch { 1 => "Slide with Captions", 2 => "Auto-cycling Slides", 3 => "Pause on Hover", _ => "" };
+                <div class="carousel-item @(i == 1 ? "active" : "")" data-bs-interval="3000">
+                    <div class="d-flex align-items-center justify-content-center text-white" style="height:280px;background:@bg">
+                        <h3>@title</h3>
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>@title</h5>
+                        <p>Caption text appears on medium+ screens.</p>
+                    </div>
+                </div>
+            }
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+</div>
+
+<h5>Crossfade Transition</h5>
+<div class="border rounded p-4 bg-light mb-4">
+    <div id="carouselFade" class="carousel slide carousel-fade" data-bs-ride="carousel" style="max-width:800px;margin:0 auto">
+        <div class="carousel-inner rounded">
+            @for (int i = 1; i <= 3; i++)
+            {
+                var bg = i switch { 1 => "#20c997", 2 => "#6f42c1", 3 => "#d63384", _ => "#20c997" };
+                <div class="carousel-item @(i == 1 ? "active" : "")">
+                    <div class="d-flex align-items-center justify-content-center text-white" style="height:200px;background:@bg">
+                        <div class="text-center">
+                            <h4>Crossfade Slide @i</h4>
+                            <p class="mb-0">Uses <code>.carousel-fade</code> for fade instead of slide.</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselFade" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselFade" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+</div>
+
+<h5>Dark Variant (for light backgrounds)</h5>
+<div class="border rounded p-4 bg-light mb-4">
+    <div id="carouselDark" class="carousel carousel-dark slide" data-bs-ride="carousel" style="max-width:800px;margin:0 auto">
+        <div class="carousel-inner rounded border">
+            @for (int i = 1; i <= 3; i++)
+            {
+                <div class="carousel-item @(i == 1 ? "active" : "")">
+                    <div class="d-flex align-items-center justify-content-center bg-light" style="height:180px">
+                        <h4>🌅 Dark Variant Slide @i</h4>
+                    </div>
+                </div>
+            }
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselDark" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselDark" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+    <p class="text-muted small mt-2"><code>.carousel-dark</code> makes controls dark for light backgrounds.</p>
+</div>

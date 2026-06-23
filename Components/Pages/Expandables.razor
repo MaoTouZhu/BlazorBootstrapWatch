@@ -1,0 +1,129 @@
+@page "/expandables"
+
+<PageTitle>Accordion & Collapse - Bootstrap Showcase</PageTitle>
+
+<h2>🪗 Accordion & Collapse</h2>
+<p class="lead">Accordion for collapsible content groups and standalone collapse toggles.</p>
+
+<h5 class="mt-4">Accordion</h5>
+<div class="border rounded p-4 bg-light mb-4">
+    <div class="accordion" id="accordionDemo">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#acc1">
+                    Accordion Item #1
+                </button>
+            </h2>
+            <div id="acc1" class="accordion-collapse collapse show" data-bs-parent="#accordionDemo">
+                <div class="accordion-body">
+                    <strong>This is the first item's body.</strong> It is shown by default using <code>.collapse.show</code>.
+                    The accordion uses <code>data-bs-parent</code> to close other items when one opens.
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#acc2">
+                    Accordion Item #2
+                </button>
+            </h2>
+            <div id="acc2" class="accordion-collapse collapse" data-bs-parent="#accordionDemo">
+                <div class="accordion-body">
+                    <strong>Second item.</strong> Hidden by default. Click the header to reveal.
+                    Bootstrap's accordion JavaScript handles the toggle behavior.
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#acc3">
+                    Accordion Item #3
+                </button>
+            </h2>
+            <div id="acc3" class="accordion-collapse collapse" data-bs-parent="#accordionDemo">
+                <div class="accordion-body">
+                    <strong>Third item.</strong> You can put any HTML content inside accordion bodies,
+                    including forms, images, or other components.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h5>Accordion Flush</h5>
+<div class="border rounded p-4 bg-light mb-4">
+    <div class="accordion accordion-flush" id="accordionFlush">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush1">
+                    Flush Item #1
+                </button>
+            </h2>
+            <div id="flush1" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
+                <div class="accordion-body">No borders or background — flush accordion removes the outer styling.</div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush2">
+                    Flush Item #2
+                </button>
+            </h2>
+            <div id="flush2" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
+                <div class="accordion-body">Clean, borderless appearance using <code>.accordion-flush</code>.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h5 class="mt-4">Basic Collapse (standalone)</h5>
+<div class="border rounded p-4 bg-light mb-4">
+    <p>
+        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button">
+            Toggle via Link
+        </a>
+        <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample">
+            Toggle via Button
+        </button>
+        <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse">
+            Toggle Both
+        </button>
+    </p>
+    <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+            This content is shown/hidden when you click the toggle buttons.
+            The collapse uses CSS transitions for smooth animation.
+        </div>
+    </div>
+</div>
+
+<h5>Multiple Targets</h5>
+<div class="border rounded p-4 bg-light mb-4">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="collapse multi-collapse" id="multiA">
+                <div class="card card-body bg-primary bg-opacity-10 mb-2">Panel A — toggled by "Toggle Both"</div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="collapse multi-collapse" id="multiB">
+                <div class="card card-body bg-success bg-opacity-10 mb-2">Panel B — toggled by "Toggle Both"</div>
+            </div>
+        </div>
+    </div>
+    <p class="text-muted small">Use <code>data-bs-target=".multi-collapse"</code> to toggle multiple elements with the same class.</p>
+</div>
+
+<h5>Horizontal Collapse</h5>
+<div class="border rounded p-4 bg-light mb-4">
+    <button class="btn btn-info text-white mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#horizontalCollapse">
+        Toggle Width
+    </button>
+    <div style="min-height:100px">
+        <div class="collapse collapse-horizontal" id="horizontalCollapse">
+            <div class="card card-body" style="width:300px">
+                This panel collapses horizontally instead of vertically. Uses <code>.collapse-horizontal</code>.
+            </div>
+        </div>
+    </div>
+</div>

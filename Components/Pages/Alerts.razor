@@ -1,0 +1,138 @@
+@page "/alerts"
+@rendermode InteractiveServer
+
+<PageTitle>Alerts & Toasts - Bootstrap Showcase</PageTitle>
+
+<h2>🔔 Alerts & Toasts</h2>
+<p class="lead">Alert messages with variants, dismissible alerts, and toast notifications.</p>
+
+<h5 class="mt-4">Alert Variants</h5>
+<div class="mb-3">
+    @foreach (var v in alertVariants)
+    {
+        <div class="alert alert-@v" role="alert">
+            <strong>@v:</strong> A simple @v alert — check it out!
+        </div>
+    }
+</div>
+
+<h5>Dismissible Alerts (Interactive)</h5>
+<div class="mb-4">
+    @foreach (var (v, i) in alertVariants.Select((v, i) => (v, i)))
+    {
+        if (!dismissed[i])
+        {
+            <div class="alert alert-@v alert-dismissible fade show" role="alert">
+                <strong>@v:</strong> Click the X to dismiss this alert.
+                <button type="button" class="btn-close" @onclick="() => Dismiss(i)" aria-label="Close"></button>
+            </div>
+        }
+    }
+    @if (dismissed.All(d => d))
+    {
+        <div class="text-center py-3">
+            <p class="text-muted">All alerts dismissed!</p>
+            <button class="btn btn-outline-secondary" @onclick="ResetAlerts">🔄 Restore All</button>
+        </div>
+    }
+</div>
+
+<h5>Alert with Links & Additional Content</h5>
+<div class="alert alert-success mb-3">
+    <h4 class="alert-heading">Well done!</h4>
+    <p>You successfully read this important alert message. This example text will run a bit longer.</p>
+    <hr>
+    <p class="mb-0">Whenever you need to, use <a href="#" class="alert-link">alert links</a> for actions.</p>
+</div>
+
+<h5>Live Alert Demo (Blazor)</h5>
+<div class="border rounded p-4 bg-light mb-4">
+    <button class="btn btn-primary me-1" @onclick='() => AddAlert("primary")'>Primary</button>
+    <button class="btn btn-success me-1" @onclick='() => AddAlert("success")'>Success</button>
+    <button class="btn btn-danger me-1" @onclick='() => AddAlert("danger")'>Danger</button>
+    <button class="btn btn-warning me-1" @onclick='() => AddAlert("warning")'>Warning</button>
+    <button class="btn btn-outline-secondary" @onclick="ClearLiveAlerts">Clear All</button>
+    <div class="mt-3">
+        @foreach (var (alert, idx) in liveAlerts.Select((a, i) => (a, i)))
+        {
+            <div class="alert alert-@alert.Item1 alert-dismissible fade show py-2" role="alert">
+                #@(idx + 1) @alert.Item2
+                <button type="button" class="btn-close" @onclick='() => RemoveLiveAlert(idx)'></button>
+            </div>
+        }
+        @if (!liveAlerts.Any())
+        {
+            <p class="text-muted mb-0">Click a button above to generate alerts.</p>
+        }
+    </div>
+</div>
+
+<h5 class="mt-4">Toasts</h5>
+<p>Bootstrap toasts require JavaScript. These toasts auto-show via the bootstrap-reinit.js helper.</p>
+<div class="border rounded p-4 bg-light mb-4">
+    <div class="toast fade show mb-3" role="alert" data-bs-autohide="false">
+        <div class="toast-header">
+            <strong class="me-auto text-primary">🔔 Bootstrap</strong>
+            <small>just now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div class="toast-body">Hello, world! This is a toast message.</div>
+    </div>
+    <div class="toast fade show mb-3" role="alert" data-bs-autohide="false">
+        <div class="toast-header bg-success text-white">
+            <strong class="me-auto">✅ Success</strong>
+            <small>2 sec ago</small>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
+        </div>
+        <div class="toast-body">Operation completed successfully.</div>
+    </div>
+    <div class="toast fade show" role="alert" data-bs-autohide="false">
+        <div class="toast-header bg-danger text-white">
+            <strong class="me-auto">❌ Error</strong>
+            <small>5 sec ago</small>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
+        </div>
+        <div class="toast-body">Something went wrong. Please try again.</div>
+    </div>
+</div>
+
+<h5>Toast Placement</h5>
+<div class="border rounded p-4 bg-light mb-4 position-relative" style="min-height:180px">
+    <div class="toast-container position-static">
+        <div class="toast fade show" role="alert" data-bs-autohide="false">
+            <div class="toast-header">
+                <strong class="me-auto">Stacked toasts</strong>
+                <small>now</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body">Toast #1 in a toast container.</div>
+        </div>
+        <div class="toast fade show" role="alert" data-bs-autohide="false">
+            <div class="toast-header">
+                <strong class="me-auto">Stacked toasts</strong>
+                <small>now</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body">Toast #2 stacked below.</div>
+        </div>
+    </div>
+    <small class="text-muted mt-2 d-block">Toasts stack vertically in a toast container.</small>
+</div>
+
+@code {
+    private bool[] dismissed = new bool[8];
+    private string[] alertVariants = ["primary","secondary","success","danger","warning","info","light","dark"];
+    private List<(string, string)> liveAlerts = new();
+    private int alertCounter;
+
+    private void Dismiss(int i) { dismissed[i] = true; StateHasChanged(); }
+    private void ResetAlerts() { dismissed = new bool[8]; }
+
+    private void AddAlert(string variant)
+    {
+        alertCounter++;
+        liveAlerts.Add((variant, $"{variant} alert #{alertCounter} — generated at {DateTime.Now:HH:mm:ss}"));
+    }
+    private void RemoveLiveAlert(int i) { liveAlerts.RemoveAt(i); }
+    private void ClearLiveAlerts() { liveAlerts.Clear(); alertCounter = 0; }
+}

@@ -1,0 +1,182 @@
+@page "/overlays"
+
+<PageTitle>Modals & Offcanvas - Bootstrap Showcase</PageTitle>
+
+<h2>🪟 Modals & Offcanvas</h2>
+<p class="lead">Modal dialogs for alerts/confirmation and offcanvas side panels.</p>
+
+<h5 class="mt-4">Modal Examples</h5>
+<div class="border rounded p-4 bg-light mb-4 d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#demoModal">
+        Basic Modal
+    </button>
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticModal">
+        Static Backdrop
+    </button>
+    <button type="button" class="btn btn-info text-white" data-bs-toggle="modal" data-bs-target="#scrollModal">
+        Scrolling Modal
+    </button>
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#centeredModal">
+        Vertically Centered
+    </button>
+    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#smallModal">
+        Small (sm)
+    </button>
+    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#largeModal">
+        Large (lg)
+    </button>
+</div>
+
+<!-- Basic Modal -->
+<div class="modal fade" id="demoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal Title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>This is a basic Bootstrap modal dialog. Click outside or the X to close.</p>
+                <p>Modals are built with HTML, CSS, and JS.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Static Backdrop Modal -->
+<div class="modal fade" id="staticModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Static Backdrop</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>🔒 This modal won't close when clicking outside. You must use the buttons.</p>
+                <p>Set <code>data-bs-backdrop="static"</code> on the modal.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">I Understand</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scrolling Modal -->
+<div class="modal fade" id="scrollModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"><h5 class="modal-title">Scrolling Content</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+            <div class="modal-body">
+                @for (int i = 1; i <= 10; i++)
+                {
+                    <p>Line @i: This is some placeholder content to show scrolling behavior inside the modal. Long content causes the modal body to scroll.</p>
+                }
+            </div>
+            <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div>
+        </div>
+    </div>
+</div>
+
+<!-- Centered Modal -->
+<div class="modal fade" id="centeredModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header"><h5 class="modal-title">Vertically Centered</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+            <div class="modal-body"><p>This modal is vertically centered using <code>.modal-dialog-centered</code>.</p></div>
+            <div class="modal-footer"><button type="button" class="btn btn-success" data-bs-dismiss="modal">Got it!</button></div>
+        </div>
+    </div>
+</div>
+
+<!-- Small Modal -->
+<div class="modal fade" id="smallModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header"><h5 class="modal-title">Small Modal</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+            <div class="modal-body"><p>Small modal using <code>.modal-sm</code>.</p></div>
+            <div class="modal-footer"><button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">OK</button></div>
+        </div>
+    </div>
+</div>
+
+<!-- Large Modal -->
+<div class="modal fade" id="largeModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header"><h5 class="modal-title">Large Modal</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+            <div class="modal-body"><p>Large modal using <code>.modal-lg</code>. Good for more complex content.</p></div>
+            <div class="modal-footer"><button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button></div>
+        </div>
+    </div>
+</div>
+
+<h5 class="mt-4">Offcanvas</h5>
+<div class="border rounded p-4 bg-light mb-4 d-flex flex-wrap gap-2">
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasStart">Left (start)</button>
+    <button class="btn btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd">Right (end)</button>
+    <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop">Top</button>
+    <button class="btn btn-danger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom">Bottom</button>
+    <button class="btn btn-outline-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBackdrop" data-bs-backdrop="static">Static Backdrop</button>
+</div>
+
+<!-- Offcanvas Start (Left) -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasStart">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Left Offcanvas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+        <p>Content for the left offcanvas panel. Slides in from the left side.</p>
+        <hr>
+        <p>Use <code>.offcanvas-start</code> for left placement.</p>
+    </div>
+</div>
+
+<!-- Offcanvas End (Right) -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEnd">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Right Offcanvas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+        <p>Slides in from the right. Uses <code>.offcanvas-end</code>.</p>
+        <div class="mb-3">
+            <label class="form-label">Example form in offcanvas:</label>
+            <input class="form-control" placeholder="Type something...">
+        </div>
+    </div>
+</div>
+
+<!-- Offcanvas Top -->
+<div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" style="height:35vh">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Top Offcanvas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body"><p>Slides down from the top. Uses <code>.offcanvas-top</code>.</p></div>
+</div>
+
+<!-- Offcanvas Bottom -->
+<div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" style="height:35vh">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Bottom Offcanvas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body"><p>Slides up from the bottom. Uses <code>.offcanvas-bottom</code>.</p></div>
+</div>
+
+<!-- Static Backdrop Offcanvas -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasBackdrop" data-bs-backdrop="static">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Static Backdrop</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+        <p>🔒 Cannot be dismissed by clicking outside. Must use the close button.</p>
+    </div>
+</div>

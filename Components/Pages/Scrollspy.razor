@@ -1,0 +1,105 @@
+@page "/scrollspy"
+
+<PageTitle>Scrollspy - Bootstrap Showcase</PageTitle>
+
+<h2>👁️ Scrollspy</h2>
+<p class="lead">Automatically update navigation based on scroll position to indicate which section is visible.</p>
+
+<div class="alert alert-info">
+    ⚠️ Scrollspy requires the Bootstrap JavaScript bundle. It works by tracking scroll position
+    relative to anchor targets (<code>id</code> attributes) and updating the active nav link accordingly.
+</div>
+
+<h5 class="mt-4">Basic Scrollspy</h5>
+<div class="border rounded mb-4">
+    <div class="row g-0">
+        <div class="col-4">
+            <nav id="scrollspyNav1" class="h-100 flex-column align-items-stretch pe-3 border-end p-3">
+                <nav class="nav nav-pills flex-column sticky-top" style="top:10px">
+                    <a class="nav-link" href="#ss-item1">Item 1</a>
+                    <a class="nav-link" href="#ss-item2">Item 2</a>
+                    <a class="nav-link" href="#ss-item3">Item 3</a>
+                    <nav class="nav nav-pills flex-column ms-3">
+                        <a class="nav-link" href="#ss-item3-1">Item 3-1</a>
+                        <a class="nav-link" href="#ss-item3-2">Item 3-2</a>
+                    </nav>
+                </nav>
+            </nav>
+        </div>
+        <div class="col-8">
+            <div data-bs-spy="scroll" data-bs-target="#scrollspyNav1" data-bs-smooth-scroll="true"
+                 class="p-4" style="max-height:380px;overflow-y:auto" tabindex="0">
+                <h4 id="ss-item1">@First</h4>
+                <p>This is the content for item 1. Scroll down to see the navigation update.</p>
+                <p>The active pill in the sidebar changes as you scroll through sections.</p>
+                <p>Scrollspy uses <code>data-bs-spy="scroll"</code> on the scrollable container.</p>
+
+                <h4 id="ss-item2">@Second</h4>
+                <p>Now you're viewing item 2. The sidebar navigation automatically updated.</p>
+                <p>Bootstrap's scrollspy watches the scroll position and adds <code>.active</code> class.</p>
+                <p>This is useful for documentation pages, help sections, or any long-form content.</p>
+
+                <h4 id="ss-item3">@Third</h4>
+                <p>Item 3 is now active. Notice the nested nav items below.</p>
+                <p>Scrollspy supports nested navigation for subsections.</p>
+                <p>Each section needs an <code>id</code> that matches the nav link's <code>href</code>.</p>
+
+                <h5 id="ss-item3-1">@ThirdOne</h5>
+                <p>This is a subsection of item 3. The nested nav link should be active.</p>
+                <p>Nested navigation uses <code>.ms-3</code> for indentation in the sidebar.</p>
+
+                <h5 id="ss-item3-2">@ThirdTwo</h5>
+                <p>Another subsection. Scrollspy correctly tracks even deeply nested sections.</p>
+                <p>End of the scrollspy demo content.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h5 class="mt-4">Navbar Scrollspy</h5>
+<div class="border rounded mb-4">
+    <nav id="scrollspyNav2" class="navbar bg-body-tertiary px-3 mb-3 border-bottom sticky-top">
+        <a class="navbar-brand" href="#">Project Name</a>
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a class="nav-link" href="#nb-fat">@Fat</a></li>
+            <li class="nav-item"><a class="nav-link" href="#nb-mdo">@@mdo</a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Dropdown</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#nb-one">one</a></li>
+                    <li><a class="dropdown-item" href="#nb-two">two</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div data-bs-spy="scroll" data-bs-target="#scrollspyNav2"
+         class="p-4" style="max-height:350px;overflow-y:auto" tabindex="0">
+        <h4 id="nb-fat">@Fat</h4>
+        <p>Scrollspy demo with navbar-style navigation. The navbar items highlight as you scroll.</p>
+        <p>This pattern is common in single-page applications and documentation sites.</p>
+        <p>The active link updates based on which heading is currently in view.</p>
+
+        <h4 id="nb-mdo">@@mdo</h4>
+        <p>This section is identified by <code>id="nb-mdo"</code>.</p>
+        <p>As you scroll into this section, the "@@mdo" nav pill becomes active.</p>
+        <p>The previous "@@fat" pill deactivates automatically.</p>
+
+        <h4 id="nb-one">one</h4>
+        <p>This section corresponds to the dropdown menu item "one".</p>
+        <p>Dropdown items can also participate in scrollspy tracking.</p>
+
+        <h4 id="nb-two">two</h4>
+        <p>The final section, corresponding to the dropdown item "two".</p>
+        <p>This completes the navbar scrollspy demonstration.</p>
+    </div>
+</div>
+
+@code {
+    private const string First = "First Section";
+    private const string Second = "Second Section";
+    private const string Third = "Third Section";
+    private const string ThirdOne = "Subsection 3-1";
+    private const string ThirdTwo = "Subsection 3-2";
+    private const string Fat = "@@fat";
+    private const string Mdo = "@@mdo";
+}

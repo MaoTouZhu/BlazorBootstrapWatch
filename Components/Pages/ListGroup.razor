@@ -1,0 +1,125 @@
+@page "/listgroup"
+
+<PageTitle>List Group - Bootstrap Showcase</PageTitle>
+
+<h2>📃 List Group</h2>
+<p class="lead">Flexible list components: basic, links, flush, numbered, checkboxes, and contextual variants.</p>
+
+<h5 class="mt-4">Basic List Group</h5>
+<div class="border rounded p-4 bg-light mb-4">
+    <div class="row">
+        <div class="col-md-6">
+            <ul class="list-group mb-3">
+                <li class="list-group-item">An item</li>
+                <li class="list-group-item">A second item</li>
+                <li class="list-group-item">A third item</li>
+                <li class="list-group-item">A fourth item</li>
+                <li class="list-group-item disabled">Disabled item</li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <ul class="list-group">
+                <li class="list-group-item active">Active item (highlighted)</li>
+                <li class="list-group-item">Regular item</li>
+                <li class="list-group-item list-group-item-action">Action item (hover)</li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    With badge
+                    <span class="badge bg-primary rounded-pill">14</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<h5>Link-based List Group</h5>
+<div class="border rounded p-4 bg-light mb-4">
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action active">Active link item</a>
+        <a href="#" class="list-group-item list-group-item-action">Second link item</a>
+        <a href="#" class="list-group-item list-group-item-action">Third link item</a>
+        <a href="#" class="list-group-item list-group-item-action disabled">Disabled link</a>
+    </div>
+</div>
+
+<h5>Flush & Numbered</h5>
+<div class="border rounded p-4 bg-light mb-4">
+    <div class="row">
+        <div class="col-md-6">
+            <p class="fw-bold">Flush (no borders)</p>
+            <ul class="list-group list-group-flush border rounded mb-3">
+                <li class="list-group-item">Flush item 1</li>
+                <li class="list-group-item">Flush item 2</li>
+                <li class="list-group-item">Flush item 3</li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <p class="fw-bold">Numbered</p>
+            <ol class="list-group list-group-numbered mb-3">
+                <li class="list-group-item">Numbered item one</li>
+                <li class="list-group-item">Numbered item two</li>
+                <li class="list-group-item">Numbered item three</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<h5>Contextual Variants</h5>
+<div class="border rounded p-4 bg-light mb-4">
+    <ul class="list-group">
+        @foreach (var c in new[]{"","primary","secondary","success","danger","warning","info","light","dark"})
+        {
+            <li class="list-group-item list-group-item-@c">
+                @(string.IsNullOrEmpty(c) ? "Default" : c) list group item
+            </li>
+        }
+    </ul>
+</div>
+
+<h5>With Checkboxes & Radios</h5>
+<div class="border rounded p-4 bg-light mb-4">
+    <div class="list-group">
+        <label class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value=""> First checkbox
+        </label>
+        <label class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="" checked> Second checkbox (checked)
+        </label>
+        <label class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value=""> Third checkbox
+        </label>
+    </div>
+    <hr>
+    <div class="list-group">
+        <label class="list-group-item">
+            <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" checked> Radio option 1
+        </label>
+        <label class="list-group-item">
+            <input class="form-check-input me-1" type="radio" name="listGroupRadio" value=""> Radio option 2
+        </label>
+        <label class="list-group-item">
+            <input class="form-check-input me-1" type="radio" name="listGroupRadio" value=""> Radio option 3
+        </label>
+    </div>
+</div>
+
+<h5>Custom Content</h5>
+<div class="border rounded p-4 bg-light mb-4">
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">List group heading</h5>
+                <small>3 days ago</small>
+            </div>
+            <p class="mb-1">Some placeholder content with a second line of text.</p>
+            <small class="text-muted">And some muted small print.</small>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Another heading</h5>
+                <small class="text-muted">1 day ago</small>
+            </div>
+            <p class="mb-1">Different content for the second item.</p>
+            <small class="text-muted">Donec id elit non mi porta.</small>
+        </a>
+    </div>
+</div>

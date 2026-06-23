@@ -1,0 +1,51 @@
+@page "/"
+
+<PageTitle>Bootstrap Showcase - Home</PageTitle>
+
+<div class="text-center py-5">
+    <h1 class="display-3 fw-bold text-primary">🎨 Bootstrap 5 Showcase</h1>
+    <p class="lead mt-3 text-secondary">
+        Interactive demonstrations of every Bootstrap component, organized by category.
+        Built with <span class="badge bg-dark">Blazor</span> + <span class="badge bg-primary">Bootstrap 5.3</span>
+    </p>
+</div>
+
+<div class="row g-4 mt-4">
+    @foreach (var cat in categories)
+    {
+        <div class="col-sm-6 col-lg-4 col-xl-3">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body text-center">
+                    <div class="display-5 mb-2">@cat.Icon</div>
+                    <h5 class="card-title">@cat.Name</h5>
+                    <p class="card-text small text-muted">@cat.Desc</p>
+                    <a href="@cat.Route" class="btn btn-outline-primary btn-sm stretched-link">Explore</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    private record Category(string Icon, string Name, string Desc, string Route);
+
+    private readonly Category[] categories = [
+        new("📐", "Layout", "Grid, containers, columns, gutters, breakpoints", "layout"),
+        new("🔤", "Typography", "Headings, display, lead, lists, text utilities", "typography"),
+        new("🎨", "Colors", "Theme colors, backgrounds, text colors, gradients", "colors"),
+        new("📊", "Tables", "Basic, striped, hover, bordered, responsive tables", "tables"),
+        new("📝", "Forms", "Input, select, checkbox, radio, switches, validation", "forms"),
+        new("🔘", "Buttons & Badges", "Variants, sizes, outlines, groups, badges", "buttons"),
+        new("🔔", "Alerts & Toasts", "Alert variants, dismissible, toast notifications", "alerts"),
+        new("🃏", "Cards", "Header, footer, image, grid, colors, sizing", "cards"),
+        new("🧭", "Navigation", "Navs, tabs, navbar, breadcrumb, pagination", "navigation"),
+        new("📋", "Dropdowns", "Single, split, sizing, directions, menus", "dropdowns"),
+        new("🪟", "Overlays", "Modal dialogs, offcanvas side panels", "overlays"),
+        new("🪗", "Expandables", "Accordion, collapse, horizontal collapse", "expandables"),
+        new("🎠", "Carousel", "Slides, controls, indicators, captions", "carousel"),
+        new("📃", "List Group", "Basic, links, flush, numbered, checkboxes", "listgroup"),
+        new("💬", "Tooltips & Popovers", "Tooltips, popovers, custom content", "tooltips-popovers"),
+        new("⏳", "Loading States", "Progress bars, spinners, placeholders", "loading"),
+        new("👁️", "Scrollspy", "Scroll tracking, nested nav", "scrollspy"),
+    ];
+}
