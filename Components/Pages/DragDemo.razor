@@ -176,8 +176,8 @@
         if (!draggingWindow) return;
         double deltaX = e.ClientX - startClientX;
         double deltaY = e.ClientY - startClientY;
-        winX = Math.Clamp(startWinX + deltaX, 0, 400);
-        winY = Math.Clamp(startWinY + deltaY, 0, 280);
+        winX = startWinX + deltaX;
+        winY = startWinY + deltaY;
     }
 
     private void OnContainerMouseUp()
@@ -278,8 +278,8 @@
     {
         if (draggingFreeId < 0) return;
         var el = freeElements.First(x => x.Id == draggingFreeId);
-        el.X = Math.Clamp(freeStartElX + (e.ClientX - freeStartClientX), 0, 350);
-        el.Y = Math.Clamp(freeStartElY + (e.ClientY - freeStartClientY), 0, 300);
+        el.X = freeStartElX + (e.ClientX - freeStartClientX);
+        el.Y = freeStartElY + (e.ClientY - freeStartClientY);
     }
 
     private void OnFreeDragUp() => draggingFreeId = -1;
