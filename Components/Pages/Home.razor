@@ -2,16 +2,17 @@
 
 <PageTitle>Bootstrap 展示 (Showcase) - 首页 (Home)</PageTitle>
 
-<div class="text-center py-5">
-    <h1 class="display-3 fw-bold text-primary">🎨 Bootstrap 5 组件展示 (Showcase)</h1>
+<div class="text-center py-4">
+    <h1 class="display-3 fw-bold text-primary">🎨 Bootstrap 5 + Blazor 展示</h1>
     <p class="lead mt-3 text-secondary">
-        每个 Bootstrap 组件的交互式演示，按类别整理。
+        Bootstrap 组件的交互式演示，以及 Blazor 框架特性示例。
         基于 <span class="badge bg-dark">Blazor</span> + <span class="badge bg-primary">Bootstrap 5.3</span> 构建
     </p>
 </div>
 
-<div class="row g-4 mt-4">
-    @foreach (var cat in categories)
+<h4 class="mt-4 mb-3 border-bottom pb-2">🎨 Bootstrap 组件 (Bootstrap Components)</h4>
+<div class="row g-4 mb-5">
+    @foreach (var cat in bootstrapCategories)
     {
         <div class="col-sm-6 col-lg-4 col-xl-3">
             <div class="card h-100 shadow-sm border-0">
@@ -26,10 +27,27 @@
     }
 </div>
 
+<h4 class="mt-4 mb-3 border-bottom pb-2">⚡ Blazor 特性 (Blazor Features)</h4>
+<div class="row g-4">
+    @foreach (var cat in blazorCategories)
+    {
+        <div class="col-sm-6 col-lg-4 col-xl-3">
+            <div class="card h-100 shadow-sm border-0 border-start border-3 border-info">
+                <div class="card-body text-center">
+                    <div class="display-5 mb-2">@cat.Icon</div>
+                    <h5 class="card-title">@cat.Name</h5>
+                    <p class="card-text small text-muted">@cat.Desc</p>
+                    <a href="@cat.Route" class="btn btn-outline-info btn-sm stretched-link">浏览 (Explore)</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
 @code {
     private record Category(string Icon, string Name, string Desc, string Route);
 
-    private readonly Category[] categories = [
+    private readonly Category[] bootstrapCategories = [
         new("📐", "布局 (Layout)", "栅格 (Grid)、容器 (Container)、列 (Column)、间距 (Gutter)、断点 (Breakpoint)", "layout"),
         new("🔤", "排版 (Typography)", "标题 (Heading)、大标题 (Display)、导语 (Lead)、列表 (List)、文本工具类", "typography"),
         new("🎨", "颜色 (Colors)", "主题色、背景色、文本色、渐变", "colors"),
@@ -47,5 +65,16 @@
         new("💬", "工具提示与弹出框 (Tooltips & Popovers)", "工具提示、弹出框、自定义内容", "tooltips-popovers"),
         new("⏳", "加载状态 (Loading States)", "进度条 (Progress)、旋转器 (Spinner)、占位符 (Placeholder)", "loading"),
         new("👁️", "滚动监听 (Scrollspy)", "滚动位置追踪、嵌套导航", "scrollspy"),
+    ];
+
+    private readonly Category[] blazorCategories = [
+        new("🔗", "数据绑定 (Data Binding)", "单向/双向绑定、事件处理、Lambda、格式化 (@@bind, @@onclick, @@bind:format)", "databinding"),
+        new("🧩", "组件通信 (Component Communication)", "Parameter、EventCallback、CascadingValue、RenderFragment", "component-communication"),
+        new("📋", "Blazor 表单 (Blazor Forms)", "EditForm、内置输入组件、数据注解验证、自定义验证", "blazor-forms"),
+        new("💉", "依赖注入 (Dependency Injection)", "Singleton / Scoped / Transient 三种生命周期演示", "di"),
+        new("🔧", "JS 互操作 (JS Interop)", "IJSRuntime、ES 模块、ElementReference、localStorage、剪贴板", "js-interop"),
+        new("🚀", "高级特性 (Advanced)", "Virtualize 虚拟滚动、ErrorBoundary 错误边界、生命周期、@@key", "advanced"),
+        new("🖱️", "鼠标拖动 (Drag & Drop)", "拖动窗口、拖拽排序列表、自由拖动标签+贝塞尔曲线、调整大小", "drag-demo"),
+        new("🖱️", "右键菜单 (Context Menu)", "@@oncontextmenu 自定义右键菜单、左键点击、遮罩关闭", "context-menu"),
     ];
 }
