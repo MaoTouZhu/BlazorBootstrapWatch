@@ -1,6 +1,5 @@
 @rendermode InteractiveServer
 @inject FloatingPopupService PopupService
-@inject IJSRuntime JS
 @implements IDisposable
 
 @if (PopupService.Visible)
@@ -9,8 +8,7 @@
          style="left:@(PopupService.X.ToString("F0"))px;top:@(PopupService.Y.ToString("F0"))px;
                 z-index:9999;min-width:300px;@(dragging ? "cursor:grabbing;opacity:0.95" : "")"
          @onmousemove="OnMove"
-         @onmouseup="OnUp"
-         @onmouseleave="OnUp">
+         @onmouseup="OnUp">
 
         <div class="bg-primary text-white rounded-top px-3 py-2 d-flex justify-content-between align-items-center"
              @onmousedown="StartDrag" @onmousedown:stopPropagation
@@ -35,47 +33,32 @@
 @code {
     private bool dragging;
     private double startClientX, startClientY, startX, startY;
-    private int moveCount;
 
     protected override void OnInitialized()
     {
         PopupService.OnChanged += StateHasChanged;
     }
 
-    private async void StartDrag(MouseEventArgs e)
+    private void StartDrag(MouseEventArgs e)
     {
         dragging = true;
-        moveCount = 0;
         startClientX = e.ClientX;
         startClientY = e.ClientY;
         startX = PopupService.X;
         startY = PopupService.Y;
-        await JS.InvokeVoidAsync("console.log",
-            $"[Popup] 🖱️ mousedown  client=({e.ClientX:F0},{e.ClientY:F0})  popup=({startX:F0},{startY:F0})");
     }
 
-    private async void OnMove(MouseEventArgs e)
+    private void OnMove(MouseEventArgs e)
     {
-        moveCount++;
-        var newX = startX + (e.ClientX - startClientX);
-        var newY = startY + (e.ClientY - startClientY);
-        if (moveCount <= 5 || moveCount % 10 == 0)
-            await JS.InvokeVoidAsync("console.log",
-                $"[Popup] ↔ mousemove #{moveCount}  client=({e.ClientX:F0},{e.ClientY:F0}) → ({newX:F0},{newY:F0})" + (dragging ? "" : " ⚠️dragging=false!"));
         if (!dragging) return;
-        PopupService.X = newX;
-        PopupService.Y = newY;
+        PopupService.X = startX + (e.ClientX - startClientX);
+        PopupService.Y = startY + (e.ClientY - startClientY);
         PopupService.Notify();
     }
 
-    private async void OnUp()
-    {
-        if (!dragging) { await JS.InvokeVoidAsync("console.warn", $"[Popup] ⚠️ mouseup/leave 但 dragging 已经是 false (moveCount={moveCount})"); return; }
-        await JS.InvokeVoidAsync("console.log", $"[Popup] ✅ 松开 mouseup/leave  moveCount={moveCount}  最终位置=({PopupService.X:F0},{PopupService.Y:F0})");
-        dragging = false;
-    }
+    private void OnUp() => dragging = false;
 
-    private async void Close() { await JS.InvokeVoidAsync("console.log", "[Popup] ✕ 关闭弹窗"); PopupService.Close(); }
+    private void Close() => PopupService.Close();
 
     public void Dispose() => PopupService.OnChanged -= StateHasChanged;
 }
