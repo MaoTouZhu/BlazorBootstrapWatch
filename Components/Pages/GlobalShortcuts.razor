@@ -1,0 +1,84 @@
+@page "/global-shortcuts"
+
+<PageTitle>全局快捷键 (Global Shortcuts) - Blazor 特性</PageTitle>
+
+<h2>⌨️ 全局快捷键 (Global Shortcuts)</h2>
+<p class="lead">通过 JavaScript 全局键盘事件监听，在 Blazor 应用中实现跨页面快捷键。</p>
+
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="border rounded p-4 bg-light">
+            <h5>可用快捷键</h5>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr><th>快捷键</th><th>功能</th><th>说明</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><kbd>Ctrl</kbd> + <kbd>H</kbd></td>
+                            <td>🏠 回到首页</td>
+                            <td>任意页面按下即可跳转到首页 <code>/</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h5 class="mt-4">试试看</h5>
+            <p>按 <kbd>Ctrl</kbd> + <kbd>H</kbd> 即可返回首页。输入框内聚焦时不会触发，避免干扰正常输入。</p>
+            <div class="mb-3">
+                <input class="form-control" type="text" placeholder="在此输入框中按 Ctrl+H 不会跳转（被屏蔽）..." />
+            </div>
+
+            <h5 class="mt-4">全局覆盖区域</h5>
+            <div class="alert alert-success">
+                ✅ 此快捷键在<strong>所有页面</strong>均有效，无需在每个页面单独注册。
+                通过 <code>global-shortcuts.js</code> 中的全局 <code>keydown</code> 事件监听实现。
+            </div>
+
+            <h5 class="mt-4">排除场景</h5>
+            <p>以下场景中快捷键<strong>不会</strong>触发，防止误操作：</p>
+            <ul>
+                <li><code>&lt;input&gt;</code> 输入框聚焦时</li>
+                <li><code>&lt;textarea&gt;</code> 文本域聚焦时</li>
+                <li><code>&lt;select&gt;</code> 下拉选择聚焦时</li>
+                <li><code>contentEditable</code> 可编辑元素聚焦时</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="border rounded p-4 bg-light h-100">
+            <h5>实现代码</h5>
+            <p class="small text-muted"><code>wwwroot/js/global-shortcuts.js</code></p>
+            <div class="bg-dark text-light rounded p-3">
+                <pre class="small mb-0"><code>function registerShortcuts() {
+  document.addEventListener('keydown', e => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'h') {
+      // 输入框内不触发
+      var tag = document.activeElement?.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' ||
+          tag === 'SELECT' || document.activeElement
+          ?.isContentEditable) return;
+      e.preventDefault();
+      window.location.href = '/';
+    }
+  });
+}
+
+// 首次加载 + Blazor 增强导航后
+registerShortcuts();
+document.addEventListener('enhancedload', registerShortcuts);</code></pre>
+            </div>
+
+            <h5 class="mt-4">关键点</h5>
+            <ul class="small">
+                <li class="mb-2"><strong>全局 keydown</strong><br>在 <code>document</code> 上监听，覆盖全部页面</li>
+                <li class="mb-2"><strong>Ctrl/Cmd 兼容</strong><br><code>e.ctrlKey || e.metaKey</code> 同时支持 Windows 和 Mac</li>
+                <li class="mb-2"><strong>preventDefault</strong><br>阻止浏览器默认行为（如 Chrome 打开历史记录）</li>
+                <li class="mb-2"><strong>输入框排除</strong><br>检查 <code>activeElement</code> 避免干扰文字输入</li>
+                <li class="mb-2"><strong>enhancedload</strong><br>Blazor 增强导航后重新注册，确保持久生效</li>
+            </ul>
+        </div>
+    </div>
+</div>
