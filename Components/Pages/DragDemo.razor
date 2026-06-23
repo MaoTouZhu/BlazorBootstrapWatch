@@ -54,16 +54,17 @@
         <div class="border rounded p-3 bg-light">
             <h5>拖拽排序 (Drag-to-Reorder List)</h5>
             <p class="small text-muted">拖拽列表项交换位置，拖拽时显示占位效果。</p>
-            <div class="list-group border rounded">
+            <div class="list-group border rounded"
+                 @onmouseup="OnListMouseUp"
+                 @onmouseleave="OnListMouseUp">
                 @for (int i = 0; i < sortableItems.Count; i++)
                 {
                     var idx = i;
                     <div class="list-group-item d-flex align-items-center gap-2
                                 @(dragListIndex == idx ? "bg-primary bg-opacity-10 border-primary" : "")
                                 @(dropTargetIndex == idx && dragListIndex != idx ? "border-top border-2 border-primary" : "")"
-                         draggable="true"
                          @onmousedown="() => OnListMouseDown(idx)"
-                         @onmouseup="OnListMouseUp"
+                         @onmousemove="() => OnListMouseOver(idx)"
                          style="cursor:@(draggingList ? "grabbing" : "grab");
                                 @(draggingList && dragListIndex == idx ? "opacity:0.4" : "")">
                         <span class="text-muted me-2">⠿</span>
@@ -74,7 +75,7 @@
                 }
             </div>
             <small class="text-muted mt-2 d-block">
-                按住项拖动，松开时交换位置。使用 <code>@@onmousedown</code> 记录源索引，<code>@@onmouseup</code> 执行交换。
+                按住项拖动到目标位置，松开时交换位置。
             </small>
         </div>
     </div>
@@ -205,12 +206,18 @@
     private void OnListMouseDown(int index)
     {
         dragListIndex = index;
+        dropTargetIndex = index;
         draggingList = true;
+    }
+
+    private void OnListMouseOver(int index)
+    {
+        if (draggingList) dropTargetIndex = index;
     }
 
     private void OnListMouseUp()
     {
-        if (draggingList && dropTargetIndex >= 0 && dragListIndex != dropTargetIndex)
+        if (draggingList && dropTargetIndex >= 0 && dragListIndex >= 0 && dragListIndex != dropTargetIndex)
         {
             var item = sortableItems[dragListIndex];
             sortableItems.RemoveAt(dragListIndex);
