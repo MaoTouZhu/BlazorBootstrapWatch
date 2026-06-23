@@ -158,23 +158,24 @@
     // ===== 可拖动窗口 =====
     private double winX = 20, winY = 20;
     private bool draggingWindow;
-    private double dragOffsetX, dragOffsetY;
+    private double startClientX, startClientY, startWinX, startWinY;
 
     private void StartDragWindow(MouseEventArgs e)
     {
         draggingWindow = true;
-        dragOffsetX = e.OffsetX;
-        dragOffsetY = e.OffsetY;
+        startClientX = e.ClientX;
+        startClientY = e.ClientY;
+        startWinX = winX;
+        startWinY = winY;
     }
 
     private void OnContainerMouseMove(MouseEventArgs e)
     {
         if (!draggingWindow) return;
-        double newX = e.OffsetX - dragOffsetX;
-        double newY = e.OffsetY - dragOffsetY;
-        // 边界限制
-        winX = Math.Clamp(newX, 0, 400);
-        winY = Math.Clamp(newY, 0, 280);
+        double deltaX = e.ClientX - startClientX;
+        double deltaY = e.ClientY - startClientY;
+        winX = Math.Clamp(startWinX + deltaX, 0, 400);
+        winY = Math.Clamp(startWinY + deltaY, 0, 280);
     }
 
     private void OnContainerMouseUp()
@@ -253,22 +254,24 @@
         new(4, "🏷️ 标签 D", 250, 180),
     };
     private int draggingFreeId = -1;
-    private double freeDragOffsetX, freeDragOffsetY;
+    private double freeStartClientX, freeStartClientY, freeStartElX, freeStartElY;
 
     private void StartFreeDrag(int id, MouseEventArgs e)
     {
         draggingFreeId = id;
         var el = freeElements.First(x => x.Id == id);
-        freeDragOffsetX = e.OffsetX;
-        freeDragOffsetY = e.OffsetY;
+        freeStartClientX = e.ClientX;
+        freeStartClientY = e.ClientY;
+        freeStartElX = el.X;
+        freeStartElY = el.Y;
     }
 
     private void OnFreeDragMove(MouseEventArgs e)
     {
         if (draggingFreeId < 0) return;
         var el = freeElements.First(x => x.Id == draggingFreeId);
-        el.X = Math.Clamp(e.OffsetX - freeDragOffsetX, 0, 350);
-        el.Y = Math.Clamp(e.OffsetY - freeDragOffsetY, 0, 300);
+        el.X = Math.Clamp(freeStartElX + (e.ClientX - freeStartClientX), 0, 350);
+        el.Y = Math.Clamp(freeStartElY + (e.ClientY - freeStartClientY), 0, 300);
     }
 
     private void OnFreeDragUp() => draggingFreeId = -1;
