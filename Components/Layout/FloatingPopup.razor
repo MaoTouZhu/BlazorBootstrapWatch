@@ -1,0 +1,66 @@
+@rendermode InteractiveServer
+@inject FloatingPopupService PopupService
+@implements IDisposable
+
+@if (PopupService.Visible)
+{
+    <!-- 拖拽把手：顶部标题栏 -->
+    <div class="position-fixed shadow-lg rounded"
+         style="left:@(PopupService.X.ToString("F0"))px;top:@(PopupService.Y.ToString("F0"))px;
+                z-index:9999;min-width:300px;@(dragging ? "cursor:grabbing;opacity:0.95" : "")"
+         @onmousemove="OnMove"
+         @onmouseup="OnUp"
+         @onmouseleave="OnUp">
+
+        <div class="bg-primary text-white rounded-top px-3 py-2 d-flex justify-content-between align-items-center"
+             @onmousedown="StartDrag" @onmousedown:stopPropagation
+             style="cursor:grab;user-select:none">
+            <strong>@PopupService.Title</strong>
+            <button class="btn-close btn-close-white" @onclick="Close" @onclick:stopPropagation
+                    title="关闭 (Close)"></button>
+        </div>
+
+        <div class="bg-white border border-top-0 rounded-bottom p-3">
+            <p class="mb-2">@PopupService.Message</p>
+            <p class="small text-muted mb-0">
+                💡 此弹窗跨页面持久 — 切换页面不会消失，除非主动关闭。
+            </p>
+            <p class="small text-muted mb-0">
+                📍 当前位置：@(PopupService.X.ToString("F0")), @(PopupService.Y.ToString("F0"))
+            </p>
+        </div>
+    </div>
+}
+
+@code {
+    private bool dragging;
+    private double startClientX, startClientY, startX, startY;
+
+    protected override void OnInitialized()
+    {
+        PopupService.OnChanged += StateHasChanged;
+    }
+
+    private void StartDrag(MouseEventArgs e)
+    {
+        dragging = true;
+        startClientX = e.ClientX;
+        startClientY = e.ClientY;
+        startX = PopupService.X;
+        startY = PopupService.Y;
+    }
+
+    private void OnMove(MouseEventArgs e)
+    {
+        if (!dragging) return;
+        PopupService.X = startX + (e.ClientX - startClientX);
+        PopupService.Y = startY + (e.ClientY - startClientY);
+        PopupService.Notify();
+    }
+
+    private void OnUp() => dragging = false;
+
+    private void Close() => PopupService.Close();
+
+    public void Dispose() => PopupService.OnChanged -= StateHasChanged;
+}

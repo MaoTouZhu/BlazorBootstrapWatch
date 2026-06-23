@@ -12,6 +12,9 @@ builder.Services.AddSingleton<CounterService>();     // 整个应用共享一个
 builder.Services.AddScoped<CounterService>();        // 每个 SignalR 回路一个实例
 builder.Services.AddTransient<CounterService>();     // 每次注入一个新实例
 
+// 浮动弹窗服务 — Singleton 跨页面持久化
+builder.Services.AddSingleton<FloatingPopupService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

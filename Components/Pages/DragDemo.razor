@@ -1,11 +1,27 @@
 @page "/drag-demo"
 @rendermode InteractiveServer
 @implements IDisposable
+@inject FloatingPopupService PopupService
 
 <PageTitle>鼠标拖动 (Drag & Drop) - Blazor 特性</PageTitle>
 
 <h2>🖱️ 鼠标拖动 (Drag & Drop)</h2>
 <p class="lead">纯 Blazor 实现（无 JS）：拖动窗口、拖动列表项排序、调整元素大小。</p>
+
+<div class="border rounded p-3 bg-light mb-4">
+    <h5>📢 跨页面浮动弹窗 (Persistent Floating Popup)</h5>
+    <p class="small text-muted mb-2">点击下方按钮弹出浮动窗口。弹窗可拖动、切换页面不消失、不影响其他操作。</p>
+    <button class="btn btn-primary" @onclick="LaunchPopup">
+        🚀 弹出浮动窗口
+    </button>
+    <button class="btn btn-outline-secondary ms-2" @onclick='() => PopupService.Close()'>
+        ✕ 关闭弹窗
+    </button>
+    @if (PopupService.Visible)
+    {
+        <span class="badge bg-success ms-2">弹窗已打开 — 切换页面试试，它不会消失！</span>
+    }
+</div>
 
 <div class="row g-4">
     <!-- ===== 可拖动窗口 ===== -->
@@ -321,6 +337,15 @@
             new(3, "🏷️ 标签 C", 80, 200),
             new(4, "🏷️ 标签 D", 250, 180),
         };
+    }
+
+    // ===== 浮动弹窗 =====
+    private void LaunchPopup()
+    {
+        PopupService.Show(
+            "📢 浮动弹窗",
+            $"从「鼠标拖动」页面触发 —— {DateTime.Now:HH:mm:ss}。拖动标题栏可移动此窗口。"
+        );
     }
 
     // ===== 公共 =====
