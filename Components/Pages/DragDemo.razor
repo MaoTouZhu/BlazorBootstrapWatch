@@ -1,0 +1,302 @@
+@page "/drag-demo"
+@rendermode InteractiveServer
+@implements IDisposable
+
+<PageTitle>鼠标拖动 (Drag & Drop) - Blazor 特性</PageTitle>
+
+<h2>🖱️ 鼠标拖动 (Drag & Drop)</h2>
+<p class="lead">纯 Blazor 实现（无 JS）：拖动窗口、拖动列表项排序、调整元素大小。</p>
+
+<div class="row g-4">
+    <!-- ===== 可拖动窗口 ===== -->
+    <div class="col-lg-6">
+        <div class="border rounded p-3 bg-light">
+            <h5>可拖动窗口 (Draggable Window)</h5>
+            <p class="small text-muted">在下方区域内拖动窗口，窗口不可超出边界。</p>
+            <div class="position-relative border rounded bg-white overflow-hidden"
+                 style="height:350px;cursor:default"
+                 @onmousemove="OnContainerMouseMove"
+                 @onmouseup="OnContainerMouseUp"
+                 @onmouseleave="OnContainerMouseUp">
+
+                <div class="position-absolute shadow-lg rounded"
+                     style="left:@winX.ToString("F0")px;top:@winY.ToString("F0")px;width:240px;@(draggingWindow ? "cursor:grabbing;opacity:0.9" : "")">
+
+                    <!-- 标题栏（拖动把手） -->
+                    <div class="bg-primary text-white rounded-top px-3 py-2 d-flex justify-content-between align-items-center"
+                         @onmousedown="StartDragWindow" @onmousedown:stopPropagation>
+                        <strong class="small">📦 可拖动窗口</strong>
+                        <span class="small">@(winX.ToString("F0")), @(winY.ToString("F0"))</span>
+                    </div>
+                    <div class="bg-white border border-top-0 rounded-bottom p-3">
+                        <p class="small mb-1">🏷️ 拖拽标题栏即可移动窗口。</p>
+                        <p class="small mb-1">✅ 边界限制防止越界。</p>
+                        <p class="small mb-0">🖱️ 纯 Blazor C# 事件实现。</p>
+                        <button class="btn btn-sm btn-outline-primary mt-2" @onclick="ResetWindow">↺ 复位窗口</button>
+                    </div>
+                </div>
+
+                @if (!draggingWindow)
+                {
+                    <div class="position-absolute bottom-0 start-0 end-0 text-center pb-2">
+                        <small class="text-muted">拖动蓝色标题栏试试 ↓</small>
+                    </div>
+                }
+            </div>
+            <small class="text-muted mt-2 d-block">
+                <code>@@onmousedown</code> → <code>@@onmousemove</code> → <code>@@onmouseup</code> 全链路 Blazor 事件
+            </small>
+        </div>
+    </div>
+
+    <!-- ===== 拖拽排序列表 ===== -->
+    <div class="col-lg-6">
+        <div class="border rounded p-3 bg-light">
+            <h5>拖拽排序 (Drag-to-Reorder List)</h5>
+            <p class="small text-muted">拖拽列表项交换位置，拖拽时显示占位效果。</p>
+            <div class="list-group border rounded">
+                @for (int i = 0; i < sortableItems.Count; i++)
+                {
+                    var idx = i;
+                    <div class="list-group-item d-flex align-items-center gap-2
+                                @(dragListIndex == idx ? "bg-primary bg-opacity-10 border-primary" : "")
+                                @(dropTargetIndex == idx && dragListIndex != idx ? "border-top border-2 border-primary" : "")"
+                         draggable="true"
+                         @onmousedown="() => OnListMouseDown(idx)"
+                         @onmouseup="OnListMouseUp"
+                         style="cursor:@(draggingList ? "grabbing" : "grab");
+                                @(draggingList && dragListIndex == idx ? "opacity:0.4" : "")">
+                        <span class="text-muted me-2">⠿</span>
+                        <span class="badge bg-secondary me-2">@sortableItems[idx].Id</span>
+                        <span class="flex-grow-1">@sortableItems[idx].Name</span>
+                        <small class="text-muted">@sortableItems[idx].Desc</small>
+                    </div>
+                }
+            </div>
+            <small class="text-muted mt-2 d-block">
+                按住项拖动，松开时交换位置。使用 <code>@@onmousedown</code> 记录源索引，<code>@@onmouseup</code> 执行交换。
+            </small>
+        </div>
+    </div>
+
+    <!-- ===== 可调整大小 ===== -->
+    <div class="col-lg-6">
+        <div class="border rounded p-3 bg-light">
+            <h5>可调整大小 (Resizable Element)</h5>
+            <p class="small text-muted">拖动右下角手柄调整元素尺寸。</p>
+            <div class="position-relative d-inline-block"
+                 @onmousemove="OnResizeMouseMove"
+                 @onmouseup="OnResizeMouseUp"
+                 @onmouseleave="OnResizeMouseUp">
+
+                <div class="bg-info bg-opacity-10 border border-info rounded p-3 d-flex align-items-center justify-content-center"
+                     style="width:@(resizeW.ToString("F0"))px;height:@(resizeH.ToString("F0"))px;
+                            min-width:120px;min-height:80px;
+                            @(resizing ? "cursor:nwse-resize;user-select:none" : "")">
+                    <div class="text-center">
+                        <div class="fw-bold text-info">@(resizeW.ToString("F0")) × @(resizeH.ToString("F0"))</div>
+                        <small class="text-muted">可调整大小</small>
+                    </div>
+                </div>
+
+                <!-- 缩放手柄 -->
+                <div class="position-absolute bg-info rounded-circle"
+                     style="width:18px;height:18px;right:-6px;bottom:-6px;cursor:nwse-resize;border:3px solid white;box-shadow:0 0 0 1px var(--bs-info)"
+                     @onmousedown="StartResize" @onmousedown:stopPropagation>
+                </div>
+            </div>
+            <div class="mt-2">
+                <button class="btn btn-sm btn-outline-info" @onclick="ResetSize">↺ 恢复默认尺寸</button>
+            </div>
+            <small class="text-muted mt-2 d-block">
+                右下角圆点使用 <code>@@onmousedown:stopPropagation</code> 独占事件，避免父元素干扰。
+            </small>
+        </div>
+    </div>
+
+    <!-- ===== 自由拖动元素 ===== -->
+    <div class="col-lg-6">
+        <div class="border rounded p-3 bg-light">
+            <h5>多元素自由拖动 (Multi-Element Free Drag)</h5>
+            <p class="small text-muted">在面板内自由拖动多个元素，每个元素独立响应。</p>
+            <div class="position-relative border rounded bg-white overflow-hidden"
+                 style="height:350px"
+                 @onmousemove="OnFreeDragMove"
+                 @onmouseup="OnFreeDragUp"
+                 @onmouseleave="OnFreeDragUp">
+
+                @foreach (var el in freeElements)
+                {
+                    <div class="position-absolute badge rounded-pill fs-6 px-3 py-2 shadow-sm
+                                @(draggingFreeId == el.Id ? "bg-primary opacity-75" : "bg-secondary")"
+                         style="left:@(el.X.ToString("F0"))px;top:@(el.Y.ToString("F0"))px;
+                                cursor:@(draggingFreeId == el.Id ? "grabbing" : "grab");
+                                user-select:none;z-index:@(draggingFreeId == el.Id ? 10 : 1)"
+                         @onmousedown="(e) => StartFreeDrag(el.Id, e)" @onmousedown:stopPropagation>
+                        @el.Label
+                    </div>
+                }
+
+                @if (!freeElements.Any(e => e.X != 0 || e.Y != 0))
+                {
+                    <div class="position-absolute top-50 start-50 translate-middle text-center text-muted">
+                        <p class="mb-1">拖动这些标签试试 ↓</p>
+                    </div>
+                }
+            </div>
+            <div class="mt-2">
+                <button class="btn btn-sm btn-outline-secondary" @onclick="ResetFreeElements">↺ 复位全部</button>
+            </div>
+            <small class="text-muted mt-2 d-block">
+                每个元素独立监听 <code>@@onmousedown</code>，容器统一处理 <code>@@onmousemove</code> 和 <code>@@onmouseup</code>
+            </small>
+        </div>
+    </div>
+</div>
+
+@code {
+    // ===== 可拖动窗口 =====
+    private double winX = 20, winY = 20;
+    private bool draggingWindow;
+    private double dragOffsetX, dragOffsetY;
+
+    private void StartDragWindow(MouseEventArgs e)
+    {
+        draggingWindow = true;
+        dragOffsetX = e.OffsetX;
+        dragOffsetY = e.OffsetY;
+    }
+
+    private void OnContainerMouseMove(MouseEventArgs e)
+    {
+        if (!draggingWindow) return;
+        double newX = e.OffsetX - dragOffsetX;
+        double newY = e.OffsetY - dragOffsetY;
+        // 边界限制
+        winX = Math.Clamp(newX, 0, 400);
+        winY = Math.Clamp(newY, 0, 280);
+    }
+
+    private void OnContainerMouseUp()
+    {
+        draggingWindow = false;
+    }
+
+    private void ResetWindow()
+    {
+        winX = 20; winY = 20;
+    }
+
+    // ===== 拖拽排序列表 =====
+    private List<SortItem> sortableItems = new()
+    {
+        new(1, "Apple", "水果"),
+        new(2, "Banana", "水果"),
+        new(3, "Carrot", "蔬菜"),
+        new(4, "Donut", "甜点"),
+        new(5, "Egg", "蛋白质"),
+        new(6, "Fish", "海鲜"),
+    };
+    private int dragListIndex = -1;
+    private int dropTargetIndex = -1;
+    private bool draggingList;
+
+    private void OnListMouseDown(int index)
+    {
+        dragListIndex = index;
+        draggingList = true;
+    }
+
+    private void OnListMouseUp()
+    {
+        if (draggingList && dropTargetIndex >= 0 && dragListIndex != dropTargetIndex)
+        {
+            var item = sortableItems[dragListIndex];
+            sortableItems.RemoveAt(dragListIndex);
+            sortableItems.Insert(dropTargetIndex, item);
+        }
+        dragListIndex = -1;
+        dropTargetIndex = -1;
+        draggingList = false;
+    }
+
+    // ===== 可调整大小 =====
+    private double resizeW = 200, resizeH = 120;
+    private bool resizing;
+    private double resizeStartX, resizeStartY, resizeStartW, resizeStartH;
+
+    private void StartResize(MouseEventArgs e)
+    {
+        resizing = true;
+        resizeStartX = e.ClientX;
+        resizeStartY = e.ClientY;
+        resizeStartW = resizeW;
+        resizeStartH = resizeH;
+    }
+
+    private void OnResizeMouseMove(MouseEventArgs e)
+    {
+        if (!resizing) return;
+        resizeW = Math.Max(80, resizeStartW + (e.ClientX - resizeStartX));
+        resizeH = Math.Max(60, resizeStartH + (e.ClientY - resizeStartY));
+    }
+
+    private void OnResizeMouseUp() => resizing = false;
+    private void ResetSize() { resizeW = 200; resizeH = 120; }
+
+    // ===== 多元素自由拖动 =====
+    private List<FreeElement> freeElements = new()
+    {
+        new(1, "🏷️ 标签 A", 40, 40),
+        new(2, "🏷️ 标签 B", 180, 100),
+        new(3, "🏷️ 标签 C", 80, 200),
+        new(4, "🏷️ 标签 D", 250, 180),
+    };
+    private int draggingFreeId = -1;
+    private double freeDragOffsetX, freeDragOffsetY;
+
+    private void StartFreeDrag(int id, MouseEventArgs e)
+    {
+        draggingFreeId = id;
+        var el = freeElements.First(x => x.Id == id);
+        freeDragOffsetX = e.OffsetX;
+        freeDragOffsetY = e.OffsetY;
+    }
+
+    private void OnFreeDragMove(MouseEventArgs e)
+    {
+        if (draggingFreeId < 0) return;
+        var el = freeElements.First(x => x.Id == draggingFreeId);
+        el.X = Math.Clamp(e.OffsetX - freeDragOffsetX, 0, 350);
+        el.Y = Math.Clamp(e.OffsetY - freeDragOffsetY, 0, 300);
+    }
+
+    private void OnFreeDragUp() => draggingFreeId = -1;
+
+    private void ResetFreeElements()
+    {
+        freeElements = new()
+        {
+            new(1, "🏷️ 标签 A", 40, 40),
+            new(2, "🏷️ 标签 B", 180, 100),
+            new(3, "🏷️ 标签 C", 80, 200),
+            new(4, "🏷️ 标签 D", 250, 180),
+        };
+    }
+
+    // ===== 公共 =====
+    void IDisposable.Dispose() { }
+
+    private record SortItem(int Id, string Name, string Desc);
+    private class FreeElement
+    {
+        public int Id { get; set; }
+        public string Label { get; set; } = "";
+        public double X { get; set; }
+        public double Y { get; set; }
+        public FreeElement(int id, string label, double x, double y)
+        {
+            Id = id; Label = label; X = x; Y = y;
+        }
+    }
+}
