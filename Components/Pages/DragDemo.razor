@@ -117,12 +117,12 @@
     </div>
 
     <!-- ===== 自由拖动元素 ===== -->
-    <div class="col-12">
+    <div class="col-lg-6">
         <div class="border rounded p-3 bg-light">
             <h5>多元素自由拖动 + 自适应连线 (Free Drag + Curves)</h5>
-            <p class="small text-muted">在下方整个区域内自由拖动标签，标签之间的贝塞尔曲线自动跟随。</p>
-            <div class="position-relative border rounded bg-white"
-                 style="min-height:500px;user-select:none"
+            <p class="small text-muted">拖动标签时，它们之间的贝塞尔曲线自动跟随。</p>
+            <div class="position-relative border rounded bg-white overflow-hidden"
+                 style="height:350px;user-select:none"
                  @onmousemove="OnFreeDragMove"
                  @onmouseup="OnFreeDragUp"
                  @onmouseleave="OnFreeDragUp">
@@ -283,10 +283,10 @@
     // ===== 多元素自由拖动 =====
     private List<FreeElement> freeElements = new()
     {
-        new(1, "🏷️ 标签 A", 100, 60),
-        new(2, "🏷️ 标签 B", 500, 80),
-        new(3, "🏷️ 标签 C", 200, 350),
-        new(4, "🏷️ 标签 D", 600, 300),
+        new(1, "🏷️ 标签 A", 40, 40),
+        new(2, "🏷️ 标签 B", 180, 100),
+        new(3, "🏷️ 标签 C", 80, 200),
+        new(4, "🏷️ 标签 D", 250, 180),
     };
     private int draggingFreeId = -1;
     private double freeStartClientX, freeStartClientY, freeStartElX, freeStartElY;
@@ -315,10 +315,10 @@
     {
         freeElements = new()
         {
-            new(1, "🏷️ 标签 A", 100, 60),
-            new(2, "🏷️ 标签 B", 500, 80),
-            new(3, "🏷️ 标签 C", 200, 350),
-            new(4, "🏷️ 标签 D", 600, 300),
+            new(1, "🏷️ 标签 A", 40, 40),
+            new(2, "🏷️ 标签 B", 180, 100),
+            new(3, "🏷️ 标签 C", 80, 200),
+            new(4, "🏷️ 标签 D", 250, 180),
         };
     }
 
