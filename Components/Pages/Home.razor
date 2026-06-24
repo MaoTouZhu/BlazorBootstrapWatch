@@ -48,6 +48,7 @@
     private record Category(string Icon, string Name, string Desc, string Route);
 
     private readonly Category[] bootstrapCategories = [
+        new("🏷️", "HTML 标签 (HTML Tags)", "文档结构、内容分区、行内文本、多媒体、表单、交互元素", "html-tags"),
         new("📐", "布局 (Layout)", "栅格 (Grid)、容器 (Container)、列 (Column)、间距 (Gutter)、断点 (Breakpoint)", "layout"),
         new("🔤", "排版 (Typography)", "标题 (Heading)、大标题 (Display)、导语 (Lead)、列表 (List)、文本工具类", "typography"),
         new("🎨", "颜色 (Colors)", "主题色、背景色、文本色、渐变", "colors"),

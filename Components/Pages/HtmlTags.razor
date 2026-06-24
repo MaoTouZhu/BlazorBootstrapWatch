@@ -1,0 +1,250 @@
+@page "/html-tags"
+
+<PageTitle>HTML 标签 (HTML Tags) - Bootstrap 展示</PageTitle>
+
+<h2>🏷️ HTML 标签大全 (HTML Tags Reference)</h2>
+<p class="lead">所有常用 HTML 标签的展示，按类别分组，搭配 Bootstrap 样式。</p>
+
+<!-- ===== 文档结构 ===== -->
+<h5 class="mt-4 border-bottom pb-1">📄 文档结构 (Document Structure)</h5>
+<div class="border rounded p-3 bg-light mb-3">
+    <table class="table table-sm table-bordered mb-0 small">
+        <tr><td style="width:140px"><code>&lt;!DOCTYPE&gt;</code></td><td>文档类型声明</td><td class="text-muted">页面第一行</td></tr>
+        <tr><td><code>&lt;html&gt;</code></td><td>根元素</td><td class="text-muted">包裹整个页面</td></tr>
+        <tr><td><code>&lt;head&gt;</code></td><td>头部信息</td><td class="text-muted">meta, title, link, script</td></tr>
+        <tr><td><code>&lt;body&gt;</code></td><td>页面主体</td><td class="text-muted">所有可见内容</td></tr>
+        <tr><td><code>&lt;title&gt;</code></td><td>页面标题</td><td class="text-muted">浏览器标签栏显示</td></tr>
+        <tr><td><code>&lt;meta&gt;</code></td><td>元数据</td><td class="text-muted">charset, viewport, description</td></tr>
+        <tr><td><code>&lt;link&gt;</code></td><td>外部资源链接</td><td class="text-muted">CSS, favicon</td></tr>
+        <tr><td><code>&lt;style&gt;</code></td><td>内嵌样式</td><td class="text-muted">CSS 规则</td></tr>
+        <tr><td><code>&lt;script&gt;</code></td><td>脚本</td><td class="text-muted">JavaScript 代码</td></tr>
+    </table>
+</div>
+
+<!-- ===== 内容分区 ===== -->
+<h5 class="mt-4 border-bottom pb-1">📦 内容分区 (Content Sectioning)</h5>
+<div class="border rounded p-3 bg-light mb-3">
+    <table class="table table-sm table-bordered mb-0 small">
+        <tr><td style="width:140px"><code>&lt;header&gt;</code></td><td>页头</td><td class="text-muted">导航、Logo、搜索</td></tr>
+        <tr><td><code>&lt;nav&gt;</code></td><td>导航区域</td><td class="text-muted">主导航链接</td></tr>
+        <tr><td><code>&lt;main&gt;</code></td><td>主要内容</td><td class="text-muted">每个页面唯一</td></tr>
+        <tr><td><code>&lt;section&gt;</code></td><td>章节</td><td class="text-muted">主题性内容分组</td></tr>
+        <tr><td><code>&lt;article&gt;</code></td><td>独立内容</td><td class="text-muted">博客文章、新闻</td></tr>
+        <tr><td><code>&lt;aside&gt;</code></td><td>侧边栏</td><td class="text-muted">补充内容</td></tr>
+        <tr><td><code>&lt;footer&gt;</code></td><td>页脚</td><td class="text-muted">版权、联系信息</td></tr>
+        <tr><td><code>&lt;div&gt;</code></td><td>通用容器</td><td class="text-muted">块级分组元素</td></tr>
+    </table>
+</div>
+
+<!-- ===== 文本内容 ===== -->
+<h5 class="mt-4 border-bottom pb-1">📝 文本内容 (Text Content)</h5>
+<div class="border rounded p-3 bg-light mb-3">
+    <div class="row">
+        <div class="col-md-6">
+            <p><code>&lt;h1&gt;~&lt;h6&gt;</code></p>
+            <h1 class="h6 d-inline">h1</h1> <h2 class="h6 d-inline">h2</h2> <h3 class="h6 d-inline">h3</h3> <h4 class="h6 d-inline">h4</h4> <h5 class="h6 d-inline">h5</h5> <h6 class="h6 d-inline">h6</h6>
+            <hr>
+            <p><code>&lt;p&gt;</code> 段落：一段普通的文本内容。</p>
+            <p><code>&lt;blockquote&gt;</code></p>
+            <blockquote class="blockquote border-start border-3 ps-3">这是一段引用文字。</blockquote>
+            <p><code>&lt;hr&gt;</code> 水平分割线</p><hr>
+            <p><code>&lt;pre&gt;</code> 预格式化文本</p>
+            <pre class="bg-dark text-light p-2 rounded small">function hello() {
+  return "world";
+}</pre>
+        </div>
+        <div class="col-md-6">
+            <p><code>&lt;ul&gt;</code> / <code>&lt;ol&gt;</code> / <code>&lt;li&gt;</code></p>
+            <ul><li>无序项 A</li><li>无序项 B</li></ul>
+            <ol><li>有序项 1</li><li>有序项 2</li></ol>
+            <p><code>&lt;dl&gt;</code> / <code>&lt;dt&gt;</code> / <code>&lt;dd&gt;</code></p>
+            <dl><dt>术语</dt><dd>术语的定义描述</dd></dl>
+            <p><code>&lt;figure&gt;</code> / <code>&lt;figcaption&gt;</code></p>
+            <figure class="text-center border rounded p-2">
+                <div class="bg-secondary text-white d-inline-block p-5 rounded">插图</div>
+                <figcaption class="small text-muted mt-1">Fig.1 — 图片说明</figcaption>
+            </figure>
+        </div>
+    </div>
+</div>
+
+<!-- ===== 行内文本 ===== -->
+<h5 class="mt-4 border-bottom pb-1">🔤 行内文本 (Inline Text Semantics)</h5>
+<div class="border rounded p-3 bg-light mb-3">
+    <table class="table table-sm table-bordered mb-0 small">
+        <tr><td style="width:140px"><code>&lt;a&gt;</code></td><td><a href="#">超链接示例</a></td></tr>
+        <tr><td><code>&lt;strong&gt;</code></td><td><strong>重要文本（粗体）</strong></td></tr>
+        <tr><td><code>&lt;em&gt;</code></td><td><em>强调文本（斜体）</em></td></tr>
+        <tr><td><code>&lt;b&gt;</code></td><td><b>粗体文本</b></td></tr>
+        <tr><td><code>&lt;i&gt;</code></td><td><i>斜体文本</i></td></tr>
+        <tr><td><code>&lt;u&gt;</code></td><td><u>下划线文本</u></td></tr>
+        <tr><td><code>&lt;s&gt;</code> / <code>&lt;del&gt;</code></td><td><s>删除线</s> / <del>已删除</del></td></tr>
+        <tr><td><code>&lt;ins&gt;</code></td><td><ins>插入文本</ins></td></tr>
+        <tr><td><code>&lt;mark&gt;</code></td><td><mark>高亮标记文本</mark></td></tr>
+        <tr><td><code>&lt;small&gt;</code></td><td><small>小号/附属文本</small></td></tr>
+        <tr><td><code>&lt;sub&gt;</code> / <code>&lt;sup&gt;</code></td><td>H<sub>2</sub>O / x<sup>2</sup></td></tr>
+        <tr><td><code>&lt;code&gt;</code></td><td>内联代码：<code>const x = 1;</code></td></tr>
+        <tr><td><code>&lt;kbd&gt;</code></td><td>键盘输入：<kbd>Ctrl</kbd> + <kbd>C</kbd></td></tr>
+        <tr><td><code>&lt;abbr&gt;</code></td><td><abbr title="HyperText Markup Language">HTML</abbr> (悬停看全称)</td></tr>
+        <tr><td><code>&lt;cite&gt;</code></td><td><cite>作品名称引用</cite></td></tr>
+        <tr><td><code>&lt;q&gt;</code></td><td><q>短引用（带引号）</q></td></tr>
+        <tr><td><code>&lt;span&gt;</code></td><td><span class="text-primary">通用行内容器</span></td></tr>
+        <tr><td><code>&lt;br&gt;</code></td><td>换行<br>符</td></tr>
+        <tr><td><code>&lt;wbr&gt;</code></td><td>可选换行点</td></tr>
+    </table>
+</div>
+
+<!-- ===== 多媒体 ===== -->
+<h5 class="mt-4 border-bottom pb-1">🖼️ 多媒体 (Media)</h5>
+<div class="border rounded p-3 bg-light mb-3">
+    <div class="row g-3">
+        <div class="col-md-4">
+            <p><code>&lt;img&gt;</code></p>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='100'%3E%3Crect width='200' height='100' fill='%230d6efd'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='16'%3Eimg 标签%3C/text%3E%3C/svg%3E" class="img-fluid border rounded" alt="示例图片">
+        </div>
+        <div class="col-md-4">
+            <p><code>&lt;audio&gt;</code></p>
+            <audio controls class="w-100"><source src="#" type="audio/mpeg">浏览器不支持 audio</audio>
+        </div>
+        <div class="col-md-4">
+            <p><code>&lt;video&gt;</code></p>
+            <video controls class="w-100 border rounded" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='100'%3E%3Crect width='300' height='100' fill='%23333'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='14'%3Evideo 标签%3C/text%3E%3C/svg%3E">
+                <source src="#" type="video/mp4">浏览器不支持 video
+            </video>
+        </div>
+        <div class="col-md-4">
+            <p><code>&lt;picture&gt;</code> + <code>&lt;source&gt;</code></p>
+            <picture>
+                <source srcset="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='50'%3E%3Crect width='150' height='50' fill='%23198754'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='12'%3Epicture 标签%3C/text%3E%3C/svg%3E">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='50'%3E%3Crect width='150' height='50' fill='%23666'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='12'%3Efallback%3C/text%3E%3C/svg%3E" alt="">
+            </picture>
+        </div>
+        <div class="col-md-4">
+            <p><code>&lt;svg&gt;</code> / <code>&lt;canvas&gt;</code></p>
+            <svg width="100" height="50"><circle cx="25" cy="25" r="20" fill="#dc3545"/><rect x="60" y="10" width="30" height="30" rx="5" fill="#0d6efd"/></svg>
+            <canvas class="border rounded" width="100" height="30" style="height:30px"></canvas>
+        </div>
+        <div class="col-md-4">
+            <p><code>&lt;iframe&gt;</code></p>
+            <div class="border rounded p-2 bg-secondary text-white text-center small">iframe 嵌入内容</div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== 表格 ===== -->
+<h5 class="mt-4 border-bottom pb-1">📊 表格 (Table)</h5>
+<div class="border rounded p-3 bg-light mb-3">
+    <table class="table table-sm table-bordered small mb-0">
+        <caption class="small text-muted">表格标题 (caption)</caption>
+        <thead class="table-dark"><tr><th><code>&lt;thead&gt;</code></th><th><code>&lt;th&gt;</code> 列1</th><th><code>&lt;th&gt;</code> 列2</th></tr></thead>
+        <tbody>
+            <tr><td><code>&lt;tbody&gt;</code></td><td><code>&lt;td&gt;</code> 数据</td><td><code>&lt;td&gt;</code> 数据</td></tr>
+            <tr><td></td><td colspan="2" class="text-center"><code>&lt;td colspan="2"&gt;</code> 跨列合并</td></tr>
+        </tbody>
+        <tfoot><tr><td><code>&lt;tfoot&gt;</code></td><td>页脚1</td><td>页脚2</td></tr></tfoot>
+    </table>
+</div>
+
+<!-- ===== 表单 ===== -->
+<h5 class="mt-4 border-bottom pb-1">📝 表单 (Form Elements)</h5>
+<div class="border rounded p-3 bg-light mb-3">
+    <div class="row g-3">
+        <div class="col-md-4">
+            <p><code>&lt;form&gt;</code></p>
+            <form><input class="form-control form-control-sm mb-1" placeholder="form 容器"><button class="btn btn-sm btn-primary" type="button">提交</button></form>
+        </div>
+        <div class="col-md-4">
+            <p><code>&lt;input&gt;</code> 类型</p>
+            <input class="form-control form-control-sm mb-1" type="text" placeholder="text">
+            <input class="form-control form-control-sm mb-1" type="password" placeholder="password" value="123456">
+            <input class="form-control form-control-sm mb-1" type="number" placeholder="number" value="42">
+            <input class="form-control form-control-sm mb-1" type="email" placeholder="email">
+            <input class="form-control form-control-sm mb-1" type="date">
+            <input class="form-control form-control-sm mb-1" type="color" value="#0d6efd">
+            <input class="form-control form-control-sm mb-1" type="file">
+            <input class="form-control form-control-sm" type="range">
+        </div>
+        <div class="col-md-4">
+            <p><code>&lt;textarea&gt;</code></p>
+            <textarea class="form-control form-control-sm" rows="2" placeholder="多行文本..."></textarea>
+            <p class="mt-2"><code>&lt;select&gt;</code> / <code>&lt;optgroup&gt;</code> / <code>&lt;option&gt;</code></p>
+            <select class="form-select form-select-sm">
+                <optgroup label="水果"><option>苹果</option><option>香蕉</option></optgroup>
+                <optgroup label="蔬菜"><option>胡萝卜</option></optgroup>
+            </select>
+            <p class="mt-2"><code>&lt;datalist&gt;</code></p>
+            <input class="form-control form-control-sm" list="demoList" placeholder="输入或选择...">
+            <datalist id="demoList"><option value="Apple"></option><option value="Banana"></option><option value="Cherry"></option></datalist>
+        </div>
+        <div class="col-md-4">
+            <p><code>&lt;button&gt;</code></p>
+            <button class="btn btn-sm btn-primary me-1" type="button">按钮</button>
+            <button class="btn btn-sm btn-outline-secondary" type="reset">重置</button>
+            <p class="mt-2"><code>&lt;label&gt;</code></p>
+            <label class="form-label">标签文本</label>
+            <p class="mt-2"><code>&lt;fieldset&gt;</code> / <code>&lt;legend&gt;</code></p>
+            <fieldset class="border rounded p-2">
+                <legend class="float-none w-auto px-2 small">分组标题</legend>
+                <input class="form-check-input me-1" type="checkbox" id="cb1" checked><label for="cb1">选项 A</label>
+                <input class="form-check-input ms-2 me-1" type="checkbox" id="cb2"><label for="cb2">选项 B</label>
+            </fieldset>
+        </div>
+        <div class="col-md-4">
+            <p><code>&lt;meter&gt;</code> / <code>&lt;progress&gt;</code></p>
+            <label class="small">Meter：</label><meter value="0.7" class="me-2">70%</meter>
+            <label class="small">Progress：</label><progress value="45" max="100"></progress>
+            <p class="mt-2"><code>&lt;output&gt;</code></p>
+            <output class="fw-bold text-primary">计算结果：42</output>
+        </div>
+        <div class="col-md-4">
+            <p><code>&lt;input type="checkbox/radio"&gt;</code></p>
+            <div class="form-check"><input class="form-check-input" type="checkbox" checked id="chk1"><label for="chk1">复选框</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="r1" checked id="rd1"><label for="rd1">单选项 A</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="r1" id="rd2"><label for="rd2">单选项 B</label></div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== 交互元素 ===== -->
+<h5 class="mt-4 border-bottom pb-1">🔘 交互元素 (Interactive Elements)</h5>
+<div class="border rounded p-3 bg-light mb-3">
+    <div class="row g-3">
+        <div class="col-md-6">
+            <p><code>&lt;details&gt;</code> / <code>&lt;summary&gt;</code></p>
+            <details>
+                <summary>点击展开详情</summary>
+                <p class="mt-2 small">这是被隐藏的详细内容。无需 JavaScript 即可折叠/展开。</p>
+            </details>
+            <details open>
+                <summary>默认展开的详情</summary>
+                <p class="mt-2 small">使用 <code>open</code> 属性默认展开。</p>
+            </details>
+        </div>
+        <div class="col-md-6">
+            <p><code>&lt;dialog&gt;</code></p>
+            <dialog id="demoDialog" class="border rounded p-3 shadow">
+                <p><strong>这是一个原生对话框</strong></p>
+                <p class="small">使用 <code>showModal()</code> 方法打开。</p>
+                <button class="btn btn-sm btn-secondary" onclick="this.closest('dialog').close()">关闭</button>
+            </dialog>
+            <button class="btn btn-sm btn-primary" onclick="document.getElementById('demoDialog').showModal()">打开原生 Dialog</button>
+        </div>
+    </div>
+</div>
+
+<!-- ===== 嵌入内容 ===== -->
+<h5 class="mt-4 border-bottom pb-1">🔌 嵌入与废弃标签 (Embedded & Obsolete)</h5>
+<div class="border rounded p-3 bg-light mb-3">
+    <table class="table table-sm table-bordered small mb-0">
+        <thead class="table-secondary"><tr><th>标签</th><th>说明</th><th>状态</th></tr></thead>
+        <tr><td style="width:140px"><code>&lt;embed&gt;</code></td><td>嵌入外部内容（如 PDF）</td><td class="text-muted">可用</td></tr>
+        <tr><td><code>&lt;object&gt;</code></td><td>嵌入外部资源</td><td class="text-muted">可用</td></tr>
+        <tr><td><code>&lt;noscript&gt;</code></td><td>浏览器不支持 JS 时显示</td><td class="text-muted">可用</td></tr>
+        <tr><td><code>&lt;template&gt;</code></td><td>HTML 模板片段（不渲染）</td><td class="text-muted">可用</td></tr>
+        <tr><td><code>&lt;slot&gt;</code></td><td>Web Components 插槽</td><td class="text-muted">可用</td></tr>
+        <tr><td><code>&lt;center&gt;</code></td><td>居中（废弃）</td><td class="text-danger">HTML4</td></tr>
+        <tr><td><code>&lt;font&gt;</code></td><td>字体设置（废弃）</td><td class="text-danger">HTML4</td></tr>
+        <tr><td><code>&lt;marquee&gt;</code></td><td>滚动文字（废弃）</td><td class="text-danger">HTML4</td></tr>
+        <tr><td><code>&lt;bgsound&gt;</code></td><td>背景音乐（废弃）</td><td class="text-danger">IE only</td></tr>
+    </table>
+</div>
