@@ -1,39 +1,162 @@
 @page "/selfcode"
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.Sections
 @rendermode InteractiveServer
 
 <PageTitle>手敲</PageTitle>
 
-<p>在开头使用 "@@rendermode InteractiveServer" 声明使用交互式服务器渲染模式。</p>
+<h1>Html 标签</h1>
+<hr>
+
+    <div>
+        <h2 style="text-align: center;">标题 (独占一行)</h2>
+        <h1>&lt;h1&gt;h1. 一级标题&lt;/h1&gt;</h1>
+        <h2>&lt;h2&gt;h2. 二级标题&lt;/h2&gt;</h2>
+        <h4>&lt;h4&gt;h4. 四级标题&lt;/h4&gt;</h4>
+    </div>
+<hr>
+
+    <div>
+        <h2 style="text-align: center;">段落 (独占一行)</h2>
+        <p>&lt;p&gt;段落&lt;/p&gt;</p>
+        <p>&lt;br&gt;换行</p>
+        <p>&lt;hr&gt;水平分割线↓↓↓↓</p>
+        <code>&lt;code&gt;代码文本&lt;/code&gt;</code>
+        <pre>
+    &lt;pre&gt;
+        预格式化文本, 在这里会保留排版格式和空格, 适合显示代码文本。
+    &lt;/pre&gt;
+        </pre>
+        <samp>&lt;samp&gt;计算机输出&lt;/samp&gt;</samp>
+    </div>
+<hr>
+
+    <div>
+        <h2 style="text-align: center;">文本格式化</h2>
+        <a href="#">&lt;a href="#"&gt;超链接&lt;/a&gt;</a>
+        <br>
+        <b>&lt;b&gt;粗体&lt;/b&gt;</b>
+        <br>
+        <i>&lt;i&gt;斜体&lt;/i&gt;</i>
+        <br>
+        <em>&lt;em&gt;斜体&lt;/em&gt;</em>
+        <br>
+        <u>&lt;u&gt;下划线&lt;/u&gt;</u>
+        <br>
+        <s>&lt;s&gt;删除线&lt;/s&gt;</s>
+        <br>
+        <del>&lt;del&gt;删除线&lt;/del&gt;</del>
+        <br>
+        <mark>&lt;mark&gt;高亮&lt;/mark&gt;</mark>
+        <br>
+        <small>&lt;small&gt;小号文本&lt;/small&gt;</small>
+        <br>
+        <strong>&lt;strong&gt;加粗&lt;/strong&gt;</strong>
+        <br>
+        X<sup>&lt;sup&gt;上标&lt;/sup&gt;</sup>
+        <br>
+        X<sub>&lt;sub&gt;下标&lt;/sub&gt;</sub>
+        <br>
+        <p>&amp;ensp; 半角空格</p>
+        <p>&amp;emsp; 全角空格</p>
+        <kbd>Ctrl</kbd> + <kbd>C</kbd> 复制 &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;C&lt;/kbd&gt; 复制f <small>标签用于表示键盘输入, 适合显示快捷键组合。</small> 
+
+    </div>
+<hr>
+
+    <div>
+        <h2 style="text-align: center;">列表</h2>
+        <ul>&lt;ul&gt;无序列表&lt;/ul&gt;
+            <li>&lt;li&gt;列表项&lt;/li&gt;</li>
+            <li>&lt;li&gt;列表项&lt;/li&gt;</li>
+            <li>&lt;li&gt;列表项&lt;/li&gt;</li>
+        </ul>
+
+        <ol>&lt;ol&gt;有序列表&lt;/ol&gt;
+            <li>&lt;li&gt;列表项&lt;/li&gt;</li>
+            <li>&lt;li&gt;列表项&lt;/li&gt;</li>
+            <li>&lt;li&gt;列表项&lt;/li&gt;</li>
+        </ol>
+
+        <dl>&lt;dl&gt;自定义列表&lt;/dl&gt;
+            <dt>&lt;dt&gt;术语&lt;/dt&gt;</dt>
+            <dd>&lt;dd&gt;定义&lt;/dd&gt;</dd>
+            <dt>&lt;dt&gt;术语&lt;/dt&gt;</dt>
+            <dd>&lt;dd&gt;定义&lt;/dd&gt;</dd>
+        </dl>
+    </div>
+<hr>
+
+
+    <div>
+        <h2 style="text-align: center;">表格</h2>
+<pre>
+    &lt;table&gt;
+        &lt;thead&gt;
+         &lt;tr&gt;
+            &lt;th&gt;列标题1&lt;/th&gt;
+            &lt;th&gt;列标题2&lt;/th&gt;
+            &lt;th&gt;列标题3&lt;/th&gt;
+         &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+         &lt;tr&gt;
+            &lt;td&gt;行1, 列1&lt;/td&gt;
+            &lt;td&gt;行1, 列2&lt;/td&gt;
+            &lt;td&gt;行1, 列3&lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;行2, 列1&lt;/td&gt;
+            &lt;td&gt;行2, 列2&lt;/td&gt;
+            &lt;td&gt;行2, 列3&lt;/td&gt;
+         &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+</pre>
+
+    </div>
+
+    <hr>
+    <table>
+        <thead>
+            <tr>
+                <th>列标题1</th>
+                <th>列标题2</th>
+                <th>列标题3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+            </tr>
+            <tr>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+            </tr>
+        </tbody>
+    </table>
+<hr>
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
 
 <p>mt-4 是 margin-top-4 的缩写, 是bootstrap 的一个间距工具类</p>
 <p>rem 是相对单位, 表示根元素的字体大小, 默认的字体大小是 16px</p>
-<p>small 是一个小号文本工具类, 是旁注, 颜色更淡一些</p>
-
-
-<h5 class="mt-4">标题</h5>
-<div class="border rounded p-3 bg-light">
-
-    <div class="border rounded p-3 bg-light mb-3">
-        <h1>h1 <small class="text-muted">2.5rem</small></h1>
-        <h2>h2 <small class="text-muted">2rem</small></h2>
-        <h3>h3 <small class="text-muted">1.75rem</small></h3>
-        <h4>h4 <small class="text-muted">1.5rem</small></h4>
-        <h5>h5 <small class="text-muted">1.25rem</small></h5>
-        <h6>h6 <small class="text-muted">1rem</small></h6>
-        <h7>h7 <small class="text-muted">0.875rem</small></h7>
-    </div>
-    
-    <div class="border rounded p-3 bg-light">
-        <h1 class="display-1">display-1</h1>
-        <h1 class="display-2">display-2</h1>
-        <h1 class="display-4">display-4</h1>
-        <h1 class="display-6">display-6</h1>
-    </div>
-
-</div>
-
-
-
 
 
 
