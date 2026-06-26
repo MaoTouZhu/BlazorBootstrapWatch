@@ -15,11 +15,11 @@
 <hr>
 
     <div>
-        <h2 style="text-align: center;">标题 (独占一行)</h2>
+        <h2>标题 (独占一行)</h2>
         <h1>&lt;h1&gt;h1. 一级标题&lt;/h1&gt;</h1>
         <h2>&lt;h2&gt;h2. 二级标题&lt;/h2&gt;</h2>
         <h4>&lt;h4&gt;h4. 四级标题&lt;/h4&gt;</h4>
-    </div>
+    </div>aaas
 <hr>
 
     <div>
@@ -415,127 +415,3 @@ label 元素不会向用户呈现任何特殊效果。
 <a href="https://www.w3school.com.cn/tags/tag_nav.asp" target="_blank">见</a>
 
 
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-
-
-
-
-
-
-
-
-
-<p>mt-4 是 margin-top-4 的缩写, 是bootstrap 的一个间距工具类</p>
-<p>rem 是相对单位, 表示根元素的字体大小, 默认的字体大小是 16px</p>
-
-
-
-
-
-
-
-<h2>🔤 排版 (Typography)</h2>
-<p class="lead">标题 (Heading)、大标题 (Display)、行内元素、列表及文本工具类。</p>
-
-<h5 class="mt-4">标题 (Headings)</h5>
-<div class="border rounded p-3 bg-light">
-    <h1>h1. 一级标题 <small class="text-muted">2.5rem</small></h1>
-    <h2>h2. 二级标题 <small class="text-muted">2rem</small></h2>
-    <h3>h3. 三级标题 <small class="text-muted">1.75rem</small></h3>
-    <h4>h4. 四级标题 <small class="text-muted">1.5rem</small></h4>
-    <h5>h5. 五级标题 <small class="text-muted">1.25rem</small></h5>
-    <h6>h6. 六级标题 <small class="text-muted">1rem</small></h6>
-</div>
-
-<h5 class="mt-4">大标题 (Display Headings)</h5>
-<div class="border rounded p-3 bg-light">
-    <h1 class="display-1">大标题 Display 1</h1>
-    <h1 class="display-4">大标题 Display 4</h1>
-    <h1 class="display-6">大标题 Display 6</h1>
-</div>
-
-<h5 class="mt-4">导语段落 (Lead Paragraph)</h5>
-<div class="border rounded p-3 bg-light">
-    <p class="lead">这是一段导语 (Lead) —— 更宽的行高，更大的字重，用于文章开头。</p>
-    <p>普通段落文本，用于对比。</p>
-</div>
-
-<h5 class="mt-4">行内文本元素 (Inline Text Elements)</h5>
-<div class="border rounded p-3 bg-light">
-    <p><mark>高亮文本</mark> 使用 <code>&lt;mark&gt;</code>。</p>
-    <p><del>删除文本</del> 和 <s>删除线文本</s>。</p>
-    <p><ins>插入文本</ins> 和 <u>下划线文本</u>。</p>
-    <p><small>小号印刷文本</small>、<strong>粗体文本</strong> 以及 <em>斜体文本</em>。</p>
-    <p><abbr title="超文本标记语言">HTML</abbr> 缩写，悬停可查看全称。</p>
-    <blockquote class="blockquote">
-        <p>一段经典引文，放在 blockquote 元素中。</p>
-        <footer class="blockquote-footer">某位名人 出自 <cite>《来源标题》</cite></footer>
-    </blockquote>
-</div>
-
-<h5 class="mt-4">列表 (Lists)</h5>
-<div class="row">
-    <div class="col-md-6">
-        <div class="border rounded p-3 bg-light mb-3">
-            <ul>
-                <li>无序列表项</li>
-                <li>另一项
-                    <ul><li>嵌套项</li><li>另一个嵌套项</li></ul>
-                </li>
-                <li>第三项</li>
-            </ul>
-            <ol>
-                <li>有序列表项</li>
-                <li>第二项</li>
-                <li>第三项</li>
-            </ol>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="border rounded p-3 bg-light mb-3">
-            <ul class="list-unstyled">
-                <li>无样式列表项</li>
-                <li>另一个无样式项</li>
-            </ul>
-            <ul class="list-inline">
-                <li class="list-inline-item">行内项 1</li>
-                <li class="list-inline-item">行内项 2</li>
-                <li class="list-inline-item">行内项 3</li>
-            </ul>
-            <dl class="row">
-                <dt class="col-sm-3">术语</dt>
-                <dd class="col-sm-9">术语的描述文本。</dd>
-                <dt class="col-sm-3">另一个术语</dt>
-                <dd class="col-sm-9">另一个描述文本。</dd>
-            </dl>
-        </div>
-    </div>
-</div>
-
-<h5 class="mt-4">文本工具类 (Text Utilities)</h5>
-<div class="border rounded p-3 bg-light">
-    <p class="text-start">左对齐文本 (text-start)</p>
-    <p class="text-center">居中对齐文本 (text-center)</p>
-    <p class="text-end">右对齐文本 (text-end)</p>
-    <p class="text-lowercase">转为小写 (LOWERCASED)</p>
-    <p class="text-uppercase">转为大写 (uppercased)</p>
-    <p class="text-capitalize">首字母大写 (capitalized)</p>
-    <p class="fw-bold">粗体 (fw-bold)</p>
-    <p class="fst-italic">斜体 (fst-italic)</p>
-    <p class="fw-light">细体 (fw-light)</p>
-    <p class="text-decoration-underline">下划线文本</p>
-    <p class="text-decoration-line-through">删除线文本</p>
-    <p class="text-truncate" style="max-width:200px">这段文本在溢出时会显示省略号截断。</p>
-</div>
