@@ -1,0 +1,3057 @@
+@page "/bootstrap"
+@rendermode InteractiveServer
+
+<PageTitle>Bootstrap</PageTitle>
+<script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<body style="background-color: @backGroudColor;">
+
+</body>
+
+<!-- MARK:网格 -->
+<h2 class="mt-5 text-center"">Grid 网格</h2>
+<hr />
+额外添加了border以查看效果, 改变窗口大小查看效果.
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div class="container border">每个断点处的最大宽度变化</div>
+    <p>container: 为 div 提供样式</p>
+    <p>响应式固定宽度，每个断点都有固定最大宽度，最常用。</p>
+</div>
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div class="container-sm border">container-sm: 100% wide until small breakpoint</div>
+    <div class="container-md border">container-md: 100% wide until medium breakpoint</div>
+    <div class="container-lg border">container-lg: 100% wide until large breakpoint</div>
+    <div class="container-xl border">container-xl: 100% wide until extra large breakpoint</div>
+    <div class="container-xxl border">container-xxl: 100% wide until extra extra large breakpoint</div><!-- New -->
+</div>
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div class="container-fluid border">container-fluid: Always 100% wide</div>
+    <div>
+        <p class="border">提供安全的边距, 否则默认的div是这样的表现</p>
+    </div>
+</div>
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div class="row">
+        <!-- col- elements here -->
+
+        <div class="col">
+            <button type="button"> button</button>
+        </div>
+
+        <div class="col">
+            <button type="button"> button</button>
+        </div>
+        <div class="col">
+            <button type="button"> button</button>
+        </div>
+    </div>
+    <p>row: 为 div 提供行样式, 内部包括 col 列成员</p>
+</div>
+
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div class="row">
+        <div class="col-2 border">col-2</div>
+        <div class="col-5 border">col-5</div>
+        <div class="col-5 border">col-5</div>
+    </div>
+    <p>col-#: Bootstrap 将每一行 (.row) 在水平方向上等分为 12 份, 数字代表占用的份数.</p>
+</div>
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <p>col-sm</p>
+    <p>col-md</p>
+    <p>col-lg</p>
+    <p>col-xl</p>
+    <p>col-xxl</p>
+
+    <p>col-sm-#</p>
+    <p>col-md-#</p>
+    <p>col-lg-#</p>
+    <p>col-xl-#</p>
+    <p>col-xxl-#</p>
+
+    <p>col-*-auto</p>
+
+
+    以此类推
+</div>
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div class="row row-cols-3">
+        <div class="col">Column</div>
+        <div class="col">Column</div>
+        <div class="col">Column</div>
+        <div class="col">Column</div>
+    </div>
+
+    <p class="my-2">row-cols-#: 修饰 row, 指定行的列数量.</p>
+</div>
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-6">
+        <div class="col">Column</div>
+        <div class="col">Column</div>
+        <div class="col">Column</div>
+        <div class="col">Column</div>
+        <div class="col">Column</div>
+        <div class="col">Column</div>
+    </div>
+    <p class="my-2">row-cols-*-#: 修饰 row, 在各种屏幕大小情况下指定行的列数量, 实现自适应编排.</p>
+</div>
+
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div class="row">
+        <div class="col-sm-3 border">Level 1: .col-sm-3</div>
+        <div class="col-sm-9 border">
+            <div class="row border">
+                <div class="col-8 col-sm-6 border">Level 2: .col-8 .col-sm-6</div>
+                <div class="col-4 col-sm-6 border">Level 2: .col-4 .col-sm-6</div>
+            </div>
+        </div>
+    </div>
+    <p class="my-2">col嵌套示例</p>
+</div>
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div class="row">
+        <div class="col-3 border">col-3</div>
+        <div class="col-3 offset-6 border">col-3 offset-6</div>
+    </div>
+    <p class="my-2">offset-#: 让列向右偏移#个单位.</p>
+    <p class="my-2">offset-*-#: 同理.</p>
+</div>
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <!-- Different sized gutters can be used with the help of .gx-{0|1|2|3|4|5} class -->
+    <div class="row gx-5">
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+        <p class="my-2">gx-{size}: Gutter X-axis (水平槽距) 控制同一行内多个列 (.col) 之间的左右水平间距. </p>
+        <p class="my-2">gx-*-{size}: 同理, size 取值 [0,5]</p>
+    </div>
+</div>
+
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <!-- Different sized gutters can be used with the help of .gy-{0|1|2|3|4|5} class -->
+    <div class="row gy-5">
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+    </div>
+    <p class="my-2">gy-{size}: Gutter Y-axis (垂直槽距) 控制网格列 (.col) 在换行后, 上下两行之间的垂直间距. </p>
+    <p class="my-2">gy-*-{size}: 同理, size 取值 [0,5]</p>
+</div>
+
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <!-- Different sized gutters can be used with the help of .g-{1|2|3|4|5} class -->
+    <div class="row g-0">
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+    </div>
+    <p class="my-2">g-{size}: 组合了 gx 和 gy.</p>
+    <p class="my-2">g-*-{size}: 同理, size 取值 [0,5]</p>
+</div>
+
+
+
+<!-- MARK:排版 -->
+<h2 class="mt-5 text-center"">Typography 排版</h2>
+<hr />
+<p class=" h1">h1 class in p item</p>
+<p class="h2">h2 class in p item</p>
+<p class="h4">h4 class in p item</p>
+<p>......</p>
+<h6>text-muted 可以<span class="text-muted">淡化</span>字体</h6>
+<p class="display-1">display-1</p>
+<p class="display-2">display-2</p>
+<p class="display-4">display-4</p>
+<p><span class="lead">lead: 开场或摘要</span><span>普通文字</span></p>
+<p>mark: <span class="mark">高亮文本</span></p>
+<p>small: <span class="small">更小的文本, 表示次要</span></p>
+<p>initialism: 辅助 html 的 abbr 缩写标签,使得其更小并且强制大写. <abbr title="attribute" class="initialism">attr</abbr></p>
+<p>
+    blockquote: 辅助 html 的 blockquote 长引用块标签,带有左边界、适当的留白，字体也比普通正文稍大。
+    <blockquote class="blockquote">
+        <p>--这是blockquote的内容--</p>
+    </blockquote>
+</p>
+
+
+<div class="border my-2">
+    <p>
+        <figure class="mx-2">
+            <blockquote class="blockquote">
+                <p>
+                    blockquote-footer: 长引用注脚 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+                    posuere
+                    erat a ante.
+                </p>
+            </blockquote>
+            <figcaption class="blockquote-footer">
+                这是注脚, 前面的横线是自带的
+            </figcaption>
+        </figure>
+    </p>
+</div>
+
+
+<div class="border">
+    <p class="ms-2 py-1">list-inline: 行内列表</p>
+    <ul class="list-inline ms-2 py-1">
+        <li class="list-inline-item ">项1</li>
+        <li class="list-inline-item">项2</li>
+        <li class="list-inline-item">项3</li>
+    </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- MARK:按钮 -->
+<h2 class="mt-5 text-center">Button 按钮</h2>
+<hr />
+<button type="button" class="btn my-1 btn-primary">btn-primary</button>
+<button type="button" class="btn my-1 btn-secondary">btn-secondary</button>
+<button type="button" class="btn my-1 btn-success">btn-success</button>
+<button type="button" class="btn my-1 btn-danger">btn-danger</button>
+<button type="button" class="btn my-1 btn-warning">btn-warning</button>
+<button type="button" class="btn my-1 btn-info">btn-info</button>
+<button type="button" class="btn my-1 btn-light">btn-light</button>
+<button type="button" class="btn my-1 btn-dark">btn-dark</button>
+<button type="button" class="btn my-1 btn-link">btn-link</button>
+<button type="button" class="btn my-1 btn-outline-primary">btn-outline-primary</button>
+<button type="button" class="btn my-1 btn-outline-secondary">btn-outline-secondary</button>
+<button type="button" class="btn my-1 btn-outline-success">btn-outline-success</button>
+<button type="button" class="btn my-1 btn-outline-danger">btn-outline-danger</button>
+<button type="button" class="btn my-1 btn-outline-warning">btn-outline-warning</button>
+<button type="button" class="btn my-1 btn-outline-info">btn-outline-info</button>
+<button type="button" class="btn my-1 btn-outline-light">btn-outline-light</button>
+<button type="button" class="btn my-1 btn-outline-dark">btn-outline-dark</button>
+<button type="button" class="btn my-1 btn-lg border">btn-lg</button>
+<button type="button" class="btn my-1 btn-sm border">btn-sm</button>
+<button type="button" class="btn-close" aria-label="Close"></button>←btn-close
+<button type="button" class="btn-close btn-close-white" aria-label="Close"></button>←btn-close-white
+
+
+<div class="d-grid gap-2 border border-primary">
+    <button class="btn btn-primary my-1 mx-1" type="button">Block button 1</button>
+    <button class="btn btn-primary my-1 mx-1" type="button">Block button 2</button>
+</div>
+
+
+<!-- MARK:按钮集 -->
+<h2 class="mt-5 text-center">Button group 按钮集</h2>
+<hr />
+<div class="border px-2 py-2 my-2 rounded-3">
+    <div class="btn-group" role="group" aria-label="Basic button group">
+        <button type="button" class="btn btn-primary">Left</button>
+        <button type="button" class="btn btn-primary">Middle</button>
+        <button type="button" class="btn btn-primary">Right</button>
+    </div>
+    <p class="my-2">btn-group: 为 div 提供样式, 需要指定属性 role="group"</p>
+
+    <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
+        <button type="button" class="btn btn-primary">Left</button>
+        <button type="button" class="btn btn-primary">Middle</button>
+        <button type="button" class="btn btn-primary">Right</button>
+    </div>
+    <p class="my-2">btn-group-lg: 修饰 btn-group</p>
+
+    <div class="btn-group btn-group-sm" role="group" aria-label="Large button group">
+        <button type="button" class="btn btn-primary">Left</button>
+        <button type="button" class="btn btn-primary">Middle</button>
+        <button type="button" class="btn btn-primary">Right</button>
+    </div>
+    <p class="my-2">btn-group-sm: 修饰 btn-group</p>
+
+    <div class="btn-group">
+        <a href="#" class="btn btn-primary active" aria-current="page">Active link</a>
+        <a href="#" class="btn btn-primary">Link</a>
+        <a href="#" class="btn btn-primary">Link</a>
+    </div>
+    <p class="my-2">链接</p>
+
+    <div class="btn-group" role="group" aria-label="Basic outlined button group">
+        <button type="button" class="btn btn-outline-primary">Left</button>
+        <button type="button" class="btn btn-outline-primary">Middle</button>
+        <button type="button" class="btn btn-outline-primary">Right</button>
+    </div>
+    <p class="my-2">btn-outline-*: 为 button 提供外框线样式</p>
+
+    <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+        <button type="button" class="btn btn-primary">Button</button>
+        <button type="button" class="btn btn-primary">Button</button>
+        <button type="button" class="btn btn-primary">Button</button>
+    </div>
+    <p class="my-2">btn-group-vertical: 为 div 提供样式</p>
+
+</div>
+
+
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group me-2" role="group" aria-label="First group">
+            <button type="button" class="btn btn-primary">1</button>
+            <button type="button" class="btn btn-primary">2</button>
+            <button type="button" class="btn btn-primary">3</button>
+            <button type="button" class="btn btn-primary">4</button>
+        </div>
+        <div class="btn-group me-2" role="group" aria-label="Second group">
+            <button type="button" class="btn btn-secondary">5</button>
+            <button type="button" class="btn btn-secondary">6</button>
+            <button type="button" class="btn btn-secondary">7</button>
+        </div>
+        <div class="btn-group" role="group" aria-label="Third group">
+            <button type="button" class="btn btn-info">8</button>
+        </div>
+    </div>
+    <p class="my-2">btn-toolbar: 为 div 提供样式, 其中可以包括多个 btn-group 样式的 div</p>
+</div>
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <button type="button" class="btn btn-outline-primary" data-bs-toggle="button"
+            autocomplete="off">Toggle</button>
+    <p class="my-2">带开关状态样式的按钮</p>
+    <p class="my-2">data-bs-toggle="button"</p>
+    <p class="my-2">autocomplete="off"</p>
+</div>
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+        <input type="checkbox" class="btn-check" id="btnCheck1" autocomplete="off">
+        <label class="btn btn-outline-primary" for="btnCheck1">Checkbox 1</label>
+
+        <input type="checkbox" class="btn-check" id="btnCheck2" autocomplete="off">
+        <label class="btn btn-outline-primary" for="btnCheck2">Checkbox 2</label>
+
+        <input type="checkbox" class="btn-check" id="btnCheck3" autocomplete="off">
+        <label class="btn btn-outline-primary" for="btnCheck3">Checkbox 3</label>
+    </div>
+
+    <p class="my-2">装载 checkbox 的 btn-group div</p>
+</div>
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+        <input type="radio" class="btn-check" name="btnGroupRadio" id="btnRadio1" autocomplete="off" checked="">
+        <label class="btn btn-outline-primary" for="btnRadio1">Radio 1</label>
+
+        <input type="radio" class="btn-check" name="btnGroupRadio" id="btnRadio2" autocomplete="off">
+        <label class="btn btn-outline-primary" for="btnRadio2">Radio 2</label>
+
+        <input type="radio" class="btn-check" name="btnGroupRadio" id="btnRadio3" autocomplete="off">
+        <label class="btn btn-outline-primary" for="btnRadio3">Radio 3</label>
+    </div>
+
+    <p class="my-2">装载 input type="radio" 的 btn-group div</p>
+</div>
+
+
+
+<!-- MARK:表格 -->
+<h2 class="mt-5 text-center">Table 表格</h2>
+<hr />
+<table class=" table border border-3">
+    <caption class="text-center">标题(table)</caption>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>twitter</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<!-- .table-{color} can be use with .table, thead, tbody, tr, th and td -->
+<table class="table">
+    <caption class="text-center">标题(行类)</caption>
+    <thead>
+        <tr>
+            <th scope="col">Class</th>
+            <th scope="col">Heading</th>
+            <th scope="col">Heading</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="table-primary">
+            <th scope="row">.table-primary</th>
+            <td>Cell</td>
+            <td>Cell</td>
+        </tr>
+        <tr class="table-secondary">
+            <th scope="row">.table-secondary</th>
+            <td>Cell</td>
+            <td>Cell</td>
+        </tr>
+        <tr class="table-success">
+            <th scope="row">.table-success</th>
+            <td>Cell</td>
+            <td>Cell</td>
+        </tr>
+        <tr class="table-danger">
+            <th scope="row">.table-danger</th>
+            <td>Cell</td>
+            <td>Cell</td>
+        </tr>
+        <tr class="table-warning">
+            <th scope="row">.table-warning</th>
+            <td>Cell</td>
+            <td>Cell</td>
+        </tr>
+        <tr class="table-info">
+            <th scope="row">.table-info</th>
+            <td>Cell</td>
+            <td>Cell</td>
+        </tr>
+        <tr class="table-light">
+            <th scope="row">.table-light</th>
+            <td>Cell</td>
+            <td>Cell</td>
+        </tr>
+        <tr class="table-dark">
+            <th scope="row">.table-dark</th>
+            <td>Cell</td>
+            <td>Cell</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<table class="table table-striped">
+    <caption class="text-center">标题(table-striped: 奇偶样式)</caption>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>twitter</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<table class="table table-hover">
+    <caption class="text-center">标题(table-hover: 悬停高亮)</caption>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>twitter</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<table class="table">
+    <caption class="text-center">标题(table-active: 显式高亮)</caption>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="table-active">
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2" class="table-active">Larry the Bird</td>
+            <td>twitter</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<table class="table table-bordered">
+    <caption class="text-center">标题(table-bordered: 表格边框)</caption>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>twitter</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<table class="table table-borderless">
+    <caption class="text-center">标题(table-borderless: 无边框)</caption>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>twitter</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<table class="table table-sm">
+    <caption class="text-center">标题(table-sm: 小表格)</caption>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>twitter</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<table class="table caption-top">
+    <caption class="text-center">标题(caption-top: 标题在表格顶部)</caption>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>twitter</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<div class="table-responsive">
+    <caption class="text-center">标题(table-responsive: 可水平滚动)</caption>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+
+
+<div class="table-responsive-xl">
+    <caption class="text-center">标题(table-responsive-xl/**: 可水平滚动)</caption>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<!-- MARK:图像 -->
+<h2 class="mt-5 text-center">Images 图像</h2>
+<hr />
+<div class="w-25 h-100">
+    <img src="pictrue/138621549_p0.jpg" class="img-fluid" alt="img" width="100%">
+    <p class="text-center">img 图像</p>
+</div>
+
+
+<div class="w-25 h-100">
+    <img src="pictrue/138621549_p0.jpg" class="img-thumbnail" alt="img-thumbnail">
+    <p class="text-center">img 图像带内边距、浅色边框和圆角</p>
+</div>
+
+
+
+<!-- MARK:插图和图表 -->
+<h2 class="mt-5 text-center">Figures 插图和图表</h2>
+<hr />
+
+
+<figure class="figure">
+    <img src="pictrue/138621549_p0.jpg" class="figure-img img-fluid rounded" alt="figure-img" width="25%">
+    <figcaption class="figure-caption">figure为figure提供样式, figure-caption为figcation提供样式</figcaption>
+</figure>
+
+
+<!-- MARK:表单 -->
+<h2 class="mt-5 text-center">Form 表单</h2>
+<hr />
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <input type="text" class="form-control" placeholder="Default Input">
+    <p>form-control: 为input提供样式</p>
+    <input placeholder="默认样式" />
+</div>
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <label for="formControlInput" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="formControlInput" placeholder="name@example.com">
+    <p>form-label: 为label提供样式, 以及绑定方便?</p>
+    <label>默认样式</label>
+</div>
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg"
+           aria-label=".form-control-lg">
+    <p>form-control-lg: 大尺寸</p>
+</div>
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <input class="form-control form-control-sm" type="text" placeholder=".form-control-sm"
+           aria-label=".form-control-sm">
+    <p>form-control-sm: 小尺寸</p>
+</div>
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <label for="staticInput" class="form-label">Email</label>
+    <input type="text" readonly="" class="form-control-plaintext" id="staticInput" value="email@example.com">
+    <p>form-control-plaintext: 给input提供不可编辑的样式和功能, 将显示为灰色</p>
+</div>
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <input class="form-control" type="file" id="formFile">
+    <label for="formFile" class="form-label">form-control: input 的 type 为 file 时的样式</label>
+</div>
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <input type="color" class="form-control form-control-color" id="colorInput" value="#563d7c"
+           title="Choose your color">
+    <label for="colorInput" class="form-label">form-control-color: input 的 type 为 color 时的样式</label>
+</div>
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <select class="form-select" aria-label="Default select">
+        <option selected="">下拉选择</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select>
+    <p>form-select: 为 select 提供样式</p>
+</div>
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <select class="form-select form-select-lg" aria-label="Large select">
+        <option selected="">下拉选择</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select>
+    <p>form-select-lg: 为 select 提供样式</p>
+</div>
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <select class="form-select form-select-sm" aria-label="Small select">
+        <option selected="">下拉选择</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select>
+    <p>form-select-sm: 为 select 提供样式</p>
+</div>
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="formCheckDefault">
+        <label class="form-check-label" for="formCheckDefault">Default checkbox</label>
+    </div>
+    <div class="form-check my-2">
+        <input class="form-check-input" type="checkbox" value="" id="formCheckChecked" checked="">
+        <label class="form-check-label" for="formCheckChecked">Checked checkbox</label>
+    </div>
+
+    <p>form-check: 为 div 提供选择集样式</p>
+    <p>form-check-input: 为 input type="checkbox" 定义选择项</p>
+    <p>form-check-label: 为 label 提供样式</p>
+</div>
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" value="" id="inlineCheckDefault">
+        <label class="form-check-label" for="inlineCheckDefault">Default checkbox</label>
+    </div>
+    <div class="form-check form-check-inline my-2">
+        <input class="form-check-input" type="checkbox" value="" id="inlineCheckChecked" checked="">
+        <label class="form-check-label" for="inlineCheckChecked">Checked checkbox</label>
+    </div>
+    <p>form-check: 为 div 提供选择集样式</p>
+    <p>form-check-inline: 为 div 提供行内选择样式</p>
+</div>
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioDefault" id="formRadioDefault">
+        <label class="form-check-label" for="formRadioDefault">Default radio</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioDefault" id="formRadioChecked" checked="">
+        <label class="form-check-label" for="formRadioChecked">Default checked radio</label>
+    </div>
+    <p class="my-2">radio: 为 input 提供圆点 type</p>
+</div>
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="radioInline" id="inlineRadioDefault">
+        <label class="form-check-label" for="inlineRadioDefault">Default radio</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="radioInline" id="inlineRadioChecked" checked="">
+        <label class="form-check-label" for="inlineRadioChecked">Default checked radio</label>
+    </div>
+    <p class="my-2">同上, div 使用了 form-check-inline 类</p>
+</div>
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="formSwitchCheckDefault">
+        <label class="form-check-label" for="formSwitchCheckDefault">Default switch checkbox input</label>
+    </div>
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="formSwitchCheckChecked" checked="">
+        <label class="form-check-label" for="formSwitchCheckChecked">Checked switch checkbox input</label>
+    </div>
+    <p class="my-2">form-switch: 为 div 提供开关选择样式</p>
+</div>
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <label for="formRange" class="form-label">Example range</label>
+    <input type="range" class="form-range" min="0" max="5" step="0.5" id="formRange">
+    <p class="my-2">form-range: 给 type = range 的 input 提供样式</p>
+</div>
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <div class="input-group">
+        <span class="input-group-text" id="input-group-left-example">@@</span>
+        <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+               aria-describedby="input-group-left">
+    </div>
+    <p class="my-2">input-group: 为 div 提供样式</p>
+</div>
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+               aria-describedby="input-group-right">
+        <span class="input-group-text" id="input-group-right-example">@@</span>
+    </div>
+    <p class="my-2">aria-describedby="input-group-right": input 从右侧连接属性</p>
+</div>
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <div class="input-group">
+        <span class="input-group-text">$</span>
+        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+        <span class="input-group-text">.00</span>
+    </div>
+    <p class="my-2">两侧连接属性</p>
+</div>
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <div class="input-group input-group-lg">
+        <span class="input-group-text" id="input-group-lg-example">Large</span>
+        <input type="text" class="form-control" aria-label="Large input group"
+               aria-describedby="input-group-lg">
+    </div>
+    <p class="my-2">input-group-lg: 为 div 提供补充样式</p>
+</div>
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <div class="input-group input-group-sm">
+        <span class="input-group-text" id="input-group-sm-example">Small</span>
+        <input type="text" class="form-control" aria-label="Small input group"
+               aria-describedby="input-group-sm">
+    </div>
+    <p class="my-2">input-group-sm: 为 div 提供补充样式</p>
+</div>
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <div class="input-group">
+        <div class="input-group-text">
+            <input class="form-check-input" type="checkbox" value=""
+                   aria-label="Checkbox for following text input">
+        </div>
+        <input type="text" class="form-control" aria-label="Text input with checkbox">
+    </div>
+    <p class="my-2">input-group with checkbox</p>
+</div>
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <div class="input-group">
+        <div class="input-group-text">
+            <input class="form-check-input" type="radio" value="" aria-label="Radio for following text input">
+        </div>
+        <input type="text" class="form-control" aria-label="Text input with radio">
+    </div>
+    <p class="my-2">input-group with radio</p>
+</div>
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <div class="input-group mb-2">
+        <button type="button" class="btn btn-outline-secondary" id="input-group-button-left">Button</button>
+        <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+               aria-describedby="input-group-button-left">
+    </div>
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+               aria-describedby="input-group-button-right">
+        <button type="button" class="btn btn-outline-secondary" id="input-group-button-right">Button</button>
+    </div>
+    <p class="my-2">input-group with button</p>
+</div>
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <div class="input-group mb-2">
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">Dropdown</button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+        </ul>
+        <input type="text" class="form-control" aria-label="Text input with dropdown button">
+    </div>
+    <div class="input-group">
+        <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
+        <button type="button" class="btn btn-outline-secondary">Action</button>
+        <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+                data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="visually-hidden">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+        </ul>
+    </div>
+    <p class="my-2">input-group with dropdown: 比较复杂, 需要bootstrap.bundle.min.js的引入, 下拉导航后, 后退会有bug导致下拉失效,
+        需要重新进入该页面
+    </p>
+</div>
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Password</label>
+    </div>
+    <p class="my-2">form-floating: 为 div 提供样式, 根据编辑状态提供浮动效果</p>
+</div>
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"
+                  style="height: 100px"></textarea>
+        <label for="floatingTextarea">Comments</label>
+    </div>
+    <p class="my-2">form-floating: 为 div 提供样式, 根据编辑状态提供浮动效果, 浮动的文本编辑框</p>
+</div>
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <div class="form-floating">
+        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+            <option selected="">Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+        <label for="floatingSelect">Works with selects</label>
+        <p class="my-2">form-floating: 为 div 提供样式, 根据编辑状态提供浮动效果, 浮动的下拉框</p>
+    </div>
+</div>
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <form>
+        <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="inputEmail3">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="inputPassword3">
+            </div>
+        </div>
+        <fieldset class="row mb-3">
+            <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
+                           value="option1" checked="">
+                    <label class="form-check-label" for="gridRadios1">
+                        First radio
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2"
+                           value="option2">
+                    <label class="form-check-label" for="gridRadios2">
+                        Second radio
+                    </label>
+                </div>
+                <div class="form-check disabled">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3"
+                           value="option3" disabled="">
+                    <label class="form-check-label" for="gridRadios3">
+                        Third disabled radio
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+        <div class="row mb-3">
+            <div class="col-sm-10 offset-sm-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck1">
+                    <label class="form-check-label" for="gridCheck1">
+                        Example checkbox
+                    </label>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign in</button>
+    </form>
+    <p class="my-2">水平/平铺表单示例</p>
+</div>
+
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <!-- Different sized labels for horizontal form can be used with the help of .col-form-label-{sm|lg} class -->
+    <div class="row mb-3">
+        <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Email</label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control form-control-lg" id="colFormLabelLg"
+                   placeholder="col-form-label-lg">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="colFormLabel" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control" id="colFormLabel" placeholder="col-form-label">
+        </div>
+    </div>
+    <div class="row">
+        <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control form-control-sm" id="colFormLabelSm"
+                   placeholder="col-form-label-sm">
+        </div>
+    </div>
+    <p class="my-2">col-form-label-{size}: 调整列表单尺寸</p>
+</div>
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <!-- Note: A custom script is used to activate validation:
+
+var forms = document.querySelectorAll('.needs-validation')
+Array.prototype.slice.call(forms)
+  .forEach(function (form) {
+    form.addEventListener('submit', function (event) {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+-->
+    <form class="row g-3 needs-validation" novalidate="">
+        <div class="col-md-4">
+            <label for="validationCustom01" class="form-label">First name</label>
+            <input type="text" class="form-control" id="validationCustom01" value="Mark" required="">
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Last name</label>
+            <input type="text" class="form-control" id="validationCustom02" value="Otto" required="">
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustomUsername" class="form-label">Username</label>
+            <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend">@@</span>
+                <input type="text" class="form-control" id="validationCustomUsername"
+                       aria-describedby="inputGroupPrepend" required="">
+                <div class="invalid-feedback">
+                    Please choose a username.
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="validationCustom03" class="form-label">City</label>
+            <input type="text" class="form-control" id="validationCustom03" required="">
+            <div class="invalid-feedback">
+                Please provide a valid city.
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label for="validationCustom04" class="form-label">State</label>
+            <select class="form-select" id="validationCustom04" required="">
+                <option selected="" disabled="" value="">Choose...</option>
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+            </select>
+            <div class="invalid-feedback">
+                Please select a valid state.
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label for="validationCustom05" class="form-label">Zip</label>
+            <input type="text" class="form-control" id="validationCustom05" required="">
+            <div class="invalid-feedback">
+                Please provide a valid zip.
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required="">
+                <label class="form-check-label" for="invalidCheck">
+                    Agree to terms and conditions
+                </label>
+                <div class="invalid-feedback">
+                    You must agree before submitting.
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+    </form>
+    <p class="my-3">valid-feedback: 一个用于在输入有效时展示成功信息的组件, 点击提交时校验输入信息的有效性, 然后提示有效性, 需用自定义js, 在blazor中似乎可以更好的实现,
+        仅作为参考
+    </p>
+</div>
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <!-- Note: A custom script is used to activate validation:
+
+var forms = document.querySelectorAll('.needs-validation')
+Array.prototype.slice.call(forms)
+  .forEach(function (form) {
+    form.addEventListener('submit', function (event) {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+-->
+    <form class="row g-3 needs-validation" novalidate="">
+        <div class="col-md-4 position-relative">
+            <label for="validationTooltip01" class="form-label">First name</label>
+            <input type="text" class="form-control" id="validationTooltip01" value="Mark" required="">
+            <div class="valid-tooltip">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 position-relative">
+            <label for="validationTooltip02" class="form-label">Last name</label>
+            <input type="text" class="form-control" id="validationTooltip02" value="Otto" required="">
+            <div class="valid-tooltip">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 position-relative">
+            <label for="validationTooltipUsername" class="form-label">Username</label>
+            <div class="input-group has-validation">
+                <span class="input-group-text" id="validationTooltipUsernamePrepend">@@</span>
+                <input type="text" class="form-control" id="validationTooltipUsername"
+                       aria-describedby="validationTooltipUsernamePrepend" required="">
+                <div class="invalid-tooltip">
+                    Please choose a unique and valid username.
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 position-relative">
+            <label for="validationTooltip03" class="form-label">City</label>
+            <input type="text" class="form-control" id="validationTooltip03" required="">
+            <div class="invalid-tooltip">
+                Please provide a valid city.
+            </div>
+        </div>
+        <div class="col-md-3 position-relative">
+            <label for="validationTooltip04" class="form-label">State</label>
+            <select class="form-select" id="validationTooltip04" required="">
+                <option selected="" disabled="" value="">Choose...</option>
+                <option>...</option>
+            </select>
+            <div class="invalid-tooltip">
+                Please select a valid state.
+            </div>
+        </div>
+        <div class="col-md-3 position-relative">
+            <label for="validationTooltip05" class="form-label">Zip</label>
+            <input type="text" class="form-control" id="validationTooltip05" required="">
+            <div class="invalid-tooltip">
+                Please provide a valid zip.
+            </div>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+    </form>
+    <p class="my-3">
+        valid-tooltip: 同上, 一个用于在输入有效时展示成功信息的组件, 点击提交时校验输入信息的有效性, 然后提示有效性, 需用自定义js,
+        在blazor中似乎可以更好的实现,
+        仅作为参考
+    </p>
+</div>
+
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <div class="accordion" id="accordionBasic">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Accordion Item #1
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                 data-bs-parent="#accordionBasic">
+                <div class="accordion-body">
+                    <strong>This is the first item's accordion body.</strong> It is hidden by default, until the
+                    collapse plugin adds the appropriate classes that we use to style each element. These
+                    classes
+                    control the overall appearance, as well as the showing and hiding via CSS transitions. You
+                    can
+                    modify any of this with custom CSS or overriding our default variables. It's also worth
+                    noting
+                    that just about any HTML can go within the <code>.accordion-body</code>, though the
+                    transition
+                    does limit overflow.
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Accordion Item #2
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo"
+                 data-bs-parent="#accordionBasic">
+                <div class="accordion-body">
+                    <strong>This is the second item's accordion body.</strong> It is hidden by default, until
+                    the
+                    collapse plugin adds the appropriate classes that we use to style each element. These
+                    classes
+                    control the overall appearance, as well as the showing and hiding via CSS transitions. You
+                    can
+                    modify any of this with custom CSS or overriding our default variables. It's also worth
+                    noting
+                    that just about any HTML can go within the <code>.accordion-body</code>, though the
+                    transition
+                    does limit overflow.
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Accordion Item #3
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree"
+                 data-bs-parent="#accordionBasic">
+                <div class="accordion-body">
+                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
+                    collapse plugin adds the appropriate classes that we use to style each element. These
+                    classes
+                    control the overall appearance, as well as the showing and hiding via CSS transitions. You
+                    can
+                    modify any of this with custom CSS or overriding our default variables. It's also worth
+                    noting
+                    that just about any HTML can go within the <code>.accordion-body</code>, though the
+                    transition
+                    does limit overflow.
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="my-2">accordion 和 accordion-item: div 的手风琴样式</p>
+</div>
+
+
+<div class="border px-2 py-2 my-2 rounded-3">
+    <div class="accordion accordion-flush" id="accordionFlush">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    Accordion Item #1
+                </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse show"
+                 aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlush">
+                <div class="accordion-body">
+                    <strong>This is the first item's accordion body.</strong> It is hidden by default, until the
+                    collapse plugin adds the appropriate classes that we use to style each element. These
+                    classes
+                    control the overall appearance, as well as the showing and hiding via CSS transitions. You
+                    can
+                    modify any of this with custom CSS or overriding our default variables. It's also worth
+                    noting
+                    that just about any HTML can go within the <code>.accordion-body</code>, though the
+                    transition
+                    does limit overflow.
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                    Accordion Item #2
+                </button>
+            </h2>
+            <div id="flush-collapseTwo" class="accordion-collapse collapse show"
+                 aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlush">
+                <div class="accordion-body">
+                    <strong>This is the second item's accordion body.</strong> It is hidden by default, until
+                    the
+                    collapse plugin adds the appropriate classes that we use to style each element. These
+                    classes
+                    control the overall appearance, as well as the showing and hiding via CSS transitions. You
+                    can
+                    modify any of this with custom CSS or overriding our default variables. It's also worth
+                    noting
+                    that just about any HTML can go within the <code>.accordion-body</code>, though the
+                    transition
+                    does limit overflow.
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseThree" aria-expanded="false"
+                        aria-controls="flush-collapseThree">
+                    Accordion Item #3
+                </button>
+            </h2>
+            <div id="flush-collapseThree" class="accordion-collapse collapse show"
+                 aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlush">
+                <div class="accordion-body">
+                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
+                    collapse plugin adds the appropriate classes that we use to style each element. These
+                    classes
+                    control the overall appearance, as well as the showing and hiding via CSS transitions. You
+                    can
+                    modify any of this with custom CSS or overriding our default variables. It's also worth
+                    noting
+                    that just about any HTML can go within the <code>.accordion-body</code>, though the
+                    transition
+                    does limit overflow.
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="my-2">accordion-flush: 修饰 accordion, 它的极简模式, 移除了一些视觉效果</p>
+</div>
+
+
+
+<!-- MARK:卡片 -->
+<h2 class="mt-5 text-center"">Card 卡片</h2>
+<hr />
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div class=" card">
+        <div class="card-header">
+            Header
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">特殊标题处理</h5>
+            <p class="card-text">下方的辅助文字可作为引出后续内容的自然衔接。</p>
+            <a href="#" class="card-link">Card link</a>
+            <br />
+            <a href="#" class="btn btn-primary">Go !</a>
+        </div>
+        <div class="card-footer text-muted">
+            2 days ago
+        </div>
+    </div>
+    <p class="my-2">card: 为 div 提供样式, 提供容器</p>
+    <p class="my-2">card-header: 为 div 提供样式</p>
+    <p class="my-2">card-body: 为 div 提供样式</p>
+    <p class="my-2">card-title: 为文本内容提供标题样式</p>
+    <p class="my-2">card-text: 为文本内容提供样式</p>
+    <p class="my-2">card-link: 为卡片中的链接提供样式</p>
+    <p class="my-2">card-footer: 为卡片中的注脚提供样式</p>
+</div>
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div class="card">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+    </div>
+
+    <p class="my-2">list-group: 列表组, 为列表提供样式</p>
+    <p class="my-2">list-group-item: 列表组项次样式</p>
+</div>
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <!-- Tabs or Pills can be used in a card with the help of .nav-{tabs|pills} and .card-header-{tabs|pills} classes -->
+    <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab"
+                       aria-controls="home" aria-selected="true">Home</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab"
+                       aria-controls="profile" aria-selected="false">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" id="disabled-tab" data-bs-toggle="tab" href="#disabled"
+                       role="tab" aria-controls="disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    Lorem
+                    ipsum dolor sit amet consectetur adipisicing elit. Eligendi alias praesentium illo omnis
+                    adipisci ipsa suscipit rerum quidem doloribus magnam?
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    Lorem
+                    ipsum
+                    dolor sit amet consectetur adipisicing elit. Iure, asperiores provident ea eaque quis
+                    omnis
+                    adipisci in exercitationem necessitatibus dolorem.
+                </div>
+                <div class="tab-pane fade" id="disabled" role="tabpanel" aria-labelledby="disabled-tab">
+                    Lorem,
+                    ipsum
+                    dolor sit amet consectetur adipisicing elit. Suscipit rem accusamus officia quia eos
+                    ducimus
+                    consequuntur! Impedit aliquid vero suscipit.
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="my-2">在卡片内导航示例</p>
+</div>
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div class="card" style="width: 30%;">
+        <img src="pictrue/138621549_p0.jpg" class="card-img-top" alt="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+                This is a wider card with supporting text below as a natural lead-in to
+                additional
+                content. This content is a little bit longer.
+            </p>
+            <p class="card-text">
+                <small class="text-muted">Last updated 3 mins ago</small>
+            </p>
+        </div>
+    </div>
+    <p class="my-2">card-img-top: 为 card 中的 img 提供样式</p>
+    <p class="my-2">card-img-buttom: 同理</p>
+</div>
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div class="card bg-dark text-dark" style="width: 50%;">
+        <img src="pictrue/138621549_p0.jpg" class="card-img" alt="card-img-overlay">
+        <div class="card-img-overlay">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+                This is a wider card with supporting text below as a natural lead-in to
+                additional content.
+            </p>
+            <p class="card-text">Last updated 3 mins ago</p>
+        </div>
+    </div>
+    <p class="my-2">alt="card-img-overlay": 图片作为背景</p>
+</div>
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div class="card">
+        <div class="row g-0">
+            <div class="col-5 col-sm-4">
+                <img src="pictrue/138621549_p0.jpg" class="img-fluid w-100" alt="card-horizontal-image">
+            </div>
+            <div class="col-7 col-sm-8">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">
+                        This is a wider card with supporting text below as a natural lead-in to
+                        additional content.
+                    </p>
+                    <p class="card-text">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <p class="my-2">alt="alt="card-horizontal-image"": 图片并排</p>
+    </div>
+</div>
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div class="card text-white bg-primary">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+            <h5 class="card-title">Primary card title</h5>
+            <p class="card-text">
+                Some quick example text to build on the card title and make up the bulk of the
+                card's content.
+            </p>
+        </div>
+    </div>
+    <p class="my-2">bg-{color}: 卡片背景颜色示例</p>
+    <p class="my-2">text-{color}: 文字颜色示例</p>
+</div>
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div class="card bg-transparent">
+        <div class="card-header bg-transparent">Header</div>
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+                Some quick example text to build on the card title and make up the bulk of the
+                card's content.
+            </p>
+        </div>
+        <div class="card-footer bg-transparent">Footer</div>
+    </div>
+    <p class="my-2">bg-transparent: 移除元素的背景颜色</p>
+</div>
+
+
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div class="card-group">
+        <div class="card">
+            <img src="pictrue/img-2x1.png" class="card-img-top" alt="card-group-image">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                    This is a wider card with supporting text below as a natural lead-in to
+                    additional content. This content is a little bit longer.
+                </p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+        </div>
+        <div class="card">
+            <img src="pictrue/img-2x1.png" class="card-img-top" alt="card-group-image">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                    This card has supporting text below as a natural lead-in to additional content.
+                </p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+        </div>
+        <div class="card">
+            <img src="pictrue/img-2x1.png" class="card-img-top" alt="card-group-image">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                    This is a wider card with supporting text below as a natural lead-in to
+                    additional content. This card has even longer content than the first to show that equal
+                    height
+                    action.
+                </p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+        </div>
+    </div>
+    <p class="my-2">card-group: 卡片组, card 的容器</p>
+</div>
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div class="row row-cols-1 row-cols-sm-2 g-3">
+        <div class="col">
+            <div class="card">
+                <img src="pictrue/img-2x1.png" class="card-img-top" alt="card-grid-image">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">
+                        This is a longer card with supporting text below as a natural lead-in to
+                        additional content. This content is a little bit longer.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="pictrue/img-2x1.png" class="card-img-top" alt="card-grid-image">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">
+                        This is a longer card with supporting text below as a natural lead-in to
+                        additional content. This content is a little bit longer.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="pictrue/img-2x1.png" class="card-img-top" alt="card-grid-image">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural
+                        lead-in
+                        to
+                        additional content.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="pictrue/img-2x1.png" class="card-img-top" alt="card-grid-image">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural
+                        lead-in
+                        to
+                        additional content. This content is a little bit longer.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="my-2">grid cards: 响应式卡片网格示例</p>
+</div>
+
+
+
+
+
+
+
+
+<!-- MARK:轮播 -->
+<h2 class="mt-5 text-center"">Carousel 轮播</h2>
+<hr />
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div id=" carouselSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="pictrue/img-2x1.png" class="d-block w-100" alt="Slide 1">
+            </div>
+            <div class="carousel-item">
+                <img src="pictrue/img-2x1.png" class="d-block w-100" alt="Slide 2">
+            </div>
+            <div class="carousel-item">
+                <img src="pictrue/img-2x1.png" class="d-block w-100" alt="Slide 3">
+            </div>
+        </div>
+
+        <p class="my-2">carousel (slides only) 示例</p>
+    </div>
+</div>
+
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div id="carouselWithControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="pictrue/img-2x1.png" class="d-block w-100" alt="Slide 1">
+            </div>
+            <div class="carousel-item">
+                <img src="pictrue/img-2x1.png" class="d-block w-100" alt="Slide 2">
+            </div>
+            <div class="carousel-item">
+                <img src="pictrue/img-2x1.png" class="d-block w-100" alt="Slide 3">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselWithControls" role="button"
+           data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselWithControls" role="button"
+           data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </a>
+    </div>
+    <p class="my-2">carousel with controls 示例</p>
+</div>
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div id="carouselWithIndicators" class="carousel slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-bs-target="#carouselWithIndicators" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#carouselWithIndicators" data-bs-slide-to="1"></li>
+            <li data-bs-target="#carouselWithIndicators" data-bs-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="pictrue/img-2x1.png" class="d-block w-100" alt="Slide 1">
+            </div>
+            <div class="carousel-item">
+                <img src="pictrue/img-2x1.png" class="d-block w-100" alt="Slide 2">
+            </div>
+            <div class="carousel-item">
+                <img src="pictrue/img-2x1.png" class="d-block w-100" alt="Slide 3">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselWithIndicators" role="button"
+           data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselWithIndicators" role="button"
+           data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </a>
+    </div>
+    <p class="my-2">carousel-indicators 示例</p>
+</div>
+
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div id="carouselWithCaptions" class="carousel slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-bs-target="#carouselWithCaptions" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#carouselWithCaptions" data-bs-slide-to="1"></li>
+            <li data-bs-target="#carouselWithCaptions" data-bs-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="pictrue/img-2x1.png" class="d-block w-100" alt="Slide 1">
+                <div class="carousel-caption d-none d-sm-block text-dark">
+                    <h5>First slide label</h5>
+                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="pictrue/img-2x1.png" class="d-block w-100" alt="Slide 2">
+                <div class="carousel-caption d-none d-sm-block text-dark">
+                    <h5>Second slide label</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="pictrue/img-2x1.png" class="d-block w-100" alt="Slide 3">
+                <div class="carousel-caption d-none d-sm-block text-dark">
+                    <h5>Third slide label</h5>
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselWithCaptions" role="button"
+           data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselWithCaptions" role="button"
+           data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </a>
+    </div>
+    <p class="my-2">carousel-caption 示例</p>
+</div>
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div id="carouselCrossfade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="pictrue/img-2x1.png" class="d-block w-100" alt="Slide 1">
+            </div>
+            <div class="carousel-item">
+                <img src="@fokuPictruePath" class="d-block w-50" alt="Slide 2">
+            </div>
+            <div class="carousel-item">
+                <img src="pictrue/img-2x1.png" class="d-block w-100" alt="Slide 3">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselCrossfade" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselCrossfade" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </a>
+    </div>
+    <p class="my-2">carousel-fade 示例, 淡出淡入</p>
+</div>
+
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div id="carouselWithInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+                <img src="pictrue/img-2x1.png" class="d-block w-100" alt="Slide 1">
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+                <img src="@fokuPictruePath" class="d-block w-50" alt="Slide 2">
+            </div>
+            <div class="carousel-item">
+                <img src="pictrue/img-2x1.png" class="d-block w-100" alt="Slide 3">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselWithInterval" role="button"
+           data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselWithInterval" role="button"
+           data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </a>
+    </div>
+    <p class="my-2">carousel with intervals 示例, 带间隔的轮播</p>
+</div>
+
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div id="carouselDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-bs-target="#carouselDark" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#carouselDark" data-bs-slide-to="1"></li>
+            <li data-bs-target="#carouselDark" data-bs-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="@fokuPictruePath" class="d-block w-50" alt="Slide 1">
+                <div class="carousel-caption d-none d-sm-block">
+                    <h5>First slide label</h5>
+                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="@fokuPictruePath" class="d-block w-50" alt="Slide 2">
+                <div class="carousel-caption d-none d-sm-block">
+                    <h5>Second slide label</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="@fokuPictruePath" class="d-block w-50" alt="Slide 3">
+                <div class="carousel-caption d-none d-sm-block">
+                    <h5>Third slide label</h5>
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselDark" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselDark" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </a>
+    </div>
+    <p class="my-2">carousel-dark 示例, 轮播图暗色</p>
+</div>
+
+
+
+
+
+
+<!-- MARK:折叠 -->
+<h2 class="mt-5 text-center"">Collapse 折叠</h2>
+<hr />
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <p>
+        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button"
+           aria-expanded="false" aria-controls="collapseExample">
+            Link with href
+        </a>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Button with data-bs-target
+        </button>
+    </p>
+    <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+            squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente
+            ea proident.
+        </div>
+    </div>
+    <p class="my-2">collapse: 通过链接和按钮折叠和收起一个区域的示例</p>
+</div>
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <p>
+        <a class="btn btn-primary mb-1" data-bs-toggle="collapse" href="#multiCollapse1"
+           role="button" aria-expanded="false" aria-controls="multiCollapse1">Toggle first
+            element
+        </a>
+        <button class="btn btn-primary mb-1" type="button" data-bs-toggle="collapse"
+                data-bs-target="#multiCollapse2" aria-expanded="false" aria-controls="multiCollapse2">
+            Toggle second element
+        </button>
+        <button class="btn btn-primary mb-1" type="button" data-bs-toggle="collapse"
+                data-bs-target=".multi-collapse" aria-expanded="false"
+                aria-controls="multiCollapse1 multiCollapse2">
+            Toggle both elements
+        </button>
+    </p>
+    <div class="row">
+        <div class="col">
+            <div class="collapse multi-collapse show" id="multiCollapse1">
+                <div class="card card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                    richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
+                    anderson cred nesciunt sapiente ea proident.
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="collapse multi-collapse show" id="multiCollapse2">
+                <div class="card card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                    richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
+                    anderson cred nesciunt sapiente ea proident.
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="my-2">multi-collapse: 多个折叠示例</p>
+</div>
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <p>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseWidthExample" aria-expanded="true"
+                aria-controls="collapseWidthExample">
+            Toggle width collapse
+        </button>
+    </p>
+    <div class="collapse-horizontal collapse show" id="collapseWidthExample" style="">
+        <div class="card card-body" style="width: 300px;">
+            This is some placeholder content for a horizontal collapse. It's hidden by default and
+            shown when triggered.
+        </div>
+    </div>
+    <p class="my-2">collapse-horizontal: 水平折叠示例</p>
+</div>
+
+
+
+<!-- MARK:下拉栏 -->
+<h2 class="mt-5 text-center"">Dropdowns 下拉栏</h2>
+<hr />
+
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div class=" dropdown my-1">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown button
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+    </div>
+
+    <div class="btn-group  my-1">
+        <button type="button" class="btn btn-primary">Split Button</button>
+        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="visually-hidden">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+    </div>
+
+
+    <div class="dropdown my-1">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuDark"
+                data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown Menu Dark
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuDark">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+    </div>
+
+    <p class="m-2">dropdown: 为 div 提供样式框架</p>
+    <p class="m-2">dropdown-toggle: 为 button 提供样式框架</p>
+    <p class="m-2">dropdown-menu: 为 ul 提供样式框架</p>
+    <p class="m-2">dropdown-item: 为 li 提供样式框架</p>
+    <p class="m-2">dropdown-toggle-split: 修饰 dropdown-toggle, 下拉分离</p>
+    <p class="m-2">dropdown-menu-dark: 修饰 dropdown-menu, 黑色样式</p>
+</div>
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div class="btn-group dropup">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+            Dropup
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+    </div>
+
+    <div class="btn-group dropup">
+        <button type="button" class="btn btn-primary">
+            Split dropup
+        </button>
+        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="visually-hidden">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+    </div>
+
+    <p class="m-2">dropup: 上拉, 为 div 提供样式</p>
+</div>
+
+
+
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div class="btn-group dropstart">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+            Dropstart
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+    </div>
+
+    <div class="btn-group dropend">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+            Dropend
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+    </div>
+    <p class="m-2">dropstart: 向前展开菜单</p>
+    <p class="m-2">dropend: 向后展开菜单</p>
+</div>
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+            Dropdown item text
+        </button>
+        <ul class="dropdown-menu">
+            <li><span class="dropdown-item-text">Dropdown item text</span></li>
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><span class="dropdown-item-text">Dropdown item text</span></li>
+        </ul>
+    </div>
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+            Dropdown
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <h6 class="dropdown-header">Dropdown header</h6>
+            </li>
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+    </div>
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+            Dropdown
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+        </ul>
+    </div>
+
+    <p class="m-2">dropdown-item-text: ul 的文本成员.</p>
+    <p class="m-2">dropdown-header: ul 的头描述成员.</p>
+    <p class="m-2">dropdown-divider: ul 的分隔符成员.</p>
+</div>
+
+
+<div class=" border px-2 py-2 my-2 rounded-3">
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+            Dropdown
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Regular link</a></li>
+            <li><a class="dropdown-item active" href="#" aria-current="true">Active link</a>
+            </li>
+            <li><a class="dropdown-item" href="#">Another link</a></li>
+        </ul>
+    </div>
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+            Dropdown
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Regular link</a></li>
+            <li><a class="dropdown-item disabled" href="#" tabindex="-1"
+                       aria-disabled="true">Disabled link</a></li>
+                <li><a class="dropdown-item" href="#">Another link</a></li>
+            </ul>
+        </div>
+
+        <p class="m-2">active: 可高亮菜单项目</p>
+        <p class="m-2">disabled: 可禁用菜单项目</p>
+    </div>
+
+
+    <div class=" border px-2 py-2 my-2 rounded-3">
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                Right-aligned dropdown-menu
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+        </div>
+        <p class="m-2">dropdown-menu-end: 修饰 dropdown-menu, 使得弹出的菜单窗口靠末尾(右)</p>
+    </div>
+
+
+    <div class=" border px-2 py-2 my-2 rounded-3">
+        <!-- Right or left aligned dropdown menu can be use at different breakpoints with the help of .dropdown-menu-*-{end|start} class -->
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                Dropdown
+            </button>
+            <ul class="dropdown-menu dropdown-menu-sm-end dropdown-menu-xl-start">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+        </div>
+        <p class="m-2">dropdown-menu-*-{direction}: 提供屏幕兼容性</p>
+    </div>
+
+
+    <div class=" border px-2 py-2 my-2 rounded-3">
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary">Reference</button>
+            <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                    id="dropdownMenuReference" data-bs-toggle="dropdown" aria-expanded="false"
+                    data-bs-reference="parent">
+                <span class="visually-hidden">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+        </div>
+        <p class="m-2">aria-labelledby="dropdownMenuReference": 无障碍优化, 利于屏幕朗读.</p>
+    </div>
+
+
+
+    <!-- MARK:列表集 -->
+    <h2 class="mt-5 text-center"">List group 列表集</h2>
+    <hr />
+
+
+    <div class=" border px-2 py-2 my-2 rounded-3">
+        <ul class="list-group">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Morbi leo risus</li>
+            <li class="list-group-item">Porta ac consectetur ac</li>
+            <li class="list-group-item active">Active item</li>
+            <li class="list-group-item disabled">Disabled item</li>
+        </ul>
+        <p class="m-2">list-group: 为 ul 提供样式.</p>
+        <p class="m-2">active: 为 li 提供高亮样式.</p>
+        <p class="m-2">disabled: 为 li 提供禁用样式.</p>
+    </div>
+
+
+    <div class=" border px-2 py-2 my-2 rounded-3">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Morbi leo risus</li>
+            <li class="list-group-item">Porta ac consectetur ac</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+        <p class="m-2">list-group-flush: 修饰 list-group, 一个更简洁的样式, 没有圆角</p>
+    </div>
+
+
+    <div class=" border px-2 py-2 my-2 rounded-3">
+        <ul class="list-group list-group-numbered">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Morbi leo risus</li>
+            <li class="list-group-item">Porta ac consectetur ac</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+        <p class="m-2">list-group-numbered: 修饰 list-group, 将自动添加数字标记.</p>
+    </div>
+
+
+    <div class=" border px-2 py-2 my-2 rounded-3">
+        <ul class="list-group list-group-horizontal">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Morbi leo risus</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+        <p class="m-2">list-group-horizontal: 修饰 list-group, 水平的列表.</p>
+        <p class="m-2">list-group-horizontal-*: 同理, 如 md, sm, xl 等.</p>
+    </div>
+
+
+    <div class=" border px-2 py-2 my-2 rounded-3">
+        <ul class="list-group">
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item list-group-item-primary">
+                A simple primary list group item
+            </li>
+            <li class="list-group-item list-group-item-secondary">A simple secondary list group
+                item
+            </li>
+            <li class="list-group-item list-group-item-success">A simple success list group item
+            </li>
+            <li class="list-group-item list-group-item-danger">A simple danger list group item
+            </li>
+            <li class="list-group-item list-group-item-warning">A simple warning list group item
+            </li>
+            <li class="list-group-item list-group-item-info">A simple info list group item
+            </li>
+            <li class="list-group-item list-group-item-light">A simple light list group item
+            </li>
+            <li class="list-group-item list-group-item-dark">A simple dark list group item
+            </li>
+        </ul>
+        <p class="m-2">list-group-item-{color}: 修饰项次颜色样式</p>
+    </div>
+
+
+    <div class=" border px-2 py-2 my-2 rounded-3">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-action">Cras justo odio</li>
+            <li class="list-group-item list-group-item-action">Morbi leo risus</li>
+            <li class="list-group-item list-group-item-action">Porta ac consectetur ac</li>
+            <li class="list-group-item list-group-item-action">Vestibulum at eros</li>
+        </ul>
+        <p class="m-2">list-group-item-action: 修饰 list-group-item, 表示可交互, 提供一些交互性.</p>
+    </div>
+
+
+    <div class=" border px-2 py-2 my-2 rounded-3">
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action active"
+               aria-current="true">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">List group item heading</h5>
+                    <small>3 days ago</small>
+                </div>
+                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed
+                    diam eget risus varius blandit.
+                </p>
+                <small>Donec id elit non mi porta.</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">List group item heading</h5>
+                    <small class="text-muted">3 days ago</small>
+                </div>
+                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed
+                    diam eget risus varius blandit.
+                </p>
+                <small class="text-muted">Donec id elit non mi porta.</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">List group item heading</h5>
+                    <small class="text-muted">3 days ago</small>
+                </div>
+                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed
+                    diam eget risus varius blandit.
+                </p>
+                <small class="text-muted">Donec id elit non mi porta.</small>
+            </a>
+        </div>
+        <p class="m-2">自定义列表示例</p>
+    </div>
+
+
+    <div class=" border px-2 py-2 my-2 rounded-3">
+        <!-- To have radio, change input type to radio and add same name attribute to all inputs -->
+        <div class="list-group">
+            <label class="list-group-item">
+                <input class="form-check-input me-1" type="checkbox">
+                Cras justo odio
+            </label>
+            <label class="list-group-item">
+                <input class="form-check-input me-1" type="checkbox">
+                Dapibus ac facilisis in
+            </label>
+            <label class="list-group-item">
+                <input class="form-check-input me-1" type="checkbox">
+                Morbi leo risus
+            </label>
+            <label class="list-group-item">
+                <input class="form-check-input me-1" type="checkbox">
+                Porta ac consectetur ac
+            </label>
+            <label class="list-group-item">
+                <input class="form-check-input me-1" type="checkbox">
+                Vestibulum at eros
+            </label>
+        </div>
+        <p class="m-2">list-group 的 checkbox 示例.</p>
+    </div>
+
+
+    <div class=" border px-2 py-2 my-2 rounded-3">
+        <div class="row">
+            <div class="col-5 col-lg-4">
+                <div class="list-group" id="list-tab" role="tablist">
+                    <a class="list-group-item list-group-item-action active" id="list-home-list"
+                       data-bs-toggle="list" href="#list-home" role="tab"
+                       aria-controls="home">Home</a>
+                    <a class="list-group-item list-group-item-action" id="list-profile-list"
+                       data-bs-toggle="list" href="#list-profile" role="tab"
+                       aria-controls="profile">Profile</a>
+                    <a class="list-group-item list-group-item-action" id="list-messages-list"
+                       data-bs-toggle="list" href="#list-messages" role="tab"
+                       aria-controls="messages">Messages</a>
+                    <a class="list-group-item list-group-item-action" id="list-settings-list"
+                       data-bs-toggle="list" href="#list-settings" role="tab"
+                       aria-controls="settings">Settings</a>
+                </div>
+            </div>
+            <div class="col-7 col-lg-8">
+                <div class="tab-content" id="list-nav-tabContent">
+                    <div class="tab-pane fade show active" id="list-home" role="tabpanel"
+                         aria-labelledby="list-home-list">Lorem ipsum dolor sit amet consectetur
+                        adipisicing elit. Maxime consequatur inventore neque laborum, dolores
+                        nemo magnam perspiciatis aperiam nisi, in dignissimos quas sint rem
+                        placeat.
+                    </div>
+                    <div class="tab-pane fade" id="list-profile" role="tabpanel"
+                         aria-labelledby="list-profile-list">Lorem ipsum dolor sit, amet
+                        consectetur adipisicing elit. Tempore, omnis fugit consectetur labore
+                        error iusto esse repellat vel expedita ad eligendi asperiores cupiditate
+                        molestias consequatur!
+                    </div>
+                    <div class="tab-pane fade" id="list-messages" role="tabpanel"
+                         aria-labelledby="list-messages-list">Lorem ipsum dolor sit amet
+                        consectetur adipisicing elit. Perferendis, quod aliquam esse, iste
+                        nostrum aut, aspernatur eaque dolore nulla mollitia vero ex. Illum, in
+                        ipsa!
+                    </div>
+                    <div class="tab-pane fade" id="list-settings" role="tabpanel"
+                         aria-labelledby="list-settings-list">Lorem ipsum dolor, sit amet
+                        consectetur adipisicing elit. Soluta facilis aspernatur harum eaque,
+                        quibusdam consectetur voluptatem illum maxime mollitia vitae excepturi
+                        praesentium enim, sint maiores?
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="m-2">javascript behavior: 一个js实现的交互示例</p>
+    </div>
+
+
+
+
+
+
+    <!-- MARK:模态 -->
+    <h2 class="mt-5 text-center"">Modal 模态</h2>
+    <hr />
+
+
+    <div class=" border px-2 py-2 my-2 rounded-3">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+  打开模态框
+</button>
+        <div class="modal" tabindex="-1" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalBasicLabel">Modal title</h5>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">...</div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="m-2"></p>
+    </div>
+
+
+    <div class=" border px-2 py-2 my-2 rounded-3">
+
+        <p class="m-2"></p>
+    </div>
+
+
+    <div class=" border px-2 py-2 my-2 rounded-3">
+
+        <p class="m-2"></p>
+    </div>
+
+
+    <div class=" border px-2 py-2 my-2 rounded-3">
+
+        <p class="m-2"></p>
+    </div>
+
+
+    <div class=" border px-2 py-2 my-2 rounded-3">
+
+        <p class="m-2"></p>
+    </div>
+
+
+
+
+
+    <!-- MARK:警告框 -->
+    <h2 class="mt-5 text-center"">Alert 警告框</h2>
+    <hr />
+
+    <div class=" border px-2 py-2 my-2 rounded-3">
+        <div class="alert alert-primary" role="alert">
+            A simple primary alert—check it out!
+        </div>
+        <p class="my-2">alert-primary: 修饰 alert</p>
+    </div>
+
+
+        
+
+
+    <div class="border px-2 py-2 my-2 rounded-3">
+        <div class="alert alert-secondary" role="alert">
+            A simple secondary alert—check it out!
+        </div>
+        <p class="my-2">alert-secondary</p>
+    </div>
+
+
+    <div class="border px-2 py-2 my-2 rounded-3">
+        <div class="alert alert-success" role="alert">
+            A simple success alert—check it out!
+        </div>
+        <p class="my-2">alert-success</p>
+    </div>
+
+
+    <div class="border px-2 py-2 my-2 rounded-3">
+        <div class="alert alert-danger" role="alert">
+            A simple danger alert—check it out!
+        </div>
+        <p class="my-2">alert-danger</p>
+    </div>
+
+
+    <div class="border px-2 py-2 my-2 rounded-3">
+        <div class="alert alert-warning" role="alert">
+            A simple warning alert—check it out!
+        </div>
+        <p class="my-2">alert-warning</p>
+    </div>
+
+
+    <div class="border px-2 py-2 my-2 rounded-3">
+        <div class="alert alert-info" role="alert">
+            A simple info alert—check it out!
+        </div>
+        <p class="my-2">alert-info</p>
+    </div>
+
+
+    <div class="border px-2 py-2 my-2 rounded-3">
+        <div class="alert alert-light" role="alert">
+            A simple light alert—check it out!
+        </div>
+        <p class="my-2">alert-light</p>
+    </div>
+
+
+    <div class="border px-2 py-2 my-2 rounded-3">
+        <div class="alert alert-dark" role="alert">
+            A simple dark alert—check it out!
+        </div>
+        <p class="my-2">alert-dark</p>
+    </div>
+
+
+    <div class="border px-2 py-2 my-2 rounded-3">
+        <div class="alert alert-primary" role="alert">
+            A simple primary alert with <a href="#" class="alert-link">an example
+            link</a>.
+            Give
+            it
+            a
+            click
+            if
+            you
+            like.
+        </div>
+        <p class="my-2">alert-link</p>
+    </div>
+
+
+    <div class="border px-2 py-2 my-2 rounded-3">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Holy guacamole!</strong> You should check in on some of those fields
+            below.
+            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                    aria-label="Close"></button>
+        </div>
+        <p class="my-2">alert-dismissible: 可关闭</p>
+    </div>
+
+
+    <!-- MARK:徽章 -->
+    <h2 class="mt-5 text-center"">Badge 徽章</h2>
+    <hr />
+        
+    新版本更推荐使用 text-bg-* 
+    <div class=" border px-2 py-2 my-2 rounded-3">
+        <span class="badge bg-primary">badge bg-primary</span>
+        <span class="badge bg-secondary">badge bg-secondary</span>
+        <span class="badge bg-success">badge bg-success</span>
+        <span class="badge bg-danger">badge bg-danger</span>
+        <span class="badge bg-warning text-dark">badge bg-warning text-dark</span>
+        <span class="badge bg-info text-dark">badge bg-info text-dark</span>
+        <span class="badge bg-light text-dark">badge bg-light text-dark</span>
+        <span class="badge bg-dark">badge bg-dark</span>
+        <span class="badge bg-primary rounded-pill">badge bg-primary rounded-pill</span>
+        <button type="button" class="btn btn-primary">
+            Notifications <span class="badge bg-secondary">4</span>
+        </button>
+
+        <p class="my-2">修饰 span 的 badge</p>
+    </div>
+
+    <!-- MARK:面包屑导航 -->
+    <h2 class="mt-5 text-center"">Breadcrumb 面包屑导航</h2>
+    <hr />
+
+    <div class=" border px-2 py-2 my-2 rounded-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">Home</li>
+            </ol>
+        </nav>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Library</li>
+            </ol>
+        </nav>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Library</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Data</li>
+            </ol>
+        </nav>
+        <p class="my-2">中 nav 结构内</p>
+        <p class="my-2">breadcrumb: 为 ol 提供样式</p>
+        <p class="my-2">breadcrumb-item: 为 li 提供样式</p>
+    </div>
+
+
+    <div class="border px-2 py-2 my-2 rounded-3">
+        <nav style="--bs-breadcrumb-divider: '&gt;';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Library
+                </li>
+            </ol>
+        </nav>
+        <p class="my-2">nav 中 style="--bs-breadcrumb-divider: '&gt;';": 指定导航符
+        </p>
+    </div>
+
+
+    <div class="border px-2 py-2 my-2 rounded-3">
+
+        <p class="my-2"></p>
+    </div>
+
+
+    <div class="border px-2 py-2 my-2 rounded-3">
+
+        <p class="my-2"></p>
+    </div>
+
+
+    <div class="border px-2 py-2 my-2 rounded-3">
+
+        <p class="my-2"></p>
+    </div>
+
+
+    <div class="border px-2 py-2 my-2 rounded-3">
+
+        <p class="my-2"></p>
+    </div>
+
+
+    <div class="border px-2 py-2 my-2 rounded-3">
+
+        <p class="my-2"></p>
+    </div>
+
+
+    <div class="border px-2 py-2 my-2 rounded-3">
+
+        <p class="my-2"></p>
+    </div>
+
+
+    <div class="border px-2 py-2 my-2 rounded-3">
+
+        <p class="my-2"></p>
+    </div>
+
+
+    <div class="border px-2 py-2 my-2 rounded-3">
+
+        <p class="my-2"></p>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- MARK:网格 -->
+    <h2 class="mt-5 text-center">GRID 网格</h2>
+    <hr />
+    <div class="container">container: Max width changes at each breakpoint</div>
+    <div class="container-sm">container-sm: 100% wide until small breakpoint
+    </div>
+    <div class="container-md">container-md: 100% wide until medium breakpoint
+    </div>
+    <div class="container-lg">container-lg: 100% wide until large breakpoint
+    </div>
+    <div class="container-xl">container-xl: 100% wide until extra large
+        breakpoint
+    </div>
+    <div class="container-xxl">container-xxl: 100% wide until extra extra large
+        breakpoint
+        (new)
+    </div>
+    <div class="container-fluid">container-fluid: Always 100% wide</div>
+    <div class="row">row: col- elements here</div>
+
+    <div class="row">
+        <div class="col-3">col-3</div>
+        <div class="col-4">col-4</div>
+        <div class="col-5">col-5</div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3">col-sm-3</div>
+        <div class="col-sm-5">col-sm-5</div>
+        <div class="col-sm-4">col-sm-4</div>
+    </div>
+
+
+@code {
+    string backGroudColor = "darkgray";
+    string fokuPictruePath = "pictrue/138621549_p0.jpg";
+}
